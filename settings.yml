@@ -1,0 +1,36 @@
+# InterviewCoder Theme Settings
+
+show_level_badges:
+  type: bool
+  default: true
+  description: "Show LVL badges next to usernames"
+
+primary_color:
+  type: string
+  default: "#FACC15"
+  description: "Primary button color (yellow)"
+
+card_border_radius:
+  type: string
+  default: "12px"
+  description: "Border radius for cards"
+
+enable_right_sidebar:
+  type: bool
+  default: true
+  description: "Show promotional sidebar on desktop"
+
+promo_title:
+  type: string
+  default: "Pass Any Interview"
+  description: "Title text for promotional sidebar"
+
+promo_cta_text:
+  type: string
+  default: "⚡ Get Lifetime package"
+  description: "Call-to-action button text"
+
+promo_cta_url:
+  type: string
+  default: "/pricing"
+  description: "URL for CTA button"

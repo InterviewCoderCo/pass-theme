@@ -1,0 +1,98 @@
+// ============================================
+// InterviewCoder Theme - Mobile Specific
+// ============================================
+
+// Stack layout on mobile
+.wrap {
+  padding: 12px;
+}
+
+// Full width cards
+.topic-list-item {
+  border-radius: var(--ic-radius-sm) !important;
+  padding: 14px 16px;
+  margin-bottom: 8px !important;
+}
+
+// Smaller avatars on mobile
+.topic-list-item .posters {
+  a:first-child img {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+// Smaller title
+.topic-list-item .title {
+  font-size: 0.95rem;
+}
+
+// Hide right sidebar on mobile
+.sidebar-right {
+  display: none;
+}
+
+// Drawer navigation
+.hamburger-dropdown {
+  background: var(--ic-card);
+  border-radius: var(--ic-radius);
+
+  .menu-links-row {
+    padding: 8px;
+  }
+}
+
+// Mobile header
+.d-header {
+  padding: 8px 12px;
+
+  .title {
+    font-size: 1.1rem;
+  }
+}
+
+// Floating action button for create
+.mobile-create-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ic-yellow);
+  color: var(--ic-text-primary);
+  box-shadow: var(--ic-shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  z-index: 1000;
+
+  &:hover {
+    background: var(--ic-yellow-hover);
+  }
+}
+
+// Topic stats wrap on mobile
+.topic-stats {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+// Compact level badges on mobile
+.user-level-badge {
+  font-size: 0.65rem;
+  padding: 1px 6px;
+}
+
+// Bottom navigation (if using discourse mobile nav)
+.d-navigation {
+  background: var(--ic-card);
+  border-top: 1px solid var(--ic-border);
+  padding: 8px;
+
+  .nav-item {
+    border-radius: var(--ic-radius-sm);
+    padding: 8px 12px;
+  }
+}

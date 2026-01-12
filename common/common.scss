@@ -1,0 +1,1864 @@
+// ============================================
+// InterviewCoder Theme - Airbnb DLS Inspired
+// ============================================
+// "Flat design is over" - Brian Chesky, 2024
+// Dimensional, alive, and playful
+// ============================================
+
+// --------------------------------------------
+// Airbnb-Inspired Design Tokens
+// --------------------------------------------
+:root {
+  // Border Radius (Airbnb uses 8px buttons, 12px cards)
+  --ic-radius-xs: 4px;
+  --ic-radius-sm: 8px;
+  --ic-radius: 12px;
+  --ic-radius-lg: 16px;
+  --ic-radius-xl: 24px;
+  --ic-radius-pill: 9999px;
+
+  // Spacing Scale (Airbnb: 4, 8, 12, 16, 24, 32)
+  --ic-space-xs: 4px;
+  --ic-space-sm: 8px;
+  --ic-space-md: 12px;
+  --ic-space-lg: 16px;
+  --ic-space-xl: 24px;
+  --ic-space-2xl: 32px;
+  --ic-space-3xl: 48px;
+
+  // Dimensional Shadows (Airbnb-style layered depth)
+  --ic-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --ic-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --ic-shadow-md: 0 3px 4px rgba(0, 0, 0, 0.15);
+  --ic-shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.12);
+  --ic-shadow-xl:
+    0 12px 28px rgba(0, 0, 0, 0.15), 0 8px 10px rgba(0, 0, 0, 0.08);
+  --ic-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.17);
+  --ic-shadow-primary: 0 4px 14px rgba(239, 204, 58, 0.4);
+
+  // Airbnb Spring Timing (converted to CSS)
+  --ic-spring-snappy: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ic-spring-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ic-spring-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  // Transition Durations
+  --ic-duration-fast: 150ms;
+  --ic-duration-normal: 200ms;
+  --ic-duration-slow: 300ms;
+  --ic-duration-page: 450ms;
+
+  // Typography Scale (Airbnb: 14px caption, 16px body, 24px title)
+  --ic-text-xs: 11px;
+  --ic-text-sm: 13px;
+  --ic-text-base: 15px;
+  --ic-text-lg: 16px;
+  --ic-text-xl: 18px;
+  --ic-text-2xl: 24px;
+  --ic-text-3xl: 32px;
+
+  // Line Heights
+  --ic-leading-tight: 1.33;
+  --ic-leading-normal: 1.5;
+  --ic-leading-relaxed: 1.6;
+}
+
+// Dark mode shadow adjustments
+html.dark-scheme {
+  --ic-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --ic-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.25);
+  --ic-shadow-md: 0 3px 6px rgba(0, 0, 0, 0.4);
+  --ic-shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.5);
+  --ic-shadow-xl: 0 12px 28px rgba(0, 0, 0, 0.6), 0 8px 10px rgba(0, 0, 0, 0.4);
+  --ic-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.5);
+  --ic-shadow-primary: 0 4px 14px rgba(239, 204, 58, 0.3);
+}
+
+// --------------------------------------------
+// Base Styles
+// --------------------------------------------
+html {
+  background-color: var(--secondary);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  font-size: var(--ic-text-base);
+  line-height: var(--ic-leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Better text rendering
+* {
+  text-rendering: optimizeLegibility;
+}
+
+// Reduced motion support (Airbnb accessibility)
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+a {
+  color: var(--tertiary);
+  text-decoration: none;
+  transition: color var(--ic-duration-fast) var(--ic-spring-smooth);
+
+  &:hover {
+    color: var(--tertiary-hover);
+  }
+}
+
+// --------------------------------------------
+// Header - Clean Header (respects color scheme)
+// --------------------------------------------
+.d-header {
+  background: var(--header_background);
+  border-bottom: 1px solid var(--primary-low);
+  box-shadow: var(--ic-shadow-sm);
+  height: 64px;
+
+  .d-header-wrap {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 var(--ic-space-xl);
+  }
+
+  .header-title {
+    font-weight: 600;
+    font-size: var(--ic-text-lg);
+    color: var(--header_primary);
+    letter-spacing: -0.02em;
+  }
+
+  .d-header-icons {
+    gap: var(--ic-space-xs);
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--ic-radius);
+      color: var(--header_primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--ic-duration-fast) ease;
+
+      &:hover {
+        background: var(--primary-very-low);
+      }
+
+      .d-icon {
+        font-size: 1.125rem;
+      }
+    }
+  }
+}
+
+// Search - Modern pill style
+.search-menu {
+  background: var(--secondary);
+  border: 1px solid var(--primary-low);
+  border-radius: var(--ic-radius-lg);
+  box-shadow: var(--ic-shadow-lg);
+  overflow: hidden;
+
+  .search-input {
+    border-radius: var(--ic-radius);
+  }
+
+  input[type="text"] {
+    background: transparent;
+    color: var(--primary);
+    border: none;
+    font-size: 15px;
+    padding: var(--ic-space-sm) var(--ic-space-md);
+  }
+}
+
+// Logo
+.logo-big,
+.logo-small {
+  max-height: 36px;
+}
+
+// --------------------------------------------
+// Main Layout - More Spacious
+// --------------------------------------------
+#main-outlet-wrapper {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 var(--ic-space-lg) var(--ic-space-lg);
+}
+
+#main-outlet {
+  background: transparent;
+  padding-top: 0;
+}
+
+.wrap {
+  max-width: 1920px;
+}
+
+// Override Discourse sidebar width calculation
+body.has-sidebar-page .wrap {
+  max-width: 1920px !important;
+}
+
+// --------------------------------------------
+// Sidebar - Compact Navigation
+// --------------------------------------------
+.sidebar-wrapper,
+.sidebar-container {
+  background: var(--secondary);
+  border-right: none;
+  padding: var(--ic-space-md) var(--ic-space-sm);
+}
+
+.sidebar-sections {
+  padding: 0;
+}
+
+.sidebar-section {
+  margin-bottom: var(--ic-space-lg);
+}
+
+.sidebar-section-link-wrapper {
+  margin: 1px 0;
+}
+
+.sidebar-section-link {
+  border-radius: var(--ic-radius-sm);
+  padding: var(--ic-space-xs) var(--ic-space-sm);
+  color: var(--primary-high);
+  font-weight: 450;
+  font-size: var(--ic-text-sm);
+  transition: all var(--ic-duration-fast) var(--ic-spring-snappy);
+  display: flex;
+  align-items: center;
+  gap: var(--ic-space-sm);
+
+  &:hover {
+    background: var(--primary-very-low);
+    color: var(--primary);
+  }
+
+  &.active {
+    background: var(--tertiary);
+    color: #171717;
+    font-weight: 600;
+
+    .d-icon {
+      color: #171717;
+    }
+  }
+
+  .sidebar-section-link-prefix {
+    margin-right: 0;
+  }
+
+  .d-icon {
+    font-size: 1rem;
+    color: var(--primary-medium);
+    transition: color var(--ic-duration-fast) var(--ic-spring-smooth);
+  }
+}
+
+.sidebar-section-header {
+  font-size: var(--ic-text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--primary-medium);
+  padding: var(--ic-space-lg) var(--ic-space-sm) var(--ic-space-xs);
+  letter-spacing: 0.08em;
+}
+
+// Category color dots
+.sidebar-section-link .badge-category {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+// --------------------------------------------
+// Categories Page - Card Grid
+// --------------------------------------------
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--ic-space-xl);
+  padding: var(--ic-space-lg) 0;
+}
+
+.category-list .category-box {
+  background: var(--secondary);
+  border: 1px solid var(--primary-low);
+  border-radius: var(--ic-radius);
+  overflow: hidden;
+  transition:
+    box-shadow var(--ic-duration-fast) ease,
+    border-color var(--ic-duration-fast) ease;
+  box-shadow: var(--ic-shadow-sm);
+
+  &:hover {
+    border-color: var(--primary-low-mid);
+    box-shadow: var(--ic-shadow-md);
+  }
+
+  .category-box-inner {
+    padding: var(--ic-space-xl);
+  }
+
+  .category-box-heading {
+    display: flex;
+    align-items: center;
+    gap: var(--ic-space-md);
+    margin-bottom: var(--ic-space-sm);
+  }
+
+  // Category icon/color indicator
+  .category-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--ic-radius);
+    object-fit: cover;
+  }
+
+  .category-name {
+    font-size: var(--ic-text-lg);
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+  }
+
+  .category-description {
+    color: var(--primary-medium);
+    font-size: var(--ic-text-sm);
+    line-height: var(--ic-leading-normal);
+    margin-top: var(--ic-space-xs);
+  }
+
+  // Stats
+  .category-stats {
+    display: flex;
+    gap: var(--ic-space-lg);
+    margin-top: var(--ic-space-lg);
+    padding-top: var(--ic-space-lg);
+    border-top: 1px solid var(--primary-low);
+    font-size: var(--ic-text-sm);
+    color: var(--primary-medium);
+  }
+}
+
+// --------------------------------------------
+// Topic List - Modern Table
+// --------------------------------------------
+.topic-list {
+  background: transparent;
+  border: none;
+}
+
+.topic-list-header {
+  border-bottom: 2px solid var(--primary-low);
+
+  th {
+    color: var(--primary-medium);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: var(--ic-space-md) var(--ic-space-sm);
+    border: none;
+  }
+}
+
+.topic-list-body {
+  .topic-list-item {
+    background: var(--secondary);
+    border: 1px solid transparent;
+    border-bottom: 1px solid var(--primary-low);
+    transition: all var(--ic-transition-fast);
+    margin: 0;
+
+    &:hover {
+      background: var(--d-hover);
+      border-color: var(--primary-low);
+      border-radius: var(--ic-radius);
+      margin: var(--ic-space-xs) 0;
+    }
+
+    td {
+      padding: var(--ic-space-md) var(--ic-space-sm);
+      border: none;
+      vertical-align: middle;
+    }
+
+    // First column spacing
+    td:first-child {
+      padding-left: var(--ic-space-md);
+    }
+  }
+}
+
+// Topic title
+.topic-list-item .link-top-line {
+  .title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--primary);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    transition: color var(--ic-transition-fast);
+
+    &:hover {
+      color: var(--tertiary);
+    }
+  }
+}
+
+// Category badge - pill style
+.badge-category-parent-bg,
+.badge-category-bg {
+  border-radius: var(--ic-radius-pill);
+}
+
+.badge-category__wrapper {
+  .badge-category {
+    padding: 3px 10px;
+    border-radius: var(--ic-radius-pill);
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+
+.topic-list-item .badge-category__name {
+  color: var(--primary-high);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+// Topic excerpt
+.topic-excerpt {
+  color: var(--primary-medium);
+  font-size: 13px;
+  margin-top: var(--ic-space-xs);
+  line-height: 1.5;
+}
+
+// Avatar - larger, with ring
+.topic-list-item .posters {
+  a:first-child img.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-low);
+    transition: border-color var(--ic-transition-fast);
+
+    &:hover {
+      border-color: var(--tertiary);
+    }
+  }
+}
+
+// Stats columns - modern badges
+.topic-list-item .num {
+  color: var(--primary-medium);
+  font-size: 13px;
+  font-weight: 500;
+
+  &.posts-map {
+    font-weight: 600;
+    color: var(--primary-high);
+  }
+}
+
+.topic-list-item .relative-date {
+  color: var(--primary-medium);
+  font-size: 12px;
+}
+
+// --------------------------------------------
+// Navigation Pills - Tab Style
+// --------------------------------------------
+.nav-pills {
+  border-bottom: 2px solid var(--primary-low);
+  padding-bottom: 0;
+  margin-bottom: var(--ic-space-lg);
+  display: flex;
+  gap: var(--ic-space-xs);
+
+  > li {
+    margin: 0;
+
+    > a {
+      border-radius: var(--ic-radius) var(--ic-radius) 0 0;
+      padding: var(--ic-space-sm) var(--ic-space-lg);
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--primary-medium);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: all var(--ic-transition-fast);
+      background: transparent;
+
+      &:hover {
+        background: var(--primary-very-low);
+        color: var(--primary);
+      }
+
+      &.active {
+        background: transparent;
+        color: var(--tertiary);
+        border-bottom-color: var(--tertiary);
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// --------------------------------------------
+// Buttons - Airbnb Style (Gradient Primary)
+// --------------------------------------------
+.btn {
+  border-radius: var(--ic-radius-sm);
+  font-weight: 500;
+  font-size: var(--ic-text-sm);
+  padding: 10px var(--ic-space-lg);
+  transition:
+    background var(--ic-duration-fast) ease,
+    border-color var(--ic-duration-fast) ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ic-space-sm);
+  border: none;
+  cursor: pointer;
+  min-height: 36px;
+
+  .d-icon {
+    font-size: 0.95em;
+  }
+}
+
+// Primary Button - Brand color
+.btn-primary,
+#create-topic {
+  background: var(--tertiary) !important;
+  color: #171717 !important;
+  border: none !important;
+  font-weight: 600;
+  box-shadow: var(--ic-shadow-sm);
+
+  &:hover {
+    filter: brightness(1.05);
+    box-shadow: var(--ic-shadow-md);
+  }
+
+  &:active {
+    filter: brightness(0.95);
+  }
+
+  .d-icon {
+    color: #171717;
+  }
+}
+
+.btn-default {
+  background: var(--secondary);
+  color: var(--primary);
+  border: 1px solid var(--primary-low-mid) !important;
+  font-weight: 500;
+
+  &:hover {
+    background: var(--primary-very-low);
+    border-color: var(--primary-medium) !important;
+  }
+}
+
+// Secondary Button - Airbnb outlined style
+.btn-flat {
+  background: transparent;
+  color: var(--primary);
+  border: none !important;
+
+  &:hover {
+    background: var(--primary-very-low);
+    text-decoration: underline;
+  }
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  min-height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ic-radius-sm);
+  color: var(--primary-medium);
+  background: transparent;
+
+  &:hover {
+    background: var(--primary-very-low);
+    color: var(--primary);
+  }
+}
+
+// New Topic button - prominent (Airbnb CTA style)
+#create-topic {
+  padding: 14px var(--ic-space-xl);
+  font-size: var(--ic-text-sm);
+  height: 48px;
+  min-height: 48px;
+  border-radius: var(--ic-radius-sm);
+}
+
+// --------------------------------------------
+// Topic Page - Cleaner Layout
+// --------------------------------------------
+.topic-body {
+  background: transparent;
+  border-bottom: 1px solid var(--primary-low);
+  padding: var(--ic-space-xl) 0;
+}
+
+.topic-avatar {
+  img {
+    border-radius: 50%;
+    border: 3px solid var(--primary-low);
+  }
+}
+
+.topic-meta-data {
+  .names {
+    display: flex;
+    align-items: center;
+    gap: var(--ic-space-sm);
+
+    .username {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 15px;
+    }
+
+    .full-name {
+      color: var(--primary-medium);
+      font-size: 14px;
+    }
+  }
+
+  .post-date {
+    color: var(--primary-medium);
+    font-size: 13px;
+  }
+}
+
+// Post content
+.cooked {
+  color: var(--primary);
+  line-height: 1.75;
+  font-size: 15px;
+
+  p {
+    margin-bottom: 1.25em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+  }
+
+  code {
+    background: var(--primary-very-low);
+    border: 1px solid var(--primary-low);
+    border-radius: var(--ic-radius-sm);
+    padding: 2px 8px;
+    font-size: 13px;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+  }
+
+  pre {
+    background: var(--primary-very-low);
+    border: 1px solid var(--primary-low);
+    border-radius: var(--ic-radius);
+    padding: var(--ic-space-lg);
+    overflow-x: auto;
+
+    code {
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+  }
+
+  blockquote {
+    border-left: 4px solid var(--tertiary);
+    background: var(--tertiary-very-low);
+    padding: var(--ic-space-md) var(--ic-space-lg);
+    margin: var(--ic-space-lg) 0;
+    border-radius: 0 var(--ic-radius) var(--ic-radius) 0;
+    font-style: italic;
+  }
+
+  img {
+    border-radius: var(--ic-radius);
+    max-width: 100%;
+  }
+}
+
+// Post actions - cleaner
+.post-menu-area {
+  padding: var(--ic-space-sm) 0;
+
+  .actions {
+    display: flex;
+    gap: var(--ic-space-xs);
+
+    .btn {
+      color: var(--primary-medium);
+      padding: var(--ic-space-sm);
+      border-radius: var(--ic-radius);
+
+      &:hover {
+        color: var(--primary);
+        background: var(--primary-very-low);
+      }
+    }
+
+    .like-button {
+      &.liked,
+      &:hover {
+        color: var(--love);
+        background: var(--love-low);
+      }
+    }
+  }
+}
+
+// --------------------------------------------
+// User Cards
+// --------------------------------------------
+.user-card,
+.user-profile {
+  background: var(--secondary);
+  border: 1px solid var(--primary-low);
+  border-radius: var(--ic-radius);
+  box-shadow: var(--ic-shadow-lg);
+  overflow: hidden;
+
+  .user-card-avatar img {
+    border-radius: 50%;
+    border: 3px solid var(--secondary);
+    box-shadow: var(--ic-shadow-sm);
+  }
+
+  .names {
+    .username {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: var(--ic-text-xl);
+      letter-spacing: -0.01em;
+    }
+
+    .full-name {
+      color: var(--primary-medium);
+      font-size: var(--ic-text-sm);
+    }
+  }
+
+  .bio {
+    font-size: var(--ic-text-sm);
+    line-height: var(--ic-leading-normal);
+    color: var(--primary-high);
+  }
+}
+
+// --------------------------------------------
+// Dropdowns & Menus
+// --------------------------------------------
+.menu-panel,
+.d-menu,
+.dropdown-menu {
+  background: var(--secondary);
+  border: 1px solid var(--primary-low);
+  border-radius: var(--ic-radius);
+  box-shadow: var(--ic-shadow-lg);
+  overflow: hidden;
+  padding: var(--ic-space-xs);
+
+  // Remove nested borders
+  ul,
+  .menu-links {
+    border: none;
+    background: transparent;
+  }
+
+  .menu-link {
+    color: var(--primary-high);
+    padding: var(--ic-space-sm) var(--ic-space-md);
+    border-radius: var(--ic-radius-sm);
+    transition: all var(--ic-transition-fast);
+    margin: 2px 0;
+
+    &:hover {
+      background: var(--primary-very-low);
+      color: var(--primary);
+    }
+  }
+}
+
+// User menu panel
+.user-menu {
+  .tabs-list {
+    border-bottom: 1px solid var(--primary-low);
+    padding: var(--ic-space-xs);
+    gap: 2px;
+
+    .btn {
+      border-radius: var(--ic-radius-sm);
+      padding: var(--ic-space-sm) var(--ic-space-md);
+
+      &.active {
+        background: var(--tertiary);
+        color: #171717;
+      }
+    }
+  }
+
+  .panel-body-bottom {
+    border-top: 1px solid var(--primary-low);
+  }
+}
+
+// Select Kit - Modern dropdowns
+.select-kit {
+  .select-kit-header {
+    background: var(--secondary);
+    border: 1px solid var(--primary-low);
+    border-radius: var(--ic-radius-pill);
+    color: var(--primary);
+    padding: var(--ic-space-sm) var(--ic-space-md);
+    transition: all var(--ic-transition-fast);
+    min-height: 36px;
+
+    &:hover {
+      border-color: var(--primary-low-mid);
+    }
+  }
+
+  &.is-expanded .select-kit-header {
+    border-color: var(--tertiary);
+    box-shadow: 0 0 0 2px rgba(239, 204, 58, 0.15);
+  }
+
+  .select-kit-body {
+    background: var(--secondary);
+    border: none;
+    border-radius: var(--ic-radius);
+    box-shadow: var(--ic-shadow-lg);
+    margin-top: var(--ic-space-xs);
+    overflow: hidden;
+  }
+
+  .select-kit-collection {
+    padding: var(--ic-space-xs);
+  }
+
+  .select-kit-row {
+    color: var(--primary-high);
+    padding: var(--ic-space-sm) var(--ic-space-md);
+    border-radius: var(--ic-radius-sm);
+    margin: 2px 0;
+
+    &:hover,
+    &.is-selected {
+      background: var(--primary-very-low);
+      color: var(--primary);
+    }
+
+    &.is-highlighted {
+      background: var(--tertiary-very-low);
+    }
+  }
+}
+
+// Notifications filter dropdown (Inbox dropdown)
+.notifications-filter {
+  .select-kit-header {
+    background: var(--secondary);
+    border: 1px solid var(--primary-low);
+    border-radius: var(--ic-radius-pill);
+    padding: 6px 14px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .select-kit-body {
+    min-width: 180px;
+    border: 1px solid var(--primary-low);
+    border-radius: var(--ic-radius);
+  }
+}
+
+// Combo box specific styling
+.combo-box {
+  .select-kit-header {
+    border-radius: var(--ic-radius-pill);
+  }
+
+  .select-kit-body {
+    border: 1px solid var(--primary-low);
+  }
+}
+
+// --------------------------------------------
+// Forms & Inputs - Airbnb Style
+// --------------------------------------------
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+  background: var(--secondary);
+  border: 1px solid var(--primary-low-mid);
+  border-radius: var(--ic-radius-sm);
+  color: var(--primary);
+  padding: var(--ic-space-md) var(--ic-space-md);
+  font-size: var(--ic-text-base);
+  min-height: 48px;
+  transition: all var(--ic-duration-fast) var(--ic-spring-smooth);
+
+  &::placeholder {
+    color: var(--primary-medium);
+  }
+
+  &:hover {
+    border-color: var(--primary-medium);
+  }
+
+  &:focus {
+    border-color: var(--primary);
+    border-width: 2px;
+    padding: calc(var(--ic-space-md) - 1px) calc(var(--ic-space-md) - 1px);
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+// Error state (Airbnb style)
+input.invalid,
+textarea.invalid,
+.has-error input,
+.has-error textarea {
+  border-color: #c13515 !important;
+  background: #fff8f6;
+
+  &:focus {
+    border-color: #c13515 !important;
+  }
+}
+
+// Success state
+input.valid,
+textarea.valid {
+  border-color: #008a05;
+  background: #f7fff7;
+}
+
+// --------------------------------------------
+// Tags - Pill Style
+// --------------------------------------------
+.discourse-tag {
+  background: var(--primary-very-low);
+  border: none;
+  border-radius: var(--ic-radius-pill);
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--primary-medium);
+  transition: all var(--ic-transition-fast);
+
+  &:hover {
+    background: var(--primary-low);
+    color: var(--primary-high);
+  }
+}
+
+// --------------------------------------------
+// Badges - Modern Pills
+// --------------------------------------------
+.badge-notification {
+  background: var(--tertiary);
+  color: #171717;
+  border-radius: var(--ic-radius-pill);
+  font-weight: 600;
+  font-size: 11px;
+  padding: 2px 8px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.user-badge {
+  background: var(--secondary);
+  border: 1px solid var(--primary-low);
+  border-radius: var(--ic-radius);
+  padding: var(--ic-space-sm) var(--ic-space-md);
+}
+
+// --------------------------------------------
+// Notifications - Airbnb Style
+// --------------------------------------------
+.notifications {
+  .notification {
+    border-radius: var(--ic-radius-sm);
+    padding: var(--ic-space-md) var(--ic-space-lg);
+    margin: 2px 0;
+    transition: all var(--ic-duration-fast) var(--ic-spring-smooth);
+
+    &:hover {
+      background: var(--primary-very-low);
+    }
+
+    &.unread {
+      background: var(--tertiary-very-low);
+      border-left: 3px solid var(--tertiary);
+
+      &:hover {
+        background: var(--tertiary-low);
+      }
+    }
+  }
+}
+
+// --------------------------------------------
+// Loading & Spinners
+// --------------------------------------------
+.spinner {
+  border-color: var(--primary-low);
+  border-top-color: var(--tertiary);
+  border-width: 3px;
+}
+
+// --------------------------------------------
+// Scrollbar - Subtle
+// --------------------------------------------
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-low);
+  border-radius: 5px;
+  border: 2px solid var(--secondary);
+
+  &:hover {
+    background: var(--primary-low-mid);
+  }
+}
+
+// --------------------------------------------
+// Modal & Dialogs - Airbnb Style
+// --------------------------------------------
+.modal-outer-container {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.modal-inner-container {
+  background: var(--secondary);
+  border: 1px solid var(--primary-low);
+  border-radius: var(--ic-radius);
+  box-shadow: var(--ic-shadow-xl);
+  overflow: hidden;
+  max-width: 568px;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--primary-low);
+  padding: var(--ic-space-lg) var(--ic-space-xl);
+
+  .title h3 {
+    font-weight: 600;
+    font-size: var(--ic-text-xl);
+    letter-spacing: -0.02em;
+  }
+
+  // Close button
+  .modal-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--ic-duration-fast) var(--ic-spring-snappy);
+
+    &:hover {
+      background: var(--primary-very-low);
+      transform: scale(1.1);
+    }
+  }
+}
+
+.modal-body {
+  padding: var(--ic-space-xl);
+}
+
+.modal-footer {
+  border-top: 1px solid var(--primary-low);
+  padding: var(--ic-space-lg) var(--ic-space-xl);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ic-space-sm);
+}
+
+// --------------------------------------------
+// Alert Boxes - Modern
+// --------------------------------------------
+.alert {
+  background: var(--secondary);
+  border: 1px solid var(--primary-low);
+  border-radius: var(--ic-radius);
+  color: var(--primary);
+  padding: var(--ic-space-md) var(--ic-space-lg);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ic-space-md);
+
+  &.alert-success {
+    background: var(--success-low);
+    border-color: var(--success);
+  }
+
+  &.alert-error {
+    background: var(--danger-low);
+    border-color: var(--danger);
+  }
+
+  &.alert-warning {
+    background: var(--tertiary-very-low);
+    border-color: var(--tertiary);
+  }
+}
+
+// --------------------------------------------
+// Composer - Modern Editor
+// --------------------------------------------
+#reply-control {
+  background: var(--secondary);
+  border-top: 1px solid var(--primary-low);
+  box-shadow: var(--ic-shadow-xl);
+  border-radius: var(--ic-radius-lg) var(--ic-radius-lg) 0 0;
+
+  .reply-to {
+    background: var(--secondary);
+    border-bottom: 1px solid var(--primary-low);
+    padding: var(--ic-space-md);
+  }
+
+  .d-editor-textarea-wrapper {
+    background: var(--secondary);
+    border: 1px solid var(--primary-low);
+    border-radius: var(--ic-radius);
+
+    textarea {
+      background: transparent;
+      color: var(--primary);
+      font-family: inherit;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+  }
+
+  .d-editor-button-bar {
+    background: var(--secondary);
+    border-bottom: 1px solid var(--primary-low);
+    padding: var(--ic-space-xs);
+
+    .btn {
+      padding: var(--ic-space-sm);
+    }
+  }
+}
+
+// --------------------------------------------
+// Footer - Clean
+// --------------------------------------------
+.footer-nav {
+  background: var(--secondary);
+  border-top: 1px solid var(--primary-low);
+  padding: var(--ic-space-lg);
+  color: var(--primary-medium);
+  font-size: 13px;
+}
+
+// --------------------------------------------
+// Empty State - Airbnb Friendly Pattern
+// --------------------------------------------
+.no-topics,
+.empty-state {
+  color: var(--primary-medium);
+  text-align: center;
+  padding: var(--ic-space-3xl);
+  animation: fadeIn var(--ic-duration-slow) var(--ic-spring-smooth);
+
+  .empty-state-title {
+    font-size: var(--ic-text-xl);
+    font-weight: 600;
+    margin-bottom: var(--ic-space-sm);
+    color: var(--primary);
+  }
+
+  .empty-state-body {
+    font-size: var(--ic-text-sm);
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: var(--ic-leading-normal);
+  }
+
+  // Airbnb uses positive framing: "Start by..." instead of "You don't have..."
+  .btn {
+    margin-top: var(--ic-space-xl);
+  }
+}
+
+// --------------------------------------------
+// Breadcrumbs - Modern
+// --------------------------------------------
+.category-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--ic-space-sm);
+  margin: var(--ic-space-md) 0;
+  font-size: 14px;
+}
+
+// --------------------------------------------
+// Welcome Banner (if enabled)
+// --------------------------------------------
+.custom-banner {
+  background: linear-gradient(
+    135deg,
+    var(--tertiary) 0%,
+    var(--tertiary-high) 100%
+  );
+  color: #171717;
+  padding: var(--ic-space-xl);
+  border-radius: var(--ic-radius-lg);
+  margin-bottom: var(--ic-space-lg);
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: var(--ic-space-sm);
+  }
+
+  p {
+    font-size: 16px;
+    opacity: 0.9;
+  }
+}
+
+// --------------------------------------------
+// Animations - Airbnb Spring Physics
+// --------------------------------------------
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Airbnb-style Shimmer Loading
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.loading-container,
+.skeleton {
+  background: linear-gradient(
+    100deg,
+    var(--primary-low) 0%,
+    var(--primary-low) 40%,
+    var(--primary-very-low) 50%,
+    var(--primary-low) 60%,
+    var(--primary-low) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-out infinite;
+  border-radius: var(--ic-radius-sm);
+}
+
+// Topic list items - no animation for better performance
+.topic-list-item {
+  opacity: 1;
+}
+
+// Keep animations minimal for forum performance
+
+// ============================================
+// PAGE-SPECIFIC STYLES
+// ============================================
+
+// --------------------------------------------
+// About Page
+// --------------------------------------------
+body.about-page {
+  .about-page {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .about__header {
+    text-align: center;
+    padding: var(--ic-space-3xl) 0;
+
+    h2 {
+      font-size: var(--ic-text-3xl);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--ic-space-md);
+    }
+  }
+
+  .about__banner {
+    border-radius: var(--ic-radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--ic-space-2xl);
+  }
+
+  // Stats cards
+  .about__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--ic-space-lg);
+    margin: var(--ic-space-2xl) 0;
+  }
+
+  .about__stats-item {
+    background: var(--secondary);
+    border: 1px solid var(--primary-low);
+    border-radius: var(--ic-radius);
+    padding: var(--ic-space-xl);
+    text-align: center;
+
+    .about__stats-item-count {
+      font-size: var(--ic-text-2xl);
+      font-weight: 700;
+      color: var(--tertiary);
+      display: block;
+    }
+
+    .about__stats-item-label {
+      font-size: var(--ic-text-sm);
+      color: var(--primary-medium);
+      margin-top: var(--ic-space-xs);
+    }
+  }
+
+  // Admin/Moderator sections
+  .about__admins,
+  .about__moderators {
+    margin: var(--ic-space-2xl) 0;
+
+    h3 {
+      font-size: var(--ic-text-lg);
+      font-weight: 600;
+      margin-bottom: var(--ic-space-lg);
+      padding-bottom: var(--ic-space-sm);
+      border-bottom: 1px solid var(--primary-low);
+    }
+  }
+
+  .about__admins-list,
+  .about__moderators-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ic-space-lg);
+  }
+
+  .about__user {
+    display: flex;
+    align-items: center;
+    gap: var(--ic-space-md);
+    padding: var(--ic-space-md);
+    background: var(--secondary);
+    border: 1px solid var(--primary-low);
+    border-radius: var(--ic-radius);
+
+    img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+    }
+
+    .about__user-name {
+      font-weight: 500;
+    }
+  }
+
+  // Contact section
+  .about__contact {
+    background: var(--primary-very-low);
+    border-radius: var(--ic-radius);
+    padding: var(--ic-space-xl);
+    margin: var(--ic-space-2xl) 0;
+
+    h3 {
+      font-size: var(--ic-text-lg);
+      font-weight: 600;
+      margin-bottom: var(--ic-space-md);
+    }
+  }
+}
+
+// --------------------------------------------
+// User Profile Page
+// --------------------------------------------
+body.user-page {
+  .user-main {
+    .about {
+      background: var(--secondary);
+      border: 1px solid var(--primary-low);
+      border-radius: var(--ic-radius);
+      padding: var(--ic-space-xl);
+      margin-bottom: var(--ic-space-xl);
+    }
+  }
+
+  // Profile header
+  .user-profile-avatar {
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid var(--primary-low);
+    }
+  }
+
+  .user-profile-names {
+    .username {
+      font-size: var(--ic-text-2xl);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .full-name {
+      font-size: var(--ic-text-lg);
+      color: var(--primary-medium);
+    }
+  }
+
+  // User stats
+  .user-stat {
+    text-align: center;
+    padding: var(--ic-space-md);
+
+    .stat-value {
+      font-size: var(--ic-text-xl);
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      font-size: var(--ic-text-xs);
+      color: var(--primary-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  // Activity stream
+  .user-stream {
+    .user-stream-item {
+      padding: var(--ic-space-lg);
+      border-bottom: 1px solid var(--primary-low);
+
+      &:hover {
+        background: var(--primary-very-low);
+      }
+    }
+  }
+
+  // Preferences tabs
+  .user-nav {
+    .nav-pills {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// --------------------------------------------
+// Messages / Inbox Page
+// --------------------------------------------
+body.user-messages-page {
+  .messages-nav {
+    margin-bottom: var(--ic-space-xl);
+  }
+
+  // Message list
+  .topic-list-item {
+    &.private-message {
+      background: var(--secondary);
+      border-left: 3px solid var(--tertiary);
+      margin-bottom: var(--ic-space-sm);
+      border-radius: var(--ic-radius);
+
+      &:hover {
+        background: var(--tertiary-very-low);
+      }
+    }
+  }
+
+  // New message button
+  .new-private-message {
+    margin-bottom: var(--ic-space-lg);
+  }
+}
+
+// --------------------------------------------
+// Categories Page
+// --------------------------------------------
+body.navigation-categories,
+body.categories-list {
+  // Category boxes already styled globally
+  // Add any category-page-specific overrides here
+
+  .category-list {
+    margin-top: var(--ic-space-lg);
+  }
+
+  // Subcategories
+  .subcategories {
+    margin-top: var(--ic-space-md);
+    padding-top: var(--ic-space-md);
+    border-top: 1px solid var(--primary-low);
+
+    .subcategory {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--ic-space-xs);
+      padding: var(--ic-space-xs) var(--ic-space-sm);
+      font-size: var(--ic-text-sm);
+      color: var(--primary-medium);
+
+      &:hover {
+        color: var(--primary);
+      }
+
+      .badge-category {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+// --------------------------------------------
+// Search Page
+// --------------------------------------------
+body.search-page {
+  .search-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .search-header {
+    margin-bottom: var(--ic-space-xl);
+
+    .search-query {
+      font-size: var(--ic-text-xl);
+      font-weight: 600;
+    }
+  }
+
+  // Search filters
+  .search-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ic-space-sm);
+    margin-bottom: var(--ic-space-xl);
+    padding: var(--ic-space-lg);
+    background: var(--primary-very-low);
+    border-radius: var(--ic-radius);
+  }
+
+  // Search results
+  .fps-result {
+    padding: var(--ic-space-lg);
+    border-bottom: 1px solid var(--primary-low);
+
+    &:hover {
+      background: var(--primary-very-low);
+    }
+
+    .topic {
+      font-weight: 500;
+      font-size: var(--ic-text-base);
+    }
+
+    .blurb {
+      color: var(--primary-medium);
+      font-size: var(--ic-text-sm);
+      margin-top: var(--ic-space-xs);
+      line-height: var(--ic-leading-normal);
+    }
+
+    .search-highlight {
+      background: var(--tertiary-low);
+      color: var(--primary);
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+  }
+
+  // No results
+  .no-results {
+    text-align: center;
+    padding: var(--ic-space-3xl);
+    color: var(--primary-medium);
+  }
+}
+
+// --------------------------------------------
+// Tags Page
+// --------------------------------------------
+body.tags-page {
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ic-space-sm);
+    margin: var(--ic-space-lg) 0;
+  }
+
+  .discourse-tag {
+    padding: var(--ic-space-sm) var(--ic-space-lg);
+    font-size: var(--ic-text-sm);
+
+    .tag-count {
+      margin-left: var(--ic-space-xs);
+      opacity: 0.7;
+    }
+  }
+}
+
+// --------------------------------------------
+// Groups Page
+// --------------------------------------------
+body.groups-page {
+  .groups-header {
+    margin-bottom: var(--ic-space-xl);
+  }
+
+  .groups-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--ic-space-lg);
+  }
+
+  .group-box {
+    background: var(--secondary);
+    border: 1px solid var(--primary-low);
+    border-radius: var(--ic-radius);
+    padding: var(--ic-space-xl);
+    transition: box-shadow var(--ic-duration-fast) ease;
+
+    &:hover {
+      box-shadow: var(--ic-shadow-md);
+    }
+
+    .group-box-name {
+      font-weight: 600;
+      font-size: var(--ic-text-lg);
+      margin-bottom: var(--ic-space-sm);
+    }
+
+    .group-box-bio {
+      color: var(--primary-medium);
+      font-size: var(--ic-text-sm);
+    }
+
+    .group-box-member-count {
+      margin-top: var(--ic-space-md);
+      font-size: var(--ic-text-xs);
+      color: var(--primary-medium);
+    }
+  }
+}
+
+// --------------------------------------------
+// Admin Pages
+// --------------------------------------------
+body.admin-page {
+  .admin-main-nav {
+    background: var(--secondary);
+    border-bottom: 1px solid var(--primary-low);
+    padding: var(--ic-space-md);
+    margin-bottom: var(--ic-space-xl);
+  }
+
+  .admin-contents {
+    background: var(--secondary);
+    border: 1px solid var(--primary-low);
+    border-radius: var(--ic-radius);
+    padding: var(--ic-space-xl);
+  }
+
+  // Admin tables
+  .admin-users,
+  .admin-flags {
+    .table {
+      width: 100%;
+
+      th {
+        text-align: left;
+        padding: var(--ic-space-md);
+        border-bottom: 2px solid var(--primary-low);
+        font-weight: 600;
+        font-size: var(--ic-text-sm);
+      }
+
+      td {
+        padding: var(--ic-space-md);
+        border-bottom: 1px solid var(--primary-low);
+      }
+    }
+  }
+}
+
+// --------------------------------------------
+// Login / Signup Pages
+// --------------------------------------------
+body.login-page,
+body.create-account {
+  .login-modal,
+  .create-account-modal {
+    .modal-inner-container {
+      max-width: 450px;
+    }
+
+    .login-title,
+    .create-account-title {
+      font-size: var(--ic-text-2xl);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: var(--ic-space-xl);
+    }
+
+    .login-form,
+    .create-account-form {
+      .input-group {
+        margin-bottom: var(--ic-space-lg);
+
+        label {
+          display: block;
+          font-weight: 500;
+          margin-bottom: var(--ic-space-sm);
+          font-size: var(--ic-text-sm);
+        }
+
+        input {
+          width: 100%;
+        }
+      }
+    }
+
+    // Social login buttons
+    .login-buttons,
+    .social-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: var(--ic-space-sm);
+      margin-bottom: var(--ic-space-xl);
+
+      .btn-social {
+        width: 100%;
+        justify-content: center;
+        padding: var(--ic-space-md);
+        min-height: 48px;
+        border-radius: var(--ic-radius-sm);
+
+        &.google {
+          background: #fff;
+          border: 1px solid var(--primary-low) !important;
+          color: var(--primary);
+        }
+
+        &.github {
+          background: #24292e;
+          color: #fff;
+        }
+      }
+    }
+
+    // Divider
+    .login-or-separator {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: var(--ic-space-xl) 0;
+      color: var(--primary-medium);
+      font-size: var(--ic-text-sm);
+
+      &::before,
+      &::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid var(--primary-low);
+      }
+
+      span {
+        padding: 0 var(--ic-space-md);
+      }
+    }
+  }
+}

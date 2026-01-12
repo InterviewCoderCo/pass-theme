@@ -1,0 +1,14 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="text/discourse-plugin" version="0.8">
+  // Add level badges to usernames based on trust level
+  api.decorateWidget('poster-name:after', helper => {
+    const user = helper.attrs;
+    if (user && user.trust_level !== undefined) {
+      const level = user.trust_level;
+      return helper.h('span.user-level-badge.level-' + level, `LVL ${level}`);
+    }
+  });
+</script>

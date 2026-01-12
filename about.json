@@ -1,0 +1,36 @@
+{
+  "name": "InterviewCoder",
+  "about_url": "https://github.com/interviewcoder/discourse-theme",
+  "license_url": "https://opensource.org/licenses/MIT",
+  "component": false,
+  "color_schemes": {
+    "InterviewCoder Light": {
+      "primary": "171717",
+      "secondary": "FFFFFF",
+      "tertiary": "EFCC3A",
+      "quaternary": "D4A800",
+      "header_background": "FFFFFF",
+      "header_primary": "171717",
+      "highlight": "FEF9C3",
+      "danger": "DC2626",
+      "success": "16A34A",
+      "love": "E11D48",
+      "selected": "F5F5F5",
+      "hover": "FAFAFA"
+    },
+    "InterviewCoder Dark": {
+      "primary": "FAFAFA",
+      "secondary": "0A0A0A",
+      "tertiary": "EFCC3A",
+      "quaternary": "D4A800",
+      "header_background": "0A0A0A",
+      "header_primary": "FAFAFA",
+      "highlight": "422006",
+      "danger": "EF4444",
+      "success": "22C55E",
+      "love": "F43F5E",
+      "selected": "262626",
+      "hover": "1C1C1C"
+    }
+  }
+}
