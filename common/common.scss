@@ -1,55 +1,27 @@
 // ============================================
-// InterviewCoder Theme for Discourse
+// InterviewCoder Theme - Minimal Safe Version
 // ============================================
-// A clean, minimal theme that works WITH Discourse's
-// default table-based topic list structure.
+// This theme ONLY changes colors, typography, and simple styling
+// It does NOT touch any layout properties to avoid breaking Discourse
 // ============================================
 
 // --------------------------------------------
 // Design Tokens
 // --------------------------------------------
 :root {
-  // Border Radius
-  --ic-radius-xs: 4px;
   --ic-radius-sm: 8px;
   --ic-radius: 12px;
   --ic-radius-lg: 16px;
   --ic-radius-pill: 9999px;
-
-  // Spacing Scale
-  --ic-space-xs: 4px;
-  --ic-space-sm: 8px;
-  --ic-space-md: 12px;
-  --ic-space-lg: 16px;
-  --ic-space-xl: 24px;
-  --ic-space-2xl: 32px;
-
-  // Shadows
   --ic-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
   --ic-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --ic-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
-
-  // Transitions
   --ic-transition: 150ms ease;
-
-  // Typography
-  --ic-text-xs: 11px;
-  --ic-text-sm: 13px;
-  --ic-text-base: 15px;
-  --ic-text-lg: 16px;
-  --ic-text-xl: 18px;
 }
 
 // --------------------------------------------
-// Base Styles
+// Typography - Use Inter font
 // --------------------------------------------
-html {
-  background-color: var(--secondary);
-}
-
 body {
-  background-color: var(--secondary);
-  color: var(--primary);
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -58,223 +30,77 @@ body {
 // Header
 // --------------------------------------------
 .d-header {
-  background: var(--header_background);
-  border-bottom: 1px solid var(--primary-low);
   box-shadow: var(--ic-shadow-sm);
+}
 
-  .d-header-wrap {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+.d-header-icons .icon {
+  border-radius: var(--ic-radius-sm);
 
-  .d-header-icons {
-    .icon {
-      border-radius: var(--ic-radius-sm);
-
-      &:hover {
-        background: var(--primary-very-low);
-      }
-    }
+  &:hover {
+    background: var(--primary-very-low);
   }
 }
 
 // --------------------------------------------
-// Layout
+// Sidebar - Active state highlight
 // --------------------------------------------
-#main-outlet-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--ic-space-lg);
-}
-
-#main-outlet {
-  background: transparent;
-}
-
-// Container
-.wrap {
-  max-width: 100%;
-}
-
-// --------------------------------------------
-// Left Sidebar
-// --------------------------------------------
-.sidebar-wrapper {
-  background: var(--secondary);
-}
-
 .sidebar-section-link {
   border-radius: var(--ic-radius-sm);
-  padding: var(--ic-space-sm) var(--ic-space-md);
-  color: var(--primary-high);
-  font-weight: 500;
-  font-size: var(--ic-text-sm);
   transition: all var(--ic-transition);
 
   &:hover {
     background: var(--primary-very-low);
-    color: var(--primary);
   }
 
   // Active state - yellow highlight
   &.active {
-    background: var(--tertiary);
+    background: var(--tertiary) !important;
     color: #171717 !important;
 
     .d-icon {
       color: #171717 !important;
     }
-  }
-}
 
-.sidebar-section-header-text {
-  font-size: var(--ic-text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--primary-medium);
-  letter-spacing: 0.05em;
-}
-
-// --------------------------------------------
-// Navigation Pills
-// --------------------------------------------
-.nav-pills {
-  gap: var(--ic-space-sm);
-
-  > li > a {
-    padding: var(--ic-space-sm) var(--ic-space-md);
-    border: 1px solid var(--primary-low);
-    border-radius: var(--ic-radius-pill);
-    font-weight: 500;
-    font-size: var(--ic-text-sm);
-    transition: all var(--ic-transition);
-
-    &:hover {
-      border-color: var(--primary-medium);
-      background: var(--primary-very-low);
-    }
-
-    &.active {
-      background: var(--tertiary);
-      border-color: var(--tertiary);
-      color: #171717;
+    .sidebar-section-link-content-text {
+      color: #171717 !important;
     }
   }
 }
 
 // --------------------------------------------
-// Topic List (Table-Based)
+// Navigation Pills (Latest, New, Hot, etc.)
 // --------------------------------------------
-// Keep the table structure but style it nicely
-
-.topic-list {
-  border-collapse: separate;
-  border-spacing: 0 var(--ic-space-sm);
-
-  // Hide table header (optional - uncomment to hide)
-  // .topic-list-header {
-  //   display: none;
-  // }
-}
-
-// Style the table header
-.topic-list-header {
-  th {
-    background: transparent;
-    border-bottom: 2px solid var(--primary-low);
-    padding: var(--ic-space-sm) var(--ic-space-md);
-    font-weight: 600;
-    font-size: var(--ic-text-sm);
-    color: var(--primary-medium);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-}
-
-// Style each topic row as a card-like element
-.topic-list-item {
-  background: var(--secondary);
+.nav-pills > li > a {
+  border-radius: var(--ic-radius-pill);
   transition: all var(--ic-transition);
+
+  &.active {
+    background: var(--tertiary) !important;
+    color: #171717 !important;
+  }
+}
+
+// --------------------------------------------
+// Topic List - Simple styling
+// --------------------------------------------
+.topic-list-item {
+  transition: background var(--ic-transition);
 
   &:hover {
     background: var(--primary-very-low);
   }
 
-  // First cell - add left border radius
-  td:first-child {
-    border-radius: var(--ic-radius) 0 0 var(--ic-radius);
-    border-left: 1px solid var(--primary-low);
-  }
+  // Topic title
+  .main-link .title {
+    font-weight: 600;
 
-  // Last cell - add right border radius
-  td:last-child {
-    border-radius: 0 var(--ic-radius) var(--ic-radius) 0;
-    border-right: 1px solid var(--primary-low);
-  }
-
-  // All cells - top and bottom border
-  td {
-    border-top: 1px solid var(--primary-low);
-    border-bottom: 1px solid var(--primary-low);
-    padding: var(--ic-space-lg) var(--ic-space-md);
-  }
-
-  // Topic title styling
-  .main-link {
-    .title {
-      font-weight: 600;
-      color: var(--primary);
-      font-size: var(--ic-text-base);
-
-      &:hover {
-        color: var(--tertiary);
-      }
-    }
-  }
-
-  // Excerpt
-  .topic-excerpt {
-    color: var(--primary-medium);
-    font-size: var(--ic-text-sm);
-    line-height: 1.5;
-    margin-top: var(--ic-space-xs);
-  }
-
-  // Category badge
-  .badge-category__wrapper {
-    margin-top: var(--ic-space-xs);
-  }
-}
-
-// Category badge styling
-.badge-category {
-  border-radius: var(--ic-radius-pill);
-  font-size: var(--ic-text-xs);
-  font-weight: 500;
-}
-
-// Posters column (avatars)
-.posters {
-  a {
-    img.avatar {
-      border-radius: 50%;
+    &:hover {
+      color: var(--tertiary);
     }
   }
 }
 
-// Stats columns (replies, views, activity)
-.num {
-  font-weight: 500;
-  color: var(--primary-medium);
-}
-
-// Activity time
-.relative-date {
-  font-size: var(--ic-text-sm);
-  color: var(--primary-medium);
-}
-
-// Level badge (added via JS)
+// Level badge (from JS)
 .user-level-badge {
   display: inline-flex;
   align-items: center;
@@ -282,112 +108,13 @@ body {
   border-radius: var(--ic-radius-pill);
   font-size: 11px;
   font-weight: 600;
-  margin-left: var(--ic-space-xs);
+  margin-left: 4px;
 
-  &.level-0 {
-    background: #E5E7EB;
-    color: #374151;
-  }
-  &.level-1 {
-    background: #DBEAFE;
-    color: #1D4ED8;
-  }
-  &.level-2 {
-    background: #D1FAE5;
-    color: #047857;
-  }
-  &.level-3 {
-    background: #FEF3C7;
-    color: #B45309;
-  }
-  &.level-4 {
-    background: #FCE7F3;
-    color: #BE185D;
-  }
-}
-
-// --------------------------------------------
-// Promo Sidebar (Right)
-// --------------------------------------------
-.promo-sidebar {
-  background: #E8F4FD;
-  border-radius: var(--ic-radius-lg);
-  padding: var(--ic-space-xl);
-  margin-top: var(--ic-space-lg);
-
-  .promo-label {
-    font-size: var(--ic-text-sm);
-    color: var(--primary-medium);
-    margin-bottom: var(--ic-space-md);
-  }
-
-  .promo-card {
-    background: #1a1a2e;
-    border-radius: var(--ic-radius);
-    padding: var(--ic-space-xl);
-    color: #fff;
-
-    .promo-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--tertiary);
-      border-radius: var(--ic-radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: var(--ic-space-md);
-      font-size: 24px;
-    }
-
-    .promo-title {
-      font-size: var(--ic-text-xl);
-      font-weight: 700;
-      margin-bottom: var(--ic-space-lg);
-    }
-
-    .promo-feature {
-      margin-bottom: var(--ic-space-md);
-
-      .feature-title {
-        font-weight: 600;
-        font-size: var(--ic-text-sm);
-        margin-bottom: 2px;
-      }
-
-      .feature-desc {
-        font-size: var(--ic-text-xs);
-        color: rgba(255, 255, 255, 0.7);
-      }
-    }
-
-    .promo-cta {
-      display: block;
-      width: 100%;
-      background: var(--tertiary);
-      color: #171717;
-      text-align: center;
-      padding: var(--ic-space-md) var(--ic-space-lg);
-      border-radius: var(--ic-radius-sm);
-      font-weight: 600;
-      font-size: var(--ic-text-sm);
-      margin-top: var(--ic-space-lg);
-      border: none;
-      cursor: pointer;
-
-      &:hover {
-        filter: brightness(1.05);
-        color: #171717;
-      }
-    }
-  }
-}
-
-html.dark-scheme .promo-sidebar {
-  background: #1e293b;
-
-  .promo-card {
-    background: #0f172a;
-  }
+  &.level-0 { background: #E5E7EB; color: #374151; }
+  &.level-1 { background: #DBEAFE; color: #1D4ED8; }
+  &.level-2 { background: #D1FAE5; color: #047857; }
+  &.level-3 { background: #FEF3C7; color: #B45309; }
+  &.level-4 { background: #FCE7F3; color: #BE185D; }
 }
 
 // --------------------------------------------
@@ -395,9 +122,6 @@ html.dark-scheme .promo-sidebar {
 // --------------------------------------------
 .btn {
   border-radius: var(--ic-radius-sm);
-  font-weight: 500;
-  font-size: var(--ic-text-sm);
-  padding: var(--ic-space-sm) var(--ic-space-lg);
   transition: all var(--ic-transition);
 }
 
@@ -406,134 +130,17 @@ html.dark-scheme .promo-sidebar {
   background: var(--tertiary) !important;
   color: #171717 !important;
   font-weight: 600;
-  border: none;
 
   &:hover {
     filter: brightness(1.05);
   }
 }
 
-.btn-default {
-  background: var(--secondary);
-  color: var(--primary);
-  border: 1px solid var(--primary-low);
-
-  &:hover {
-    background: var(--primary-very-low);
-  }
-}
-
 // --------------------------------------------
-// Topic Page
+// Category Badge
 // --------------------------------------------
-.topic-body {
-  background: var(--secondary);
-  border: 1px solid var(--primary-low);
-  border-radius: var(--ic-radius);
-  padding: var(--ic-space-xl);
-  margin-bottom: var(--ic-space-lg);
-}
-
-.topic-avatar img {
-  border-radius: 50%;
-}
-
-// Post content
-.cooked {
-  line-height: 1.7;
-
-  code {
-    background: var(--primary-very-low);
-    border-radius: var(--ic-radius-xs);
-    padding: 2px 6px;
-    font-size: var(--ic-text-sm);
-  }
-
-  pre {
-    background: var(--primary-very-low);
-    border-radius: var(--ic-radius);
-    padding: var(--ic-space-lg);
-    overflow-x: auto;
-  }
-
-  blockquote {
-    border-left: 3px solid var(--tertiary);
-    padding-left: var(--ic-space-lg);
-    margin: var(--ic-space-lg) 0;
-    color: var(--primary-high);
-  }
-}
-
-// --------------------------------------------
-// Select Kit (Dropdowns)
-// --------------------------------------------
-.select-kit {
-  .select-kit-header {
-    border-radius: var(--ic-radius-sm);
-
-    &:hover {
-      border-color: var(--primary-medium);
-    }
-  }
-
-  .select-kit-body {
-    border-radius: var(--ic-radius);
-    box-shadow: var(--ic-shadow-lg);
-  }
-
-  .select-kit-row {
-    border-radius: var(--ic-radius-sm);
-
-    &:hover {
-      background: var(--primary-very-low);
-    }
-  }
-}
-
-// --------------------------------------------
-// Forms & Inputs
-// --------------------------------------------
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="search"],
-textarea {
-  border-radius: var(--ic-radius-sm);
-  transition: all var(--ic-transition);
-
-  &:focus {
-    border-color: var(--tertiary);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(239, 204, 58, 0.15);
-  }
-}
-
-// --------------------------------------------
-// Modal & Dialogs
-// --------------------------------------------
-.modal-outer-container {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.modal-inner-container {
-  background: var(--secondary);
-  border-radius: var(--ic-radius-lg);
-  box-shadow: var(--ic-shadow-lg);
-}
-
-// --------------------------------------------
-// User Card
-// --------------------------------------------
-.user-card {
-  background: var(--secondary);
-  border: 1px solid var(--primary-low);
-  border-radius: var(--ic-radius);
-  box-shadow: var(--ic-shadow-lg);
-
-  img.avatar {
-    border-radius: 50%;
-  }
+.badge-category {
+  border-radius: var(--ic-radius-pill);
 }
 
 // --------------------------------------------
@@ -542,25 +149,92 @@ textarea {
 .discourse-tag {
   background: var(--primary-very-low);
   border-radius: var(--ic-radius-pill);
-  padding: 4px 12px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--primary-medium);
 
   &:hover {
     background: var(--primary-low);
-    color: var(--primary);
   }
 }
 
 // --------------------------------------------
-// Composer
+// Topic Page - Posts
 // --------------------------------------------
-#reply-control {
-  background: var(--secondary);
-  border-top: 1px solid var(--primary-low);
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: var(--ic-radius-lg) var(--ic-radius-lg) 0 0;
+.topic-body {
+  border-radius: var(--ic-radius);
+}
+
+.topic-avatar img {
+  border-radius: 50%;
+}
+
+// Code blocks
+.cooked {
+  code {
+    background: var(--primary-very-low);
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
+
+  pre {
+    background: var(--primary-very-low);
+    border-radius: var(--ic-radius);
+  }
+
+  blockquote {
+    border-left: 3px solid var(--tertiary);
+  }
+}
+
+// --------------------------------------------
+// Forms
+// --------------------------------------------
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+  border-radius: var(--ic-radius-sm);
+  transition: border-color var(--ic-transition);
+
+  &:focus {
+    border-color: var(--tertiary);
+    box-shadow: 0 0 0 3px rgba(239, 204, 58, 0.15);
+  }
+}
+
+// --------------------------------------------
+// Select Kit (Dropdowns)
+// --------------------------------------------
+.select-kit .select-kit-header {
+  border-radius: var(--ic-radius-sm);
+}
+
+.select-kit .select-kit-body {
+  border-radius: var(--ic-radius);
+  box-shadow: var(--ic-shadow-md);
+}
+
+.select-kit .select-kit-row {
+  border-radius: var(--ic-radius-sm);
+}
+
+// --------------------------------------------
+// Modals
+// --------------------------------------------
+.modal-inner-container {
+  border-radius: var(--ic-radius-lg);
+  box-shadow: var(--ic-shadow-md);
+}
+
+// --------------------------------------------
+// User Card
+// --------------------------------------------
+.user-card {
+  border-radius: var(--ic-radius);
+  box-shadow: var(--ic-shadow-md);
+
+  img.avatar {
+    border-radius: 50%;
+  }
 }
 
 // --------------------------------------------
@@ -568,7 +242,15 @@ textarea {
 // --------------------------------------------
 .search-menu {
   border-radius: var(--ic-radius-lg);
-  box-shadow: var(--ic-shadow-lg);
+  box-shadow: var(--ic-shadow-md);
+}
+
+// --------------------------------------------
+// Composer
+// --------------------------------------------
+#reply-control {
+  border-radius: var(--ic-radius-lg) var(--ic-radius-lg) 0 0;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
 }
 
 // --------------------------------------------
@@ -589,14 +271,5 @@ textarea {
 
   &:hover {
     background: var(--primary-low-mid);
-  }
-}
-
-// --------------------------------------------
-// Responsive
-// --------------------------------------------
-@media (max-width: 900px) {
-  .promo-sidebar {
-    display: none;
   }
 }
