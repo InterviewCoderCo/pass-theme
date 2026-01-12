@@ -1,0 +1,78 @@
+// InterviewCoder Theme
+// Minimal styling - typography and accents only
+// NO layout changes
+
+// Use Inter font
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Yellow accent for primary buttons
+.btn-primary,
+#create-topic {
+  background-color: var(--tertiary);
+  color: #171717;
+
+  &:hover {
+    filter: brightness(1.05);
+  }
+}
+
+// Yellow accent for active nav items
+.nav-pills > li > a.active {
+  background-color: var(--tertiary);
+  color: #171717;
+}
+
+// Yellow accent for active sidebar items
+.sidebar-section-link.active {
+  background-color: var(--tertiary);
+  color: #171717;
+
+  .d-icon,
+  .sidebar-section-link-content-text {
+    color: #171717;
+  }
+}
+
+// Rounded corners for buttons
+.btn {
+  border-radius: 8px;
+}
+
+// Rounded corners for inputs
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+  border-radius: 8px;
+
+  &:focus {
+    border-color: var(--tertiary);
+    box-shadow: 0 0 0 2px rgba(239, 204, 58, 0.2);
+  }
+}
+
+// Rounded avatars
+img.avatar {
+  border-radius: 50%;
+}
+
+// Code blocks
+.cooked {
+  code {
+    background: var(--primary-very-low);
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
+
+  pre {
+    border-radius: 8px;
+  }
+
+  blockquote {
+    border-left-color: var(--tertiary);
+  }
+}
