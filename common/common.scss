@@ -1,6 +1,7 @@
-// InterviewCoder Theme
-// Minimal styling - typography and accents only
-// NO layout changes
+// ============================================
+// InterviewCoder Component
+// Extends Horizon theme with custom branding
+// ============================================
 
 // Use Inter font
 body {
@@ -8,71 +9,98 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-// Yellow accent for primary buttons
-.btn-primary,
-#create-topic {
-  background-color: var(--tertiary);
-  color: #171717;
+// ============================================
+// Yellow Brand Accents
+// ============================================
 
-  &:hover {
+// Primary buttons - yellow
+.btn-primary,
+#create-topic,
+.d-modal__footer .btn-primary {
+  background-color: var(--tertiary) !important;
+  color: #171717 !important;
+  border-color: var(--tertiary) !important;
+
+  &:hover,
+  &:focus {
+    background-color: var(--tertiary) !important;
     filter: brightness(1.05);
   }
 }
 
-// Yellow accent for active nav items
-.nav-pills > li > a.active {
-  background-color: var(--tertiary);
-  color: #171717;
+// Active navigation pills - yellow
+.nav-pills > li > a.active,
+.nav-pills > li > button.active {
+  background-color: var(--tertiary) !important;
+  color: #171717 !important;
 }
 
-// Yellow accent for active sidebar items
-.sidebar-section-link.active {
-  background-color: var(--tertiary);
-  color: #171717;
+// Active sidebar links - yellow highlight
+.sidebar-section-link.active,
+.sidebar-section-link--active {
+  background-color: var(--tertiary) !important;
+  color: #171717 !important;
 
   .d-icon,
-  .sidebar-section-link-content-text {
-    color: #171717;
+  .sidebar-section-link-content-text,
+  .sidebar-section-link__content {
+    color: #171717 !important;
   }
 }
 
-// Rounded corners for buttons
+// Focus states - yellow ring
+input:focus,
+textarea:focus,
+select:focus,
+.select-kit.is-expanded .select-kit-header {
+  border-color: var(--tertiary) !important;
+  box-shadow: 0 0 0 2px rgba(239, 204, 58, 0.25) !important;
+}
+
+// Links hover - yellow
+a:hover {
+  color: var(--tertiary);
+}
+
+// Blockquotes - yellow border
+.cooked blockquote {
+  border-left-color: var(--tertiary);
+}
+
+// ============================================
+// Level Badges (for future JS feature)
+// ============================================
+.user-level-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 4px;
+
+  &.level-0 { background: #E5E7EB; color: #374151; }
+  &.level-1 { background: #DBEAFE; color: #1D4ED8; }
+  &.level-2 { background: #D1FAE5; color: #047857; }
+  &.level-3 { background: #FEF3C7; color: #B45309; }
+  &.level-4 { background: #FCE7F3; color: #BE185D; }
+}
+
+// ============================================
+// Small refinements
+// ============================================
+
+// Slightly more rounded buttons
 .btn {
   border-radius: 8px;
 }
 
-// Rounded corners for inputs
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="search"],
-textarea {
-  border-radius: 8px;
-
-  &:focus {
-    border-color: var(--tertiary);
-    box-shadow: 0 0 0 2px rgba(239, 204, 58, 0.2);
-  }
+// Category badges
+.badge-category {
+  border-radius: 9999px;
 }
 
-// Rounded avatars
-img.avatar {
-  border-radius: 50%;
-}
-
-// Code blocks
-.cooked {
-  code {
-    background: var(--primary-very-low);
-    border-radius: 4px;
-    padding: 2px 6px;
-  }
-
-  pre {
-    border-radius: 8px;
-  }
-
-  blockquote {
-    border-left-color: var(--tertiary);
-  }
+// Tags
+.discourse-tag {
+  border-radius: 9999px;
 }
