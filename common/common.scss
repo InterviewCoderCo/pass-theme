@@ -1,106 +1,25 @@
-// ============================================
-// InterviewCoder Component
-// Extends Horizon theme with custom branding
-// ============================================
+@import "buttons";
+@import "chat";
+@import "categories-view";
+@import "color-choice";
+@import "compatibility";
+@import "composer";
+@import "composer-peek-mode";
+@import "experimental-screen";
+@import "header";
+@import "hiddenstuff";
+@import "login";
+@import "main";
+@import "misc";
+@import "mobile-stuff";
+@import "nav-pills";
+@import "welcome-banner";
+@import "sidebar";
+@import "sidebar-new-topic-button";
+@import "topic";
+@import "topic-cards";
+@import "variables";
 
-// Use Inter font
-body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-// ============================================
-// Yellow Brand Accents
-// ============================================
-
-// Primary buttons - yellow
-.btn-primary,
-#create-topic,
-.d-modal__footer .btn-primary {
-  background-color: var(--tertiary) !important;
-  color: #171717 !important;
-  border-color: var(--tertiary) !important;
-
-  &:hover,
-  &:focus {
-    background-color: var(--tertiary) !important;
-    filter: brightness(1.05);
-  }
-}
-
-// Active navigation pills - yellow
-.nav-pills > li > a.active,
-.nav-pills > li > button.active {
-  background-color: var(--tertiary) !important;
-  color: #171717 !important;
-}
-
-// Active sidebar links - yellow highlight
-.sidebar-section-link.active,
-.sidebar-section-link--active {
-  background-color: var(--tertiary) !important;
-  color: #171717 !important;
-
-  .d-icon,
-  .sidebar-section-link-content-text,
-  .sidebar-section-link__content {
-    color: #171717 !important;
-  }
-}
-
-// Focus states - yellow ring
-input:focus,
-textarea:focus,
-select:focus,
-.select-kit.is-expanded .select-kit-header {
-  border-color: var(--tertiary) !important;
-  box-shadow: 0 0 0 2px rgba(239, 204, 58, 0.25) !important;
-}
-
-// Links hover - yellow
-a:hover {
-  color: var(--tertiary);
-}
-
-// Blockquotes - yellow border
-.cooked blockquote {
-  border-left-color: var(--tertiary);
-}
-
-// ============================================
-// Level Badges (for future JS feature)
-// ============================================
-.user-level-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 8px;
-  border-radius: 9999px;
-  font-size: 11px;
-  font-weight: 600;
-  margin-left: 4px;
-
-  &.level-0 { background: #E5E7EB; color: #374151; }
-  &.level-1 { background: #DBEAFE; color: #1D4ED8; }
-  &.level-2 { background: #D1FAE5; color: #047857; }
-  &.level-3 { background: #FEF3C7; color: #B45309; }
-  &.level-4 { background: #FCE7F3; color: #BE185D; }
-}
-
-// ============================================
-// Small refinements
-// ============================================
-
-// Slightly more rounded buttons
-.btn {
-  border-radius: 8px;
-}
-
-// Category badges
-.badge-category {
-  border-radius: 9999px;
-}
-
-// Tags
-.discourse-tag {
-  border-radius: 9999px;
+:root {
+  --d-nav-pill-border-radius: 0;
 }

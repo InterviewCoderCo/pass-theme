@@ -1,7 +1,40 @@
 {
   "name": "InterviewCoder",
+  "authors": "InterviewCoder Team",
   "about_url": "https://github.com/InterviewCoderCo/pass-theme",
   "license_url": "https://github.com/InterviewCoderCo/pass-theme/blob/main/LICENSE",
-  "component": true,
-  "minimum_discourse_version": "3.0.0"
+  "theme_version": "1.0.0",
+  "minimum_discourse_version": "3.0.0",
+  "modifiers": {
+    "svg_icons": [
+      "fire"
+    ],
+    "serialize_topic_is_hot": true
+  },
+  "color_schemes": {
+    "InterviewCoder": {
+      "primary": "171717",
+      "secondary": "FAFAFA",
+      "tertiary": "EFCC3A",
+      "tertiary-med-or-tertiary": "EFCC3A",
+      "selected": "FEF9C3",
+      "header_background": "FFFFFF",
+      "header_primary": "171717",
+      "hover": "FEF3C7"
+    },
+    "InterviewCoder Dark": {
+      "primary": "F5F5F5",
+      "secondary": "171717",
+      "tertiary": "EFCC3A",
+      "tertiary-med-or-tertiary": "EFCC3A",
+      "selected": "422006",
+      "header_background": "262626",
+      "header_primary": "F5F5F5",
+      "hover": "3D3D3D"
+    }
+  },
+  "theme_site_settings": {
+    "enable_welcome_banner": false,
+    "search_experience": "search_field"
+  }
 }
