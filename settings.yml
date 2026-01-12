@@ -1,6 +1,0 @@
-# InterviewCoder Theme Settings
-
-show_level_badges:
-  type: bool
-  default: true
-  description: "Show LVL badges next to usernames"
