@@ -32,18 +32,23 @@
   }
 }
 
-// Topic list header - SHOW it (was hidden before)
 .topic-list-header {
   tr {
     border: none;
   }
 
   .topic-list-data {
-    // Show all columns
-    display: table-cell !important;
+    padding: 0;
 
-    span {
-      display: inline !important;
+    &:not(.default) {
+      display: none;
+    }
+
+    &.default {
+      .bulk-select,
+      span:not(.bulk-select-topics, .d-button-label) {
+        display: none;
+      }
     }
   }
 
