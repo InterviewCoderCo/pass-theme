@@ -311,10 +311,10 @@ h1, h2, h3, h4, h5, h6,
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TOPIC LIST - Figma Design (White rows on gray background)
+// TOPIC LIST - Figma Design (Cards with rounded corners and left accent)
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Main content container - NO white wrapper, transparent
+// Main content container - transparent
 .contents,
 #list-area,
 .topic-list {
@@ -322,27 +322,39 @@ h1, h2, h3, h4, h5, h6,
   border-radius: 0 !important;
 }
 
-// Topic list body - transparent container
+// Topic list body - cards with gaps
 .topic-list-body {
   display: flex;
   flex-direction: column;
-  gap: 0 !important;
+  gap: 12px !important;
   padding: 0 !important;
   margin: 0 !important;
   background: transparent !important;
 }
 
-// Topic rows - white background, individual rows
+// Topic cards - white background, rounded corners, left accent
 .topic-list-body .topic-list-item {
   position: relative;
   background: #FFFFFF !important;
   border: none !important;
-  border-bottom: 1px solid #E2E8F0 !important;
-  border-radius: 0 !important;
+  border-radius: 12px !important;
   margin: 0 !important;
-  padding: 20px 16px !important;
-  box-shadow: none !important;
-  transition: background 150ms ease;
+  padding: 20px 20px 20px 24px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  transition: box-shadow 200ms ease, transform 200ms ease;
+  overflow: hidden;
+
+  // Left accent bar
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #F97316;
+    border-radius: 12px 0 0 12px;
+  }
 
   // Grid layout - restructure for Figma design
   grid-template-columns: 48px 1fr auto !important;
@@ -354,19 +366,16 @@ h1, h2, h3, h4, h5, h6,
   gap: 4px 16px !important;
   align-items: start !important;
 
-  // Hover state - subtle background
+  // Hover state - lift effect
   &:hover {
-    background: #F8FAFC !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-2px);
   }
 
   // Selected state
   &.selected {
     background: #EFF6FF !important;
-  }
-
-  // First item - top border
-  &:first-child {
-    border-top: 1px solid #E2E8F0 !important;
+    box-shadow: 0 0 0 2px var(--tertiary), 0 4px 12px rgba(0, 0, 0, 0.1) !important;
   }
 }
 
