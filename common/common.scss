@@ -816,42 +816,45 @@ label {
 // ─────────────────────────────────────────────────────────────────────────────
 
 .welcome-banner {
-  // Container
+  // Container - Airbnb style (elevated card, clean)
   &__wrap {
-    background: light-dark(
-      linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%),
-      linear-gradient(135deg, #0F172A 0%, #1E293B 100%)
-    );
-    border-radius: 16px;
-    border: 1px solid light-dark(#E2E8F0, #334155);
+    background: light-dark(#FFFFFF, #1E293B) !important;
+    border-radius: 12px;
+    border: none !important;
     padding: 32px 40px !important;
     margin: 0 0 24px 0 !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 4px 16px rgba(0, 0, 0, 0.06),
+      0 12px 32px rgba(0, 0, 0, 0.04) !important;
+    transition: box-shadow 300ms ease, transform 300ms ease;
+
+    &:hover {
+      box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.04),
+        0 8px 24px rgba(0, 0, 0, 0.08),
+        0 16px 40px rgba(0, 0, 0, 0.06) !important;
+    }
   }
 
-  // Title - "Welcome back, shah!"
+  // Title - Airbnb style (clean, bold)
   &__title {
-    font-size: 28px !important;
-    font-weight: 700 !important;
+    font-size: 26px !important;
+    font-weight: 600 !important;
     color: light-dark(#0F172A, #F8FAFC) !important;
     letter-spacing: -0.02em;
-    margin: 0 !important;
-
-    // Add subtle gradient text effect
-    background: light-dark(
-      linear-gradient(135deg, #0F172A 0%, #334155 100%),
-      linear-gradient(135deg, #F8FAFC 0%, #CBD5E1 100%)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    margin: 0 0 4px 0 !important;
+    // Remove gradient, use solid color
+    background: none !important;
+    -webkit-text-fill-color: light-dark(#0F172A, #F8FAFC) !important;
   }
 
-  // Subheader text (if any)
+  // Subheader text
   &__subheader {
     font-size: 15px;
     color: light-dark(#64748B, #94A3B8);
-    margin-top: 8px;
+    margin-top: 4px;
+    font-weight: 400;
   }
 
   // Search bar - Airbnb style (elevated, pill-shaped)
@@ -946,16 +949,19 @@ label {
   &.--location-below-site-header {
     .welcome-banner__wrap {
       border-radius: 0;
-      border-left: none;
-      border-right: none;
       margin: 0 !important;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06) !important;
+
+      &:hover {
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06) !important;
+      }
     }
   }
 
   // Above topic content variant (default)
   &.--location-above-topic-content {
     .welcome-banner__wrap {
-      border-bottom: none !important;
+      // Keep the elevated card style
     }
   }
 }
