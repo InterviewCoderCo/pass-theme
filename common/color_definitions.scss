@@ -6,23 +6,23 @@ html {
   --accent-color: #{$tertiary} !important;
   --accent-text-color: #171717 !important;
 
-  // Background Colors - pure neutral
-  --background-color: light-dark(#FAFAFA, #0A0A0A) !important;
-  --d-content-background: light-dark(#FFFFFF, #171717) !important;
+  // Background Colors - more contrast between outer and content
+  --background-color: light-dark(#E8E8E8, #000000) !important;
+  --d-content-background: light-dark(#FFFFFF, #1A1A1A) !important;
 
   // Header Colors - neutral
   --header_primary-low-mid: light-dark(#A3A3A3, #525252) !important;
   --header_primary-medium: light-dark(#737373, #737373) !important;
 
   // Sidebar Colors - all neutral gray
-  --d-sidebar-border-color: light-dark(#E5E5E5, #262626) !important;
+  --d-sidebar-border-color: light-dark(#D4D4D4, #2A2A2A) !important;
   --d-sidebar-link-color: light-dark(#525252, #A3A3A3) !important;
   --d-sidebar-active-color: light-dark(#171717, #FAFAFA) !important;
   --d-sidebar-suffix-color: light-dark(#737373, #737373) !important;
 
   // Selected/Hover - subtle gray
-  --d-selected: light-dark(#F5F5F5, #262626) !important;
-  --d-hover: light-dark(rgba(0,0,0,0.03), rgba(255,255,255,0.05)) !important;
+  --d-selected: light-dark(#F0F0F0, #262626) !important;
+  --d-hover: light-dark(rgba(0,0,0,0.05), rgba(255,255,255,0.08)) !important;
 
   // Navigation - neutral (no yellow)
   --d-nav-color--active: light-dark(#171717, #FAFAFA) !important;
@@ -52,8 +52,8 @@ html {
   --d-sidebar-background: var(--background-color) !important;
   --d-sidebar-footer-fade: var(--background-color) !important;
   --d-sidebar-prefix-background: var(--d-selected) !important;
-  --d-sidebar-active-prefix-background: light-dark(#EBEBEB, #2A2A2A) !important;
-  --d-sidebar-highlight-prefix-background: light-dark(#F0F0F0, #262626) !important;
+  --d-sidebar-active-prefix-background: light-dark(#DEDEDE, #2A2A2A) !important;
+  --d-sidebar-highlight-prefix-background: light-dark(#E0E0E0, #222222) !important;
   --d-sidebar-highlight-suffix-color: light-dark(#525252, #A3A3A3) !important;
   --d-sidebar-highlight-color: var(--primary) !important;
   --d-sidebar-highlight-background: var(--d-selected) !important;
