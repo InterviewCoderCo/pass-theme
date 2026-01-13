@@ -1008,19 +1008,21 @@ label {
   border-spacing: 0;
 }
 
-// Topic list body - already styled above, just ensure flex
+// Topic list body - remove all padding/gaps
 .topic-list-body {
   display: flex;
   flex-direction: column;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-spacing: 0 !important;
+  gap: 0 !important;
 }
 
-// Remove padding that causes hover gap
-#list-area .topic-list-body,
-.topic-list .topic-list-body,
-table.topic-list tbody.topic-list-body,
-tbody.topic-list-body {
-  padding-top: 0 !important;
+// Override Discourse default padding
+#list-area .topic-list-body {
   padding: 0 !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
 }
 
 // Topic title - better typography
