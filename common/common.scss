@@ -272,10 +272,15 @@ h1, h2, h3, h4, h5, h6,
   border: none !important;
   border-bottom: 1px solid light-dark(#E2E8F0, #1E293B) !important;
   border-radius: 0 !important;
-  margin-bottom: 0 !important;
+  margin: 0 !important;
   padding: 14px 8px !important;
   box-shadow: none !important;
   transition: background 150ms ease;
+
+  // Fix gap on hover - ensure all cells get background
+  > * {
+    background: inherit;
+  }
 
   // Hover - subtle background
   &:hover {
@@ -287,9 +292,9 @@ h1, h2, h3, h4, h5, h6,
     background: light-dark(#EFF6FF, rgba(37, 99, 235, 0.08)) !important;
   }
 
-  // Last item - no bottom border
-  &:last-child {
-    border-bottom: none !important;
+  // First item - top border
+  &:first-child {
+    border-top: 1px solid light-dark(#E2E8F0, #1E293B) !important;
   }
 }
 
@@ -998,8 +1003,8 @@ label {
 
 // Topic list container
 .topic-list {
-  // Remove default table styling
-  border-collapse: separate;
+  // Collapse borders to remove gaps
+  border-collapse: collapse;
   border-spacing: 0;
 }
 
