@@ -6,7 +6,12 @@ export default class PromoSidebarCard extends Component {
 
   get shouldRender() {
     const route = this.router.currentRouteName;
-    return route && route.startsWith("discovery");
+    // Show on discovery pages (latest, top, etc.), tag pages, and tags listing
+    return route && (
+      route.startsWith("discovery") ||
+      route.startsWith("tag") ||
+      route.startsWith("tags")
+    );
   }
 
   <template>
