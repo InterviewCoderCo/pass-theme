@@ -42,6 +42,8 @@
   margin: 0;
   padding: 0;
   position: relative;
+  --background-color: #E9F0F7 !important;
+  background-color: #E9F0F7 !important;
 
   @include viewport.until(lg) {
     display: none;
