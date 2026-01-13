@@ -855,6 +855,13 @@ label {
   }
 
   // Search bar - Minimal Clean (Linear/Notion style)
+  // Hide search icon globally in welcome banner
+  .d-icon-search,
+  .search-icon,
+  svg.d-icon-search {
+    display: none !important;
+  }
+
   .search-menu,
   .search-menu-container {
     .search-input {
@@ -881,8 +888,14 @@ label {
       }
 
       // Search icon - hidden
-      .d-icon-search {
-        display: none;
+      .d-icon-search,
+      .search-icon {
+        display: none !important;
+      }
+
+      // Remove left padding since icon is hidden
+      input {
+        padding-left: 18px !important;
       }
 
       // Filter button
