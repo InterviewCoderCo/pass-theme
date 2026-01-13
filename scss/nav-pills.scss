@@ -105,7 +105,7 @@
 
 // Dropdown search/filter input
 .select-kit .select-kit-filter {
-  padding: 8px;
+  padding: 6px;
   border-bottom: 1px solid light-dark(#E2E8F0, #334155);
 
   input.filter-input,
@@ -113,10 +113,10 @@
   input.filter-input:active,
   input.filter-input:focus-visible {
     width: 100%;
-    padding: 8px 12px;
-    font-size: 14px;
+    padding: 6px 10px;
+    font-size: 13px;
     border: 1px solid #E2E8F0 !important;
-    border-radius: 8px;
+    border-radius: 6px;
     background: #FFFFFF !important;
     color: #0F172A;
     outline: none !important;
