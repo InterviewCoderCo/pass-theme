@@ -23,3 +23,30 @@
 :root {
   --d-nav-pill-border-radius: 0;
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TYPOGRAPHY - Inter Font
+// ─────────────────────────────────────────────────────────────────────────────
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.011em;
+}
+
+// Headings - tighter letter spacing
+h1, h2, h3, h4, h5, h6,
+.d-header .title,
+.topic-title {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+// Post content - readable
+.cooked {
+  font-size: 15px;
+  line-height: 1.7;
+}
