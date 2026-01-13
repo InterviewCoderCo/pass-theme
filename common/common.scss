@@ -590,3 +590,96 @@ label {
     box-shadow: none !important;
   }
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// HEADER - Clean, minimal
+// ─────────────────────────────────────────────────────────────────────────────
+
+.d-header {
+  border-bottom: 1px solid light-dark(#E4E4E7, #27272A) !important;
+  box-shadow: none !important;
+
+  // Header wrap
+  .d-header-wrap {
+    box-shadow: none !important;
+  }
+}
+
+// Header icons (search, menu, user)
+.d-header-icons {
+  .icon {
+    border-radius: 8px !important;
+    transition: background 150ms ease;
+    padding: 8px;
+
+    &:hover {
+      background: light-dark(#F4F4F5, #27272A) !important;
+    }
+
+    .d-icon {
+      color: light-dark(#52525B, #A1A1AA);
+      transition: color 150ms ease;
+    }
+
+    &:hover .d-icon {
+      color: light-dark(#18181B, #FAFAFA);
+    }
+  }
+}
+
+// Notification badge on icons
+.d-header-icons .badge-notification {
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  min-width: 18px;
+  height: 18px;
+}
+
+// Search input in header
+.search-input {
+  border-radius: 8px !important;
+  border: 1px solid light-dark(#E4E4E7, #3F3F46) !important;
+  background: light-dark(#F4F4F5, #27272A) !important;
+  transition: all 150ms ease;
+
+  &:focus,
+  &:focus-within {
+    background: light-dark(#FFFFFF, #18181B) !important;
+    border-color: var(--tertiary) !important;
+    box-shadow: 0 0 0 3px rgba(1, 115, 237, 0.15) !important;
+  }
+}
+
+// User menu dropdown
+.user-menu {
+  border-radius: 12px !important;
+  border: 1px solid light-dark(#E4E4E7, #27272A) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+  overflow: hidden;
+}
+
+// Menu panels (hamburger, notifications)
+.menu-panel {
+  border-radius: 12px !important;
+  border: 1px solid light-dark(#E4E4E7, #27272A) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+  overflow: hidden;
+
+  .panel-body {
+    border: none !important;
+  }
+}
+
+// Header title/logo
+.d-header .title {
+  font-weight: 600;
+
+  a {
+    transition: opacity 150ms ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
