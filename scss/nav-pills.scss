@@ -156,26 +156,18 @@
       }
     }
 
-    // Active/current tab
+    // Active/current tab - blue color, no underline (Figma style)
     &.active > a,
     &.active > button,
     > a.active,
     > button.active {
-      color: light-dark(#0F172A, #F8FAFC);
+      color: var(--tertiary) !important;
       background: transparent !important;
       font-weight: 600;
 
-      // Active indicator - underline only
+      // No underline - Figma design uses color only
       &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        bottom: -1px;
-        left: 16px;
-        right: 16px;
-        height: 2px;
-        background: light-dark(#0F172A, #F8FAFC);
-        border-radius: 2px 2px 0 0;
+        display: none;
       }
     }
   }
