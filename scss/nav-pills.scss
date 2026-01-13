@@ -13,22 +13,21 @@
   margin-bottom: 0;
 
   .navigation-container {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
+    display: flex !important;
+    flex-wrap: wrap;
     gap: 12px;
     align-items: center;
+  }
 
-    // Nav pills (Latest, Hot, Categories) - right side
-    .nav-pills {
-      order: 1;
-      margin-left: auto;
-    }
+  // Nav pills (Latest, Hot, Categories) - move to right
+  .nav-pills {
+    order: 10 !important;
+    margin-left: auto !important;
+  }
 
-    // Filter buttons (categories, tags) - left side
-    .category-breadcrumb {
-      order: 0;
-    }
+  // Filter buttons (categories, tags) - keep on left
+  .category-breadcrumb {
+    order: 0 !important;
   }
 
   // Filter dropdowns - Figma pill style (gray bg, white on hover)
