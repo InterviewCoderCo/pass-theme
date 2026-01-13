@@ -54,40 +54,6 @@ body {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// LEFT ALIGNMENT - Align content to flex-start
-// ─────────────────────────────────────────────────────────────────────────────
-#main-outlet-wrapper {
-  display: flex;
-  justify-content: flex-start !important;
-  align-items: flex-start !important;
-}
-
-#main-outlet {
-  margin-left: 0 !important;
-  margin-right: auto !important;
-}
-
-// List area - left aligned
-#list-area {
-  margin-left: 0 !important;
-  margin-right: auto !important;
-}
-
-// Navigation container - left aligned
-.navigation-container {
-  justify-content: flex-start !important;
-}
-
-// List controls - left aligned
-.list-controls {
-  justify-content: flex-start !important;
-
-  .navigation-container {
-    justify-content: flex-start !important;
-  }
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
 // HEADER & SIDEBAR - Light gray background
 // ─────────────────────────────────────────────────────────────────────────────
 
