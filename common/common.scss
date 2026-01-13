@@ -279,33 +279,33 @@ h1, h2, h3, h4, h5, h6,
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TOPIC LIST - Figma Design (White cards on blue background)
+// TOPIC LIST - Figma Design (White rows on gray background)
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Main content container - white background
+// Main content container - NO white wrapper, transparent
 .contents,
 #list-area,
 .topic-list {
-  background: #FFFFFF !important;
-  border-radius: 12px !important;
+  background: transparent !important;
+  border-radius: 0 !important;
 }
 
-// Topic list body - clean container
+// Topic list body - transparent container
 .topic-list-body {
   display: flex;
   flex-direction: column;
   gap: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
-  background: #FFFFFF !important;
+  background: transparent !important;
 }
 
-// Topic rows - white cards on blue background
+// Topic rows - white background, individual rows
 .topic-list-body .topic-list-item {
   position: relative;
   background: #FFFFFF !important;
   border: none !important;
-  border-bottom: 1px solid light-dark(#E2E8F0, #1E293B) !important;
+  border-bottom: 1px solid #E2E8F0 !important;
   border-radius: 0 !important;
   margin: 0 !important;
   padding: 20px 16px !important;
@@ -334,7 +334,7 @@ h1, h2, h3, h4, h5, h6,
 
   // First item - top border
   &:first-child {
-    border-top: 1px solid light-dark(#E2E8F0, #1E293B) !important;
+    border-top: 1px solid #E2E8F0 !important;
   }
 }
 

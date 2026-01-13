@@ -6,7 +6,7 @@
 .list-controls {
   position: sticky;
   top: var(--header-offset);
-  background: var(--d-content-background);
+  background: transparent !important;
   z-index: z("base") + 1;
   padding: 12px 0;
   border-bottom: none;
@@ -21,19 +21,19 @@
     }
   }
 
-  // Filter dropdowns - Figma pill style
+  // Filter dropdowns - Figma pill style (gray bg, white on hover)
   .combo-box .combo-box-header {
-    background: light-dark(#FFFFFF, #1E293B);
+    background: transparent;
     border-radius: 20px;
-    border: 1px solid light-dark(#E2E8F0, #334155);
+    border: 1px solid #CBD5E1;
     padding: 8px 16px;
     font-size: 14px;
     font-weight: 500;
     transition: border-color 150ms ease, background 150ms ease;
 
     &:hover {
-      border-color: light-dark(#CBD5E1, #475569);
-      background: light-dark(#F8FAFC, #334155);
+      border-color: #94A3B8;
+      background: #FFFFFF;
     }
 
     &:focus-visible {
@@ -44,17 +44,17 @@
     }
 
     .d-icon {
-      color: light-dark(#64748B, #94A3B8);
+      color: #64748B;
       margin-left: 4px;
     }
 
     .selected-name {
-      color: light-dark(#0F172A, #F8FAFC);
+      color: #0F172A;
     }
   }
 }
 
-// Category breadcrumb - pill buttons
+// Category breadcrumb - pill buttons (transparent bg)
 .category-breadcrumb {
   display: flex;
   gap: 8px;
@@ -63,13 +63,13 @@
     .combo-box .combo-box-header,
     .category-drop-header {
       border-radius: 20px !important;
-      border: 1px solid light-dark(#E2E8F0, #334155) !important;
+      border: 1px solid #CBD5E1 !important;
       padding: 8px 16px !important;
-      background: light-dark(#FFFFFF, #1E293B) !important;
+      background: transparent !important;
       font-weight: 500;
 
       &:hover {
-        background: light-dark(#F8FAFC, #334155) !important;
+        background: #FFFFFF !important;
       }
     }
   }
