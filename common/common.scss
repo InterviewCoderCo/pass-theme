@@ -815,10 +815,23 @@ label {
 // NAVIGATION PILLS - Clean underline style
 // ─────────────────────────────────────────────────────────────────────────────
 
+// Remove all existing borders from navigation containers
+.navigation-container,
+.list-controls,
+.category-breadcrumb {
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
 .nav-pills {
   gap: 0;
+  border: none !important;
+  border-bottom: none !important;
 
   > li {
+    border: none !important;
+
     > a,
     > button {
       border-radius: 0 !important;
@@ -830,7 +843,6 @@ label {
       border: none !important;
       border-bottom: 2px solid transparent !important;
       transition: all 150ms ease;
-      margin-bottom: -1px;
 
       &:hover {
         color: light-dark(#18181B, #FAFAFA) !important;
@@ -841,7 +853,7 @@ label {
       &.active {
         color: var(--tertiary) !important;
         background: transparent !important;
-        border-bottom-color: var(--tertiary) !important;
+        border-bottom: 2px solid var(--tertiary) !important;
         font-weight: 600;
       }
     }
