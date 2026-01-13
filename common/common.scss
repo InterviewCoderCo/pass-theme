@@ -538,12 +538,13 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-// Menu area - three dot menu
+// Menu area - status badges (pinned, hot) and actions
 .topic-list-item .topic-status-data {
   grid-area: menu !important;
   display: flex !important;
   align-items: flex-start !important;
   gap: 8px !important;
+  margin-left: 12px !important;
 }
 
 .topic-list-item .topic-status-card {
