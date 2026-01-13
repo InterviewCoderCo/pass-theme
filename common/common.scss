@@ -266,14 +266,22 @@ h1, h2, h3, h4, h5, h6,
 // TOPIC LIST - Flat Rows (Unreal Engine style)
 // ─────────────────────────────────────────────────────────────────────────────
 
+// Topic list container - bordered with rounded corners
+.topic-list-body {
+  border: 1px solid light-dark(#E2E8F0, #1E293B);
+  border-radius: 8px;
+  overflow: hidden;
+  background: light-dark(#FFFFFF, #1E293B);
+}
+
 // Topic rows - flat, clean, efficient
 .topic-list-body .topic-list-item {
-  background: transparent !important;
+  background: light-dark(#FFFFFF, #1E293B) !important;
   border: none !important;
-  border-bottom: 1px solid light-dark(#E2E8F0, #1E293B) !important;
+  border-bottom: 1px solid light-dark(#E2E8F0, #334155) !important;
   border-radius: 0 !important;
   margin-bottom: 0 !important;
-  padding: 14px 8px !important;
+  padding: 14px 16px !important;
   box-shadow: none !important;
   transition: background 150ms ease;
 
@@ -285,12 +293,11 @@ h1, h2, h3, h4, h5, h6,
   // Selected state
   &.selected {
     background: light-dark(#EFF6FF, rgba(37, 99, 235, 0.08)) !important;
-    border-left: 3px solid var(--tertiary) !important;
   }
 
-  // First item - top border
-  &:first-child {
-    border-top: 1px solid light-dark(#E2E8F0, #1E293B) !important;
+  // Last item - no bottom border
+  &:last-child {
+    border-bottom: none !important;
   }
 }
 
@@ -1004,7 +1011,7 @@ label {
   border-spacing: 0;
 }
 
-// Topic list body - row container
+// Topic list body - already styled above, just ensure flex
 .topic-list-body {
   display: flex;
   flex-direction: column;
