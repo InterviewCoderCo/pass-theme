@@ -1008,6 +1008,59 @@ label {
   border-spacing: 0;
 }
 
+// Topic list header - subtle, clean labels
+.topic-list-header {
+  border-bottom: 1px solid light-dark(#E2E8F0, #1E293B);
+
+  tr {
+    border: none !important;
+    background: transparent !important;
+  }
+
+  .topic-list-data {
+    padding: 8px 8px 12px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: light-dark(#64748B, #64748B);
+    background: transparent !important;
+    border: none !important;
+    white-space: nowrap;
+
+    // Sort icons
+    .d-icon {
+      width: 10px;
+      height: 10px;
+      color: light-dark(#94A3B8, #475569);
+      margin-left: 4px;
+    }
+
+    // Sortable columns - hover state
+    &[data-sort-order] {
+      cursor: pointer;
+      transition: color 150ms ease;
+
+      &:hover {
+        color: light-dark(#0F172A, #F8FAFC);
+
+        .d-icon {
+          color: light-dark(#64748B, #94A3B8);
+        }
+      }
+    }
+
+    // Active sort column
+    &.sortable.sorting {
+      color: light-dark(#0F172A, #F8FAFC);
+
+      .d-icon {
+        color: light-dark(#0F172A, #F8FAFC);
+      }
+    }
+  }
+}
+
 // Topic list body - remove all padding/gaps
 .topic-list-body {
   display: flex;
