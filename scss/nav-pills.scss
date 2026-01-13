@@ -17,12 +17,15 @@
     flex-wrap: wrap;
     gap: 12px;
     align-items: center;
+    width: 100% !important;
+    justify-content: space-between !important;
   }
 
-  // Nav pills (Latest, Hot, Categories) - move to right
+  // Nav pills (Latest, Hot, Categories) - move to right, no extra space
   .nav-pills {
     order: 10 !important;
     margin-left: auto !important;
+    margin-right: 0 !important;
   }
 
   // Filter buttons (categories, tags) - keep on left
