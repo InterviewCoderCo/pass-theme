@@ -902,13 +902,25 @@ label {
         display: none !important;
       }
 
-      // Input styling
-      input {
+      // Input styling - remove inner border
+      input,
+      input[type="text"],
+      input[type="search"] {
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
         padding-left: 8px !important;
         font-size: 15px;
+        outline: none !important;
 
         &::placeholder {
           color: light-dark(#94A3B8, #64748B);
+        }
+
+        &:focus {
+          border: none !important;
+          box-shadow: none !important;
+          outline: none !important;
         }
       }
 
