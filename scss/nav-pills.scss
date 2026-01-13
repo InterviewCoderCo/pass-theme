@@ -61,7 +61,7 @@
 
 .nav-pills {
   display: flex;
-  gap: 4px;
+  gap: 0;
   padding: 0;
   margin: 0;
 
@@ -76,14 +76,14 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 14px;
+      padding: 8px 16px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 450;
       color: light-dark(#64748B, #94A3B8);
-      background: transparent;
+      background: transparent !important;
       border: none;
-      border-radius: 6px;
-      transition: color 150ms ease, background 150ms ease;
+      border-radius: 0;
+      transition: color 150ms ease;
       text-decoration: none;
 
       // Remove default underline
@@ -96,28 +96,23 @@
         width: 14px;
         height: 14px;
         color: inherit;
-        opacity: 0.7;
       }
 
       // Count badge (e.g., "New (3)")
       .badge-notification {
-        margin-left: 2px;
+        margin-left: 4px;
         padding: 2px 6px;
         font-size: 11px;
         font-weight: 600;
         border-radius: 9999px;
-        background: var(--tertiary);
-        color: #FFFFFF;
+        background: light-dark(#0F172A, #F8FAFC);
+        color: light-dark(#FFFFFF, #0F172A);
       }
 
-      // Hover state
+      // Hover state - just color change, no background
       &:hover {
         color: light-dark(#0F172A, #F8FAFC);
-        background: light-dark(#F1F5F9, rgba(255, 255, 255, 0.05));
-
-        .d-icon {
-          opacity: 1;
-        }
+        background: transparent !important;
       }
     }
 
@@ -127,24 +122,20 @@
     > a.active,
     > button.active {
       color: light-dark(#0F172A, #F8FAFC);
-      background: light-dark(#F1F5F9, rgba(255, 255, 255, 0.08));
+      background: transparent !important;
       font-weight: 600;
 
-      // Active indicator - subtle bottom border
+      // Active indicator - underline only
       &::after {
         content: "";
         display: block;
         position: absolute;
-        bottom: 0;
-        left: 8px;
-        right: 8px;
+        bottom: -1px;
+        left: 16px;
+        right: 16px;
         height: 2px;
-        background: var(--tertiary);
+        background: light-dark(#0F172A, #F8FAFC);
         border-radius: 2px 2px 0 0;
-      }
-
-      .d-icon {
-        opacity: 1;
       }
     }
   }
@@ -188,9 +179,15 @@
 
     > li > a,
     > li > button {
-      padding: 8px 12px;
+      padding: 8px 14px;
       font-size: 13px;
       white-space: nowrap;
     }
   }
+}
+
+// Remove any lingering backgrounds from Discourse defaults
+.nav-pills > li > a:hover,
+.nav-pills > li button:hover {
+  background: transparent !important;
 }
