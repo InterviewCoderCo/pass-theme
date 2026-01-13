@@ -49,7 +49,7 @@ const cardHTML = `
   </div>
 `;
 
-export default apiInitializer("1.0.0", (api) => {
+export default apiInitializer((api) => {
   api.onPageChange(() => {
     const router = api.container.lookup("service:router");
     const route = router.currentRouteName;
