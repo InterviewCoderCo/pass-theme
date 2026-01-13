@@ -810,3 +810,92 @@ label {
     }
   }
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NAVIGATION PILLS - Modern tabs
+// ─────────────────────────────────────────────────────────────────────────────
+
+.nav-pills {
+  gap: 4px;
+
+  > li {
+    > a,
+    > button {
+      border-radius: 8px !important;
+      padding: 8px 14px !important;
+      font-size: 14px;
+      font-weight: 500;
+      color: light-dark(#52525B, #A1A1AA) !important;
+      background: transparent !important;
+      border: none !important;
+      transition: all 150ms ease;
+
+      &:hover {
+        background: light-dark(#F4F4F5, #27272A) !important;
+        color: light-dark(#18181B, #FAFAFA) !important;
+      }
+
+      // Active state - inverted
+      &.active {
+        background: light-dark(#18181B, #FAFAFA) !important;
+        color: light-dark(#FAFAFA, #18181B) !important;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// Category/Tags filter pills
+.category-navigation,
+.tag-navigation {
+  .nav-pills {
+    > li > a,
+    > li > button {
+      &.active {
+        background: var(--tertiary) !important;
+        color: #FFFFFF !important;
+      }
+    }
+  }
+}
+
+// Topic filter tabs (Latest, Top, etc.)
+.navigation-container {
+  .nav-pills {
+    border-bottom: 1px solid light-dark(#E4E4E7, #27272A);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+}
+
+// User profile tabs
+.user-navigation {
+  .nav-pills {
+    > li > a {
+      padding: 10px 16px !important;
+
+      &.active {
+        background: var(--tertiary) !important;
+        color: #FFFFFF !important;
+      }
+    }
+  }
+}
+
+// Admin navigation
+.admin-nav {
+  .nav-pills {
+    > li > a.active {
+      background: var(--tertiary) !important;
+      color: #FFFFFF !important;
+    }
+  }
+}
+
+// Period chooser (daily, weekly, monthly, etc.)
+.period-chooser {
+  .select-kit-header {
+    border-radius: 8px !important;
+    font-weight: 500;
+  }
+}
