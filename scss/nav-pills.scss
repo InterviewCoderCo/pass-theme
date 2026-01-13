@@ -1,64 +1,196 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// NAVIGATION TABS - Flat, clean, Unreal-inspired
+// ─────────────────────────────────────────────────────────────────────────────
+
+// List controls container (sticky header with nav + filters)
 .list-controls {
   position: sticky;
   top: var(--header-offset);
   background: var(--d-content-background);
   z-index: z("base") + 1;
-  padding: 1.5rem 0 1rem 0;
-  max-width: unset;
-  border-top-left-radius: var(--d-border-radius-large);
-  border-top-right-radius: var(--d-border-radius-large);
+  padding: 12px 0;
+  border-bottom: 1px solid light-dark(#E2E8F0, #1E293B);
+  margin-bottom: 0;
 
   .navigation-container {
-    gap: 1rem;
+    gap: 12px;
+    align-items: center;
 
     .category-breadcrumb {
       order: 1;
     }
   }
 
+  // Filter dropdowns
   .combo-box .combo-box-header {
-    // needs more specificity than just in the button file
-    background-color: var(--secondary);
-    border-radius: var(--d-border-radius);
-    border: 1px solid var(--primary-300);
+    background: light-dark(#FFFFFF, #1E293B);
+    border-radius: 8px;
+    border: 1px solid light-dark(#E2E8F0, #334155);
+    padding: 6px 12px;
+    font-size: 13px;
+    transition: border-color 150ms ease;
 
     &:hover {
-      border: 1px solid var(--accent-color);
+      border-color: light-dark(#CBD5E1, #475569);
     }
 
     &:focus-visible {
       .discourse-no-touch & {
-        background: var(--secondary);
-        color: var(--accent-color);
-        box-shadow: 0 0 0 3px var(--button-box-shadow);
+        border-color: var(--tertiary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+      }
+    }
+
+    .d-icon {
+      color: light-dark(#64748B, #94A3B8);
+    }
+  }
+}
+
+// Dropdown body
+.select-kit.is-expanded .select-kit-body {
+  border-radius: 8px;
+  background: var(--d-content-background);
+  border: 1px solid light-dark(#E2E8F0, #334155);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NAV PILLS - The actual tabs (Latest, New, Unread, Top, Categories)
+// ─────────────────────────────────────────────────────────────────────────────
+
+.nav-pills {
+  display: flex;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+
+  // Each tab item
+  > li {
+    margin: 0;
+
+    // Tab link/button
+    > a,
+    > button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: light-dark(#64748B, #94A3B8);
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      transition: color 150ms ease, background 150ms ease;
+      text-decoration: none;
+
+      // Remove default underline
+      &::after {
+        display: none;
+      }
+
+      // Icon styling
+      .d-icon {
+        width: 14px;
+        height: 14px;
+        color: inherit;
+        opacity: 0.7;
+      }
+
+      // Count badge (e.g., "New (3)")
+      .badge-notification {
+        margin-left: 2px;
+        padding: 2px 6px;
+        font-size: 11px;
+        font-weight: 600;
+        border-radius: 9999px;
+        background: var(--tertiary);
+        color: #FFFFFF;
+      }
+
+      // Hover state
+      &:hover {
+        color: light-dark(#0F172A, #F8FAFC);
+        background: light-dark(#F1F5F9, rgba(255, 255, 255, 0.05));
 
         .d-icon {
-          color: var(--accent-color);
+          opacity: 1;
         }
+      }
+    }
+
+    // Active/current tab
+    &.active > a,
+    &.active > button,
+    > a.active,
+    > button.active {
+      color: light-dark(#0F172A, #F8FAFC);
+      background: light-dark(#F1F5F9, rgba(255, 255, 255, 0.08));
+      font-weight: 600;
+
+      // Active indicator - subtle bottom border
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 8px;
+        right: 8px;
+        height: 2px;
+        background: var(--tertiary);
+        border-radius: 2px 2px 0 0;
+      }
+
+      .d-icon {
+        opacity: 1;
       }
     }
   }
 }
 
-.select-kit.is-expanded .select-kit-body {
-  border-radius: var(--d-border-radius);
-  background-color: var(--d-content-background);
+// ─────────────────────────────────────────────────────────────────────────────
+// NAVIGATION VARIANTS
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Category navigation (on category pages)
+.category-navigation {
+  .nav-pills {
+    > li > a,
+    > li > button {
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+  }
 }
 
-.nav-pills > li > a:hover,
-.nav-pills > li button:hover {
-  .discourse-no-touch & {
-    background: transparent;
-    color: var(--d-nav-color--hover);
+// Sub-navigation (e.g., within user profiles)
+.user-navigation {
+  .nav-pills {
+    border-bottom: 1px solid light-dark(#E2E8F0, #1E293B);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+}
 
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      height: var(--d-nav-underline-height);
-      background: var(--d-nav-color--hover);
+// Mobile adjustments
+@media (max-width: 768px) {
+  .nav-pills {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    > li > a,
+    > li > button {
+      padding: 8px 12px;
+      font-size: 13px;
+      white-space: nowrap;
     }
   }
 }
