@@ -53,6 +53,24 @@ body {
   background: transparent !important;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// HEADER & SIDEBAR - Light gray background
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Header/Navbar
+.d-header,
+.d-header-wrap {
+  background: #F8F9FA !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  box-shadow: none !important;
+}
+
+// Sidebar
+.sidebar-wrapper,
+.sidebar-container {
+  background: #F8F9FA !important;
+}
+
 // Headings - tighter letter spacing
 h1, h2, h3, h4, h5, h6,
 .d-header .title,
