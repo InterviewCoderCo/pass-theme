@@ -1014,6 +1014,11 @@ label {
   flex-direction: column;
 }
 
+// Remove padding that causes hover gap
+#list-area .topic-list-body {
+  padding-top: 0 !important;
+}
+
 // Topic title - better typography
 .topic-list-item .link-top-line {
   .title {
