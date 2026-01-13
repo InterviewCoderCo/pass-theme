@@ -311,15 +311,21 @@ h1, h2, h3, h4, h5, h6,
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TOPIC LIST - Figma/Unreal Design (Flat rows with left accent bar)
+// TOPIC LIST - Figma/Unreal Design (Rounded container with flat rows)
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Main content container - transparent
 .contents,
-#list-area,
-.topic-list {
+#list-area {
   background: transparent !important;
-  border-radius: 0 !important;
+}
+
+// Topic list - white container with rounded corners
+.topic-list {
+  background: #FFFFFF !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 // Topic list body - flat rows, no gaps
@@ -332,7 +338,7 @@ h1, h2, h3, h4, h5, h6,
   background: transparent !important;
 }
 
-// Topic rows - flat white rows with left accent bar
+// Topic rows - flat rows inside rounded container
 .topic-list-body .topic-list-item {
   position: relative;
   background: #FFFFFF !important;
@@ -340,21 +346,9 @@ h1, h2, h3, h4, h5, h6,
   border-bottom: 1px solid #E2E8F0 !important;
   border-radius: 0 !important;
   margin: 0 !important;
-  padding: 16px 16px 16px 20px !important;
+  padding: 16px !important;
   box-shadow: none !important;
   transition: background 150ms ease;
-  overflow: visible;
-
-  // Left accent bar
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: #F97316;
-  }
 
   // Grid layout - restructure for Figma design
   grid-template-columns: 48px 1fr auto !important;
@@ -376,9 +370,9 @@ h1, h2, h3, h4, h5, h6,
     background: #EFF6FF !important;
   }
 
-  // First item - top border
-  &:first-child {
-    border-top: 1px solid #E2E8F0 !important;
+  // Last item - no bottom border
+  &:last-child {
+    border-bottom: none !important;
   }
 }
 
