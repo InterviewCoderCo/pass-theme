@@ -9,7 +9,7 @@
   background: var(--d-content-background);
   z-index: z("base") + 1;
   padding: 12px 0;
-  border-bottom: 1px solid light-dark(#E2E8F0, #1E293B);
+  border-bottom: none;
   margin-bottom: 0;
 
   .navigation-container {
