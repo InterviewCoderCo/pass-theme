@@ -263,37 +263,34 @@ h1, h2, h3, h4, h5, h6,
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TOPIC LIST - Airbnb DLS Cards
+// TOPIC LIST - Flat Rows (Unreal Engine style)
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Topic cards - Airbnb style (elevated, shadow-based)
+// Topic rows - flat, clean, efficient
 .topic-list-body .topic-list-item {
-  background: light-dark(#FFFFFF, #1E293B) !important;
+  background: transparent !important;
   border: none !important;
-  border-radius: 12px !important;
-  margin-bottom: 12px !important;
-  padding: 16px 20px !important;
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.04),
-    0 4px 16px rgba(0, 0, 0, 0.06),
-    0 8px 24px rgba(0, 0, 0, 0.03) !important;
-  transition: box-shadow 300ms ease, transform 300ms ease;
+  border-bottom: 1px solid light-dark(#E2E8F0, #1E293B) !important;
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 14px 8px !important;
+  box-shadow: none !important;
+  transition: background 150ms ease;
 
-  // Hover - enhanced shadow depth
+  // Hover - subtle background
   &:hover {
-    box-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.04),
-      0 8px 24px rgba(0, 0, 0, 0.1),
-      0 16px 32px rgba(0, 0, 0, 0.06) !important;
-    transform: translateY(-2px);
+    background: light-dark(#F8FAFC, rgba(255, 255, 255, 0.03)) !important;
   }
 
-  // Selected state - subtle highlight
+  // Selected state
   &.selected {
-    box-shadow:
-      0 0 0 2px var(--tertiary),
-      0 4px 16px rgba(37, 99, 235, 0.15),
-      0 8px 24px rgba(0, 0, 0, 0.08) !important;
+    background: light-dark(#EFF6FF, rgba(37, 99, 235, 0.08)) !important;
+    border-left: 3px solid var(--tertiary) !important;
+  }
+
+  // First item - top border
+  &:first-child {
+    border-top: 1px solid light-dark(#E2E8F0, #1E293B) !important;
   }
 }
 
@@ -328,9 +325,9 @@ h1, h2, h3, h4, h5, h6,
   color: light-dark(#64748B, #64748B);
 }
 
-// Avatar in topic list - Airbnb style
+// Avatar in topic list - circular
 .topic-list-item .topic-creator-data .avatar {
-  border-radius: 10px;
+  border-radius: 50%;
 }
 
 // Replies count
@@ -1007,17 +1004,10 @@ label {
   border-spacing: 0;
 }
 
-// Topic list body - card container
+// Topic list body - row container
 .topic-list-body {
-  // Cards are styled individually with Airbnb DLS
   display: flex;
   flex-direction: column;
-  gap: 0; // Gap handled by margin-bottom on cards
-}
-
-// Topic card - first card no extra top margin
-.topic-list-body .topic-list-item:first-child {
-  margin-top: 0;
 }
 
 // Topic title - better typography
@@ -1053,16 +1043,11 @@ label {
   font-weight: 450;
 }
 
-// Creator avatar - Airbnb style (clean, subtle)
+// Creator avatar - clean, circular
 .topic-list-item .topic-creator-data {
   .avatar {
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    transition: box-shadow 300ms ease;
-
-    &:hover {
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-    }
+    border-radius: 50%;
+    box-shadow: none;
   }
 }
 
@@ -1100,21 +1085,14 @@ label {
   }
 }
 
-// Replies/likes count - Airbnb style (subtle chip)
+// Replies/likes count - clean, no chip
 .topic-list-item .topic-likes-replies-data {
   .topic-replies {
     font-size: 13px;
     color: light-dark(#64748B, #94A3B8);
-    padding: 6px 10px;
-    border-radius: 8px;
-    background: light-dark(#F8FAFC, #0F172A);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-    transition: background 300ms ease, box-shadow 300ms ease;
-
-    &:hover {
-      background: light-dark(#F1F5F9, #1E293B);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
-    }
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
 
     .d-icon {
       color: light-dark(#94A3B8, #64748B);
@@ -1167,28 +1145,24 @@ label {
   background: light-dark(#CBD5E1, #475569);
 }
 
-// Last visit separator - Airbnb style (clean divider)
+// Last visit separator - subtle line with label
 .topic-list > .topic-list-body > .topic-list-item.last-visit {
   position: relative;
-  margin-bottom: 28px !important;
+  border-bottom: 2px solid light-dark(#E2E8F0, #334155) !important;
 
   &::after {
-    content: "New since last visit";
+    content: "New";
     position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 11px;
-    font-weight: 500;
+    bottom: -10px;
+    left: 0;
+    font-size: 10px;
+    font-weight: 600;
     color: light-dark(#64748B, #94A3B8);
-    background: light-dark(#F1F5F9, #1E293B);
-    padding: 4px 16px;
-    border-radius: 9999px;
+    background: light-dark(#F1F5F9, #0F172A);
+    padding: 2px 8px;
+    border-radius: 4px;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    white-space: nowrap;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-    z-index: 1;
   }
 }
 
