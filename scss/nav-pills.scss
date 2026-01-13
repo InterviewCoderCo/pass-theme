@@ -100,6 +100,57 @@
   background: var(--d-content-background);
   border: 1px solid light-dark(#E2E8F0, #334155);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+// Dropdown search/filter input
+.select-kit .select-kit-filter {
+  padding: 8px;
+  border-bottom: 1px solid light-dark(#E2E8F0, #334155);
+
+  input.filter-input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    background: #FFFFFF;
+    color: #0F172A;
+    outline: none;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+
+    &::placeholder {
+      color: #94A3B8;
+    }
+
+    &:focus {
+      border-color: var(--tertiary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+  }
+}
+
+// Dropdown collection items
+.select-kit .select-kit-collection {
+  max-height: 300px;
+  overflow-y: auto;
+
+  .select-kit-row {
+    padding: 10px 12px;
+    font-size: 14px;
+    color: light-dark(#0F172A, #F8FAFC);
+    transition: background 150ms ease;
+
+    &:hover,
+    &.is-highlighted {
+      background: light-dark(#F1F5F9, #334155);
+    }
+
+    &.is-selected {
+      background: light-dark(#EFF6FF, #1E3A5F);
+      color: var(--tertiary);
+    }
+  }
 }
 
 // Keep border color consistent when expanded (global override)
