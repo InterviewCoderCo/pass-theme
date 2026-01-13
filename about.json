@@ -13,24 +13,32 @@
   },
   "color_schemes": {
     "InterviewCoder": {
-      "primary": "000000",
-      "secondary": "FFFFFF",
-      "tertiary": "0173ED",
-      "tertiary-med-or-tertiary": "0173ED",
-      "selected": "E0F2FE",
+      "primary": "0F172A",
+      "secondary": "F8FAFC",
+      "tertiary": "2563EB",
+      "quaternary": "22C55E",
+      "selected": "E0EDFF",
+      "hover": "E8F0FE",
+      "highlight": "E0EDFF",
+      "danger": "EF4444",
+      "success": "22C55E",
+      "love": "F43F5E",
       "header_background": "FFFFFF",
-      "header_primary": "000000",
-      "hover": "F5F5F5"
+      "header_primary": "020617"
     },
     "InterviewCoder Dark": {
-      "primary": "FAFAFA",
-      "secondary": "09090B",
-      "tertiary": "0173ED",
-      "tertiary-med-or-tertiary": "0173ED",
-      "selected": "0C4A6E",
-      "header_background": "18181B",
-      "header_primary": "FAFAFA",
-      "hover": "27272A"
+      "primary": "F8FAFC",
+      "secondary": "0F172A",
+      "tertiary": "3B82F6",
+      "quaternary": "22C55E",
+      "selected": "1E3A5F",
+      "hover": "1E293B",
+      "highlight": "1E3A5F",
+      "danger": "EF4444",
+      "success": "22C55E",
+      "love": "F43F5E",
+      "header_background": "1E293B",
+      "header_primary": "F8FAFC"
     }
   },
   "theme_site_settings": {
