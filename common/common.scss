@@ -854,7 +854,7 @@ label {
     margin-top: 8px;
   }
 
-  // Search bar - Minimal Clean (Linear/Notion style)
+  // Search bar - Airbnb style (elevated, pill-shaped)
   // Hide search icon globally in welcome banner
   .d-icon-search,
   .search-icon,
@@ -865,25 +865,34 @@ label {
   .search-menu,
   .search-menu-container {
     .search-input {
-      border: none !important;
-      border-radius: 10px !important;
-      background: light-dark(#F1F5F9, #1E293B) !important;
-      padding: 14px 18px !important;
+      border: 1px solid light-dark(#E2E8F0, #334155) !important;
+      border-radius: 40px !important;
+      background: light-dark(#FFFFFF, #1E293B) !important;
+      padding: 16px 24px !important;
       font-size: 15px;
-      transition: background 200ms ease, box-shadow 200ms ease;
+      box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.04),
+        0 4px 12px rgba(0, 0, 0, 0.05) !important;
+      transition: all 250ms ease;
 
       &::placeholder {
         color: light-dark(#94A3B8, #64748B);
       }
 
       &:hover {
-        background: light-dark(#E2E8F0, #334155) !important;
+        box-shadow:
+          0 2px 4px rgba(0, 0, 0, 0.06),
+          0 8px 24px rgba(0, 0, 0, 0.1) !important;
+        transform: translateY(-1px);
       }
 
       &:focus,
       &:focus-within {
-        background: light-dark(#FFFFFF, #0F172A) !important;
-        box-shadow: 0 0 0 2px light-dark(#E2E8F0, #334155) !important;
+        border-color: light-dark(#CBD5E1, #475569) !important;
+        box-shadow:
+          0 2px 4px rgba(0, 0, 0, 0.06),
+          0 12px 32px rgba(0, 0, 0, 0.12) !important;
+        transform: translateY(-2px);
         outline: none !important;
       }
 
@@ -893,21 +902,25 @@ label {
         display: none !important;
       }
 
-      // Remove left padding since icon is hidden
+      // Input styling
       input {
-        padding-left: 18px !important;
+        padding-left: 8px !important;
+        font-size: 15px;
+
+        &::placeholder {
+          color: light-dark(#94A3B8, #64748B);
+        }
       }
 
-      // Filter button
+      // Filter button - pill style
       .search-input-filter-btn {
-        border-radius: 6px;
-        padding: 6px;
-        opacity: 0.6;
-        transition: opacity 150ms ease, background 150ms ease;
+        border-radius: 20px;
+        padding: 8px 12px;
+        background: light-dark(#F1F5F9, #334155);
+        transition: all 150ms ease;
 
         &:hover {
-          opacity: 1;
-          background: light-dark(#E2E8F0, #334155);
+          background: light-dark(#E2E8F0, #475569);
         }
 
         .d-icon {
