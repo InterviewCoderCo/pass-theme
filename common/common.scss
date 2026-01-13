@@ -50,3 +50,94 @@ h1, h2, h3, h4, h5, h6,
   font-size: 15px;
   line-height: 1.7;
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SIDEBAR - Clean, modern navigation
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Section headers - subtle, uppercase
+.sidebar-section-header {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: light-dark(#71717A, #71717A) !important;
+  padding: 8px 12px 4px !important;
+}
+
+// Section links
+.sidebar-section-link {
+  border-radius: 8px !important;
+  margin: 2px 8px !important;
+  padding: 8px 12px !important;
+  transition: background 150ms ease, color 150ms ease !important;
+
+  // Link text
+  .sidebar-section-link-content-text {
+    font-size: 14px;
+    font-weight: 450;
+  }
+
+  // Icons
+  .sidebar-section-link-prefix-icon {
+    color: light-dark(#71717A, #71717A);
+    transition: color 150ms ease;
+  }
+
+  // Hover state
+  &:hover {
+    background: light-dark(#F4F4F5, #27272A) !important;
+
+    .sidebar-section-link-prefix-icon {
+      color: light-dark(#18181B, #FAFAFA);
+    }
+  }
+
+  // Active state
+  &.active,
+  &.sidebar-section-link--active {
+    background: light-dark(#18181B, #FAFAFA) !important;
+    color: light-dark(#FAFAFA, #18181B) !important;
+
+    .sidebar-section-link-content-text {
+      font-weight: 500;
+    }
+
+    .sidebar-section-link-prefix-icon,
+    .d-icon {
+      color: light-dark(#FAFAFA, #18181B) !important;
+    }
+
+    // Suffix (count badges)
+    .sidebar-section-link-suffix {
+      color: light-dark(#A1A1AA, #52525B) !important;
+    }
+  }
+}
+
+// Suffix badges (counts)
+.sidebar-section-link-suffix {
+  font-size: 12px;
+  font-weight: 500;
+  color: light-dark(#A1A1AA, #71717A);
+}
+
+// New Topic button
+.sidebar-new-topic-button__wrapper {
+  padding: 0 12px !important;
+  margin-bottom: 16px !important;
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+    border-radius: 8px !important;
+    font-weight: 500;
+    padding: 10px 16px !important;
+  }
+}
+
+// Footer area
+.sidebar-footer-wrapper {
+  border-top: 1px solid light-dark(#E4E4E7, #27272A);
+  padding-top: 8px;
+}
