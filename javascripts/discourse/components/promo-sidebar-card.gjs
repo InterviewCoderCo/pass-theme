@@ -21,27 +21,7 @@ export default class PromoSidebarCard extends Component {
           Get <span class="highlight">10%</span> off on
         </div>
         <div class="promo-sidebar-card__brand">
-          <div class="promo-sidebar-card__logo-wrapper">
-            {{! Wing logo - golden feathers }}
-            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="64" height="64" rx="14" fill="url(#gold-gradient)"/>
-              <g transform="translate(12, 14)">
-                {{! Wing feathers }}
-                <path d="M8 36C8 36 12 28 20 24C28 20 38 18 38 18" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
-                <path d="M6 30C6 30 12 22 22 18C32 14 40 14 40 14" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
-                <path d="M6 24C6 24 14 16 26 12C38 8 40 10 40 10" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
-                <path d="M8 18C8 18 18 10 30 8C40 6 40 6 40 6" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
-                <path d="M12 12C12 12 22 6 34 4" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
-              </g>
-              <defs>
-                <linearGradient id="gold-gradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#F7D94C"/>
-                  <stop offset="50%" stop-color="#E5A81D"/>
-                  <stop offset="100%" stop-color="#C69214"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+          <div class="promo-sidebar-card__logo"></div>
           <div class="promo-sidebar-card__title">Pass Any Interview</div>
         </div>
         <div class="promo-sidebar-card__features">

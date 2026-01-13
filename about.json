@@ -5,6 +5,9 @@
   "license_url": "https://github.com/InterviewCoderCo/pass-theme/blob/main/LICENSE",
   "theme_version": "1.0.0",
   "minimum_discourse_version": "3.0.0",
+  "assets": {
+    "promo_logo": "assets/ic_logo.svg"
+  },
   "modifiers": {
     "svg_icons": [
       "fire"

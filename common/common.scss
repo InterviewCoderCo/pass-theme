@@ -1480,33 +1480,25 @@ label {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// PROMO SIDEBAR CARD - Right side promotional widget (Figma design)
+// PROMO SIDEBAR CARD - Sidebar promotional widget (Figma design)
+// Renders in sidebar outlet for proper responsive behavior
 // ─────────────────────────────────────────────────────────────────────────────
 
 .promo-sidebar-card {
-  position: fixed;
-  top: calc(var(--header-offset, 60px) + 20px);
-  right: 20px;
-  width: 300px;
+  // Normal flow in sidebar - no fixed positioning
+  margin: 16px 0;
   background: linear-gradient(145deg, #1A1A2E 0%, #0F0F1A 100%);
-  border-radius: 24px;
-  padding: 24px;
+  border-radius: 16px;
+  padding: 20px;
   color: #F8FAFC;
-  z-index: 100;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    0 2px 8px rgba(0, 0, 0, 0.2);
-
-  // Hide on smaller screens
-  @media (max-width: 1200px) {
-    display: none;
-  }
+    0 4px 16px rgba(0, 0, 0, 0.3);
 
   &__header {
-    font-size: 15px;
+    font-size: 14px;
     color: #9CA3AF;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     text-align: center;
     font-weight: 400;
 
@@ -1520,55 +1512,60 @@ label {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
-  &__logo-wrapper {
-    margin-bottom: 16px;
-
-    svg {
-      filter: drop-shadow(0 4px 12px rgba(251, 191, 36, 0.3));
-    }
+  &__logo {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 12px;
+    background-image: url($promo_logo);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 14px;
+    filter: drop-shadow(0 4px 12px rgba(251, 191, 36, 0.3));
   }
 
   &__title {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
     color: #FFFFFF;
     letter-spacing: -0.02em;
+    text-align: center;
   }
 
   &__features {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 24px;
+    gap: 10px;
+    margin-bottom: 20px;
   }
 
   &__feature {
     display: flex;
     align-items: flex-start;
-    gap: 14px;
-    padding: 16px;
+    gap: 12px;
+    padding: 12px;
     background: rgba(55, 65, 81, 0.5);
-    border-radius: 16px;
+    border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   &__feature-icon {
     flex-shrink: 0;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(75, 85, 99, 0.6);
-    border-radius: 12px;
+    border-radius: 10px;
     color: #9CA3AF;
 
     svg {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
     }
   }
 
@@ -1579,14 +1576,14 @@ label {
   }
 
   &__feature-title {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: #FFFFFF;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
 
   &__feature-desc {
-    font-size: 13px;
+    font-size: 12px;
     color: #9CA3AF;
     line-height: 1.4;
   }
@@ -1595,12 +1592,12 @@ label {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
-    padding: 14px 24px;
+    padding: 12px 20px;
     background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
     color: #1F2937;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     border-radius: 50px;
     text-decoration: none;
@@ -1609,7 +1606,7 @@ label {
 
     &:hover {
       background: linear-gradient(135deg, #FCD34D 0%, #FBBF24 100%);
-      transform: translateY(-2px);
+      transform: translateY(-1px);
       box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
       color: #1F2937;
     }
