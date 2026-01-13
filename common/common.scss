@@ -1015,8 +1015,12 @@ label {
 }
 
 // Remove padding that causes hover gap
-#list-area .topic-list-body {
+#list-area .topic-list-body,
+.topic-list .topic-list-body,
+table.topic-list tbody.topic-list-body,
+tbody.topic-list-body {
   padding-top: 0 !important;
+  padding: 0 !important;
 }
 
 // Topic title - better typography
