@@ -1479,4 +1479,126 @@ label {
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// PROMO SIDEBAR CARD - Right side promotional widget
+// ─────────────────────────────────────────────────────────────────────────────
+
+.promo-sidebar-card {
+  position: fixed;
+  top: calc(var(--header-offset, 60px) + 20px);
+  right: 20px;
+  width: 280px;
+  background: #1E293B;
+  border-radius: 16px;
+  padding: 20px;
+  color: #F8FAFC;
+  z-index: 100;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+
+  // Hide on smaller screens
+  @media (max-width: 1400px) {
+    display: none;
+  }
+
+  &__header {
+    font-size: 14px;
+    color: #94A3B8;
+    margin-bottom: 16px;
+    text-align: center;
+
+    .highlight {
+      color: #F59E0B;
+      font-weight: 600;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &__logo-wrapper {
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #F8FAFC;
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    background: #334155;
+    border-radius: 10px;
+  }
+
+  &__feature-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #475569;
+    border-radius: 8px;
+    color: #94A3B8;
+  }
+
+  &__feature-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__feature-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #F8FAFC;
+    margin-bottom: 2px;
+  }
+
+  &__feature-desc {
+    font-size: 12px;
+    color: #94A3B8;
+    line-height: 1.4;
+  }
+
+  &__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 20px;
+    background: #F59E0B;
+    color: #1E293B;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 150ms ease, transform 150ms ease;
+
+    &:hover {
+      background: #D97706;
+      transform: translateY(-1px);
+      color: #1E293B;
+    }
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+}
 
