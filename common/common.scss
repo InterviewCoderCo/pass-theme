@@ -261,3 +261,89 @@ h1, h2, h3, h4, h5, h6,
   font-size: 15px;
   padding: 12px 24px;
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TOPIC LIST - Clean, modern cards
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Topic cards
+.topic-list-body .topic-list-item {
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  border-color: light-dark(#E4E4E7, #27272A) !important;
+
+  // Hover - blue border
+  &:hover {
+    border-color: var(--tertiary) !important;
+    box-shadow: 0 2px 8px rgba(1, 115, 237, 0.1);
+  }
+
+  // Selected state
+  &.selected {
+    border-color: var(--tertiary) !important;
+    box-shadow: 0 0 0 2px var(--tertiary), 0 4px 12px rgba(1, 115, 237, 0.15);
+  }
+}
+
+// Topic title
+.topic-list-item .link-top-line .title {
+  font-weight: 500;
+  color: light-dark(#18181B, #FAFAFA);
+  transition: color 150ms ease;
+
+  &:hover {
+    color: var(--tertiary) !important;
+  }
+}
+
+// Visited topics - muted
+.topic-list-item.visited .link-top-line .title {
+  color: light-dark(#71717A, #A1A1AA);
+
+  &:hover {
+    color: var(--tertiary) !important;
+  }
+}
+
+// Topic excerpt
+.topic-list-item .topic-excerpt {
+  color: light-dark(#52525B, #A1A1AA);
+  line-height: 1.5;
+}
+
+// Activity text
+.topic-list-item .topic-activity {
+  color: light-dark(#71717A, #71717A);
+}
+
+// Avatar in topic list
+.topic-list-item .topic-creator-data .avatar {
+  border-radius: 8px;
+  transition: transform 150ms ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+// Replies count
+.topic-list-item .topic-replies {
+  color: light-dark(#71717A, #71717A);
+
+  .d-icon {
+    color: light-dark(#A1A1AA, #52525B);
+  }
+}
+
+// Status badges (pinned, hot)
+.topic-list-item .topic-status-card {
+  border-radius: 6px;
+  font-weight: 500;
+
+  &.--hot {
+    background: rgba(228, 87, 53, 0.1);
+  }
+
+  &.--pinned {
+    background: light-dark(#F4F4F5, #27272A);
+  }
+}
