@@ -263,7 +263,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TOPIC LIST - Figma Design (Social Feed Style)
+// TOPIC LIST - Figma Design (Flat Rows with Separators)
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Topic list body - clean container
@@ -275,17 +275,17 @@ h1, h2, h3, h4, h5, h6,
   margin: 0 !important;
 }
 
-// Topic rows - card-like with left accent
+// Topic rows - flat, separated by lines (like Figma)
 .topic-list-body .topic-list-item {
   position: relative;
-  background: light-dark(#FFFFFF, #1E293B) !important;
-  border: 1px solid light-dark(#E2E8F0, #334155) !important;
-  border-left: 3px solid var(--tertiary) !important;
-  border-radius: 8px !important;
-  margin: 0 0 12px 0 !important;
-  padding: 16px 16px 16px 20px !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid light-dark(#E2E8F0, #1E293B) !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 20px 16px !important;
   box-shadow: none !important;
-  transition: border-color 150ms ease, box-shadow 150ms ease;
+  transition: background 150ms ease;
 
   // Grid layout - restructure for Figma design
   grid-template-columns: 48px 1fr auto !important;
@@ -294,24 +294,22 @@ h1, h2, h3, h4, h5, h6,
     "avatar title title"
     "avatar excerpt excerpt"
     "avatar stats actions" !important;
-  gap: 4px 12px !important;
+  gap: 4px 16px !important;
   align-items: start !important;
 
-  // Hover state
+  // Hover state - subtle background
   &:hover {
-    border-color: var(--tertiary) !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+    background: light-dark(#F8FAFC, rgba(255, 255, 255, 0.02)) !important;
   }
 
   // Selected state
   &.selected {
-    border-color: var(--tertiary) !important;
     background: light-dark(#EFF6FF, rgba(37, 99, 235, 0.08)) !important;
   }
 
-  // Remove first-child top border (now using cards)
+  // First item - top border
   &:first-child {
-    border-top: 1px solid light-dark(#E2E8F0, #334155) !important;
+    border-top: 1px solid light-dark(#E2E8F0, #1E293B) !important;
   }
 }
 
