@@ -37,6 +37,22 @@ body {
   letter-spacing: -0.011em;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// PAGE BACKGROUND - Blue theme
+// ─────────────────────────────────────────────────────────────────────────────
+html {
+  background: #3396FF !important;
+}
+
+body {
+  background: #3396FF !important;
+}
+
+#main-outlet,
+#main-outlet-wrapper {
+  background: transparent !important;
+}
+
 // Headings - tighter letter spacing
 h1, h2, h3, h4, h5, h6,
 .d-header .title,
@@ -263,8 +279,16 @@ h1, h2, h3, h4, h5, h6,
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TOPIC LIST - Figma Design (Flat Rows with Separators)
+// TOPIC LIST - Figma Design (White cards on blue background)
 // ─────────────────────────────────────────────────────────────────────────────
+
+// Main content container - white background
+.contents,
+#list-area,
+.topic-list {
+  background: #FFFFFF !important;
+  border-radius: 12px !important;
+}
 
 // Topic list body - clean container
 .topic-list-body {
@@ -273,12 +297,13 @@ h1, h2, h3, h4, h5, h6,
   gap: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
+  background: #FFFFFF !important;
 }
 
-// Topic rows - flat, separated by lines (like Figma)
+// Topic rows - white cards on blue background
 .topic-list-body .topic-list-item {
   position: relative;
-  background: transparent !important;
+  background: #FFFFFF !important;
   border: none !important;
   border-bottom: 1px solid light-dark(#E2E8F0, #1E293B) !important;
   border-radius: 0 !important;
@@ -299,12 +324,12 @@ h1, h2, h3, h4, h5, h6,
 
   // Hover state - subtle background
   &:hover {
-    background: light-dark(#F8FAFC, rgba(255, 255, 255, 0.02)) !important;
+    background: #F8FAFC !important;
   }
 
   // Selected state
   &.selected {
-    background: light-dark(#EFF6FF, rgba(37, 99, 235, 0.08)) !important;
+    background: #EFF6FF !important;
   }
 
   // First item - top border
