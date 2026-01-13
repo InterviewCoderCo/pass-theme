@@ -1480,13 +1480,17 @@ label {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// PROMO SIDEBAR CARD - Sidebar promotional widget (Figma design)
-// Renders in sidebar outlet for proper responsive behavior
+// PROMO SIDEBAR CARD - Right side promotional widget (Figma design)
+// Only visible on wide screens (>1400px) where there's space on the right
 // ─────────────────────────────────────────────────────────────────────────────
 
 .promo-sidebar-card {
-  // Normal flow in sidebar - no fixed positioning
-  margin: 16px 0;
+  // Position on right side of viewport
+  position: fixed;
+  top: calc(var(--header-offset, 60px) + 20px);
+  right: 20px;
+  width: 280px;
+  z-index: 100;
   background: linear-gradient(145deg, #1A1A2E 0%, #0F0F1A 100%);
   border-radius: 16px;
   padding: 20px;
@@ -1494,6 +1498,12 @@ label {
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.08),
     0 4px 16px rgba(0, 0, 0, 0.3);
+
+  // Only show on wide screens where there's space
+  // Hide when viewport is too narrow to avoid blocking content
+  @media (max-width: 1400px) {
+    display: none !important;
+  }
 
   &__header {
     font-size: 14px;
