@@ -854,6 +854,58 @@ label {
     margin-top: 8px;
   }
 
+  // Search bar - Minimal Clean (Linear/Notion style)
+  .search-menu,
+  .search-menu-container {
+    .search-input {
+      border: none !important;
+      border-radius: 10px !important;
+      background: light-dark(#F1F5F9, #1E293B) !important;
+      padding: 14px 18px !important;
+      font-size: 15px;
+      transition: background 200ms ease, box-shadow 200ms ease;
+
+      &::placeholder {
+        color: light-dark(#94A3B8, #64748B);
+      }
+
+      &:hover {
+        background: light-dark(#E2E8F0, #334155) !important;
+      }
+
+      &:focus,
+      &:focus-within {
+        background: light-dark(#FFFFFF, #0F172A) !important;
+        box-shadow: 0 0 0 2px light-dark(#E2E8F0, #334155) !important;
+        outline: none !important;
+      }
+
+      // Search icon
+      .d-icon-search {
+        color: light-dark(#94A3B8, #64748B);
+        width: 18px;
+        height: 18px;
+      }
+
+      // Filter button
+      .search-input-filter-btn {
+        border-radius: 6px;
+        padding: 6px;
+        opacity: 0.6;
+        transition: opacity 150ms ease, background 150ms ease;
+
+        &:hover {
+          opacity: 1;
+          background: light-dark(#E2E8F0, #334155);
+        }
+
+        .d-icon {
+          color: light-dark(#64748B, #94A3B8);
+        }
+      }
+    }
+  }
+
   // Below site header variant
   &.--location-below-site-header {
     .welcome-banner__wrap {
