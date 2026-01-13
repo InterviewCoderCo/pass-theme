@@ -351,12 +351,13 @@ h1, h2, h3, h4, h5, h6,
   box-shadow: none !important;
   transition: background 150ms ease;
 
-  // Grid layout - Figma style
+  // Grid layout - username, title, category tag, excerpt, stats
   grid-template-columns: 48px 1fr auto !important;
-  grid-template-rows: auto auto auto auto !important;
+  grid-template-rows: auto auto auto auto auto !important;
   grid-template-areas:
     "avatar header menu"
     "avatar title menu"
+    "avatar category category"
     "avatar excerpt excerpt"
     "avatar stats stats" !important;
   gap: 4px 16px !important;
@@ -429,12 +430,13 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-// Category badge - inline with username
+// Category badge - below title
 .topic-list-item .topic-category-data {
-  grid-area: header !important;
-  display: inline-flex !important;
+  grid-area: category !important;
+  display: flex !important;
   align-items: center !important;
-  margin-left: auto !important;
+  gap: 6px !important;
+  margin-top: 2px !important;
 
   .badge-category__wrapper {
     display: inline-flex !important;
