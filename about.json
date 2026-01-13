@@ -13,24 +13,24 @@
   },
   "color_schemes": {
     "InterviewCoder": {
-      "primary": "171717",
-      "secondary": "FAFAFA",
+      "primary": "18181B",
+      "secondary": "FFFFFF",
       "tertiary": "EFCC3A",
       "tertiary-med-or-tertiary": "EFCC3A",
-      "selected": "FEF9C3",
+      "selected": "F4F4F5",
       "header_background": "FFFFFF",
-      "header_primary": "171717",
-      "hover": "FEF3C7"
+      "header_primary": "18181B",
+      "hover": "FAFAFA"
     },
     "InterviewCoder Dark": {
-      "primary": "F5F5F5",
-      "secondary": "171717",
+      "primary": "FAFAFA",
+      "secondary": "09090B",
       "tertiary": "EFCC3A",
       "tertiary-med-or-tertiary": "EFCC3A",
-      "selected": "422006",
-      "header_background": "262626",
-      "header_primary": "F5F5F5",
-      "hover": "3D3D3D"
+      "selected": "27272A",
+      "header_background": "18181B",
+      "header_primary": "FAFAFA",
+      "hover": "27272A"
     }
   },
   "theme_site_settings": {
