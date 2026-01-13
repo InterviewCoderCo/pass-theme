@@ -54,6 +54,20 @@ body {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// LEFT ALIGNMENT - Override margin-inline: auto
+// ─────────────────────────────────────────────────────────────────────────────
+#main-outlet {
+  margin-inline: 0 !important;
+  margin-left: 0 !important;
+}
+
+.list-controls,
+.list-container {
+  margin-inline: 0 !important;
+  margin-left: 0 !important;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // HEADER & SIDEBAR - Light gray background
 // ─────────────────────────────────────────────────────────────────────────────
 
