@@ -829,39 +829,39 @@ label {
     background: light-dark(#FFFFFF, #1E293B) !important;
     border-radius: 12px;
     border: none !important;
-    padding: 32px 40px !important;
-    margin: 0 0 24px 0 !important;
+    padding: 24px 28px !important;
+    margin: 0 0 20px 0 !important;
     box-shadow:
       0 1px 2px rgba(0, 0, 0, 0.04),
-      0 4px 16px rgba(0, 0, 0, 0.06),
-      0 12px 32px rgba(0, 0, 0, 0.04) !important;
-    transition: box-shadow 300ms ease, transform 300ms ease;
+      0 4px 12px rgba(0, 0, 0, 0.05),
+      0 8px 24px rgba(0, 0, 0, 0.03) !important;
+    transition: box-shadow 300ms ease;
 
     &:hover {
       box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.04),
-        0 8px 24px rgba(0, 0, 0, 0.08),
-        0 16px 40px rgba(0, 0, 0, 0.06) !important;
+        0 1px 3px rgba(0, 0, 0, 0.04),
+        0 6px 16px rgba(0, 0, 0, 0.06),
+        0 12px 28px rgba(0, 0, 0, 0.04) !important;
     }
   }
 
-  // Title - Airbnb style (clean, bold)
+  // Title - clean, readable
   &__title {
-    font-size: 26px !important;
+    font-size: 22px !important;
     font-weight: 600 !important;
     color: light-dark(#0F172A, #F8FAFC) !important;
     letter-spacing: -0.02em;
-    margin: 0 0 4px 0 !important;
-    // Remove gradient, use solid color
+    margin: 0 0 2px 0 !important;
     background: none !important;
     -webkit-text-fill-color: light-dark(#0F172A, #F8FAFC) !important;
   }
 
   // Subheader text
   &__subheader {
-    font-size: 15px;
+    font-size: 14px;
     color: light-dark(#64748B, #94A3B8);
-    margin-top: 4px;
+    margin-top: 2px;
+    margin-bottom: 16px;
     font-weight: 400;
   }
 
@@ -877,33 +877,27 @@ label {
   .search-menu-container {
     .search-input {
       border: 1px solid light-dark(#E2E8F0, #334155) !important;
-      border-radius: 40px !important;
-      background: light-dark(#FFFFFF, #1E293B) !important;
-      padding: 16px 24px !important;
-      font-size: 15px;
-      box-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.04),
-        0 4px 12px rgba(0, 0, 0, 0.05) !important;
-      transition: all 250ms ease;
+      border-radius: 24px !important;
+      background: light-dark(#F8FAFC, #0F172A) !important;
+      padding: 10px 18px !important;
+      font-size: 14px;
+      box-shadow: none !important;
+      transition: all 200ms ease;
 
       &::placeholder {
         color: light-dark(#94A3B8, #64748B);
       }
 
       &:hover {
-        box-shadow:
-          0 2px 4px rgba(0, 0, 0, 0.06),
-          0 8px 24px rgba(0, 0, 0, 0.1) !important;
-        transform: translateY(-1px);
+        border-color: light-dark(#CBD5E1, #475569) !important;
+        background: light-dark(#FFFFFF, #1E293B) !important;
       }
 
       &:focus,
       &:focus-within {
-        border-color: light-dark(#CBD5E1, #475569) !important;
-        box-shadow:
-          0 2px 4px rgba(0, 0, 0, 0.06),
-          0 12px 32px rgba(0, 0, 0, 0.12) !important;
-        transform: translateY(-2px);
+        border-color: var(--tertiary) !important;
+        background: light-dark(#FFFFFF, #1E293B) !important;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12) !important;
         outline: none !important;
       }
 
@@ -920,8 +914,8 @@ label {
         border: none !important;
         background: transparent !important;
         box-shadow: none !important;
-        padding-left: 8px !important;
-        font-size: 15px;
+        padding-left: 4px !important;
+        font-size: 14px;
         outline: none !important;
 
         &::placeholder {
@@ -935,10 +929,10 @@ label {
         }
       }
 
-      // Filter button - pill style
+      // Filter button - compact pill
       .search-input-filter-btn {
-        border-radius: 20px;
-        padding: 8px 12px;
+        border-radius: 16px;
+        padding: 6px 10px;
         background: light-dark(#F1F5F9, #334155);
         transition: all 150ms ease;
 
@@ -948,6 +942,8 @@ label {
 
         .d-icon {
           color: light-dark(#64748B, #94A3B8);
+          width: 14px;
+          height: 14px;
         }
       }
     }
