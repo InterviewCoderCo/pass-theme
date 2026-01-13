@@ -141,3 +141,123 @@ h1, h2, h3, h4, h5, h6,
   border-top: 1px solid light-dark(#E4E4E7, #27272A);
   padding-top: 8px;
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// BUTTONS - Modern, polished
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Base button styles
+.btn {
+  border-radius: 8px !important;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 16px;
+  transition: all 150ms ease;
+  border: none;
+
+  // Subtle lift on hover
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  // Icon spacing
+  .d-icon {
+    margin-right: 6px;
+  }
+}
+
+// Primary button - Yellow
+.btn-primary,
+.btn.btn-primary {
+  background: var(--tertiary) !important;
+  color: #18181B !important;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  &:hover,
+  &:focus {
+    background: var(--tertiary) !important;
+    filter: brightness(1.05);
+    box-shadow: 0 4px 12px rgba(239, 204, 58, 0.3);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// Secondary/Default button
+.btn-default,
+.btn.btn-default {
+  background: light-dark(#FFFFFF, #27272A) !important;
+  color: light-dark(#18181B, #FAFAFA) !important;
+  border: 1px solid light-dark(#E4E4E7, #3F3F46) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+
+  &:hover,
+  &:focus {
+    background: light-dark(#F4F4F5, #3F3F46) !important;
+    border-color: light-dark(#D4D4D8, #52525B) !important;
+  }
+}
+
+// Flat/Transparent button
+.btn-flat,
+.btn.btn-flat {
+  background: transparent !important;
+  color: light-dark(#52525B, #A1A1AA) !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  &:hover,
+  &:focus {
+    background: light-dark(#F4F4F5, #27272A) !important;
+    color: light-dark(#18181B, #FAFAFA) !important;
+    transform: none;
+  }
+}
+
+// Danger button
+.btn-danger,
+.btn.btn-danger {
+  background: #DC2626 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+
+  &:hover,
+  &:focus {
+    background: #B91C1C !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+  }
+}
+
+// Icon-only buttons
+.btn-icon,
+.btn.btn-icon,
+.btn.no-text {
+  padding: 8px !important;
+
+  .d-icon {
+    margin: 0;
+  }
+}
+
+// Small buttons
+.btn-small,
+.btn.btn-small {
+  font-size: 13px;
+  padding: 6px 12px;
+}
+
+// Large buttons
+.btn-large,
+.btn.btn-large {
+  font-size: 15px;
+  padding: 12px 24px;
+}
