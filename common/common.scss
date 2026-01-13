@@ -880,11 +880,9 @@ label {
         outline: none !important;
       }
 
-      // Search icon
+      // Search icon - hidden
       .d-icon-search {
-        color: light-dark(#94A3B8, #64748B);
-        width: 18px;
-        height: 18px;
+        display: none;
       }
 
       // Filter button
