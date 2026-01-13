@@ -13,11 +13,21 @@
   margin-bottom: 0;
 
   .navigation-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
     gap: 12px;
     align-items: center;
 
-    .category-breadcrumb {
+    // Nav pills (Latest, Hot, Categories) - right side
+    .nav-pills {
       order: 1;
+      margin-left: auto;
+    }
+
+    // Filter buttons (categories, tags) - left side
+    .category-breadcrumb {
+      order: 0;
     }
   }
 
