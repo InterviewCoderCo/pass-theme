@@ -263,24 +263,37 @@ h1, h2, h3, h4, h5, h6,
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TOPIC LIST - Clean, modern cards
+// TOPIC LIST - Airbnb DLS Cards
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Topic cards
+// Topic cards - Airbnb style (elevated, shadow-based)
 .topic-list-body .topic-list-item {
-  transition: border-color 150ms ease, box-shadow 150ms ease;
-  border-color: light-dark(#E2E8F0, #1E293B) !important;
+  background: light-dark(#FFFFFF, #1E293B) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  margin-bottom: 12px !important;
+  padding: 16px 20px !important;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.03) !important;
+  transition: box-shadow 300ms ease, transform 300ms ease;
 
-  // Hover - blue border
+  // Hover - enhanced shadow depth
   &:hover {
-    border-color: var(--tertiary) !important;
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.04),
+      0 8px 24px rgba(0, 0, 0, 0.1),
+      0 16px 32px rgba(0, 0, 0, 0.06) !important;
+    transform: translateY(-2px);
   }
 
-  // Selected state
+  // Selected state - subtle highlight
   &.selected {
-    border-color: var(--tertiary) !important;
-    box-shadow: 0 0 0 2px var(--tertiary), 0 4px 12px rgba(37, 99, 235, 0.15);
+    box-shadow:
+      0 0 0 2px var(--tertiary),
+      0 4px 16px rgba(37, 99, 235, 0.15),
+      0 8px 24px rgba(0, 0, 0, 0.08) !important;
   }
 }
 
@@ -315,14 +328,9 @@ h1, h2, h3, h4, h5, h6,
   color: light-dark(#64748B, #64748B);
 }
 
-// Avatar in topic list
+// Avatar in topic list - Airbnb style
 .topic-list-item .topic-creator-data .avatar {
-  border-radius: 8px;
-  transition: transform 150ms ease;
-
-  &:hover {
-    transform: scale(1.1);
-  }
+  border-radius: 10px;
 }
 
 // Replies count
@@ -1016,25 +1024,15 @@ label {
 
 // Topic list body - card container
 .topic-list-body {
-  // Already styled in topic-cards.scss
-  // Add subtle background for card area
+  // Cards are styled individually with Airbnb DLS
+  display: flex;
+  flex-direction: column;
+  gap: 0; // Gap handled by margin-bottom on cards
 }
 
-// Enhanced topic cards
-.topic-list-body .topic-list-item {
-  background: light-dark(#FFFFFF, #0F172A);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-
-  // Hover - lift effect
-  &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transform: translateY(-1px);
-  }
-
-  // First card - no top margin
-  &:first-child {
-    margin-top: 0;
-  }
+// Topic card - first card no extra top margin
+.topic-list-body .topic-list-item:first-child {
+  margin-top: 0;
 }
 
 // Topic title - better typography
@@ -1070,31 +1068,30 @@ label {
   font-weight: 450;
 }
 
-// Creator avatar
+// Creator avatar - Airbnb style (clean, subtle)
 .topic-list-item .topic-creator-data {
   .avatar {
-    border-radius: 8px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-    transition: transform 150ms ease, box-shadow 150ms ease;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 300ms ease;
 
     &:hover {
-      transform: scale(1.08);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
     }
   }
 }
 
-// Category badge in cards
+// Category badge in cards - Airbnb style (clean pill)
 .topic-list-item .topic-category-data {
   .badge-category__wrapper {
-    border-radius: 6px;
-    padding: 4px 10px;
+    border-radius: 8px;
+    padding: 5px 12px;
     font-size: 12px;
     font-weight: 500;
-    transition: transform 150ms ease;
+    transition: opacity 300ms ease;
 
     &:hover {
-      transform: translateY(-1px);
+      opacity: 0.85;
     }
   }
 }
@@ -1118,22 +1115,24 @@ label {
   }
 }
 
-// Replies/likes count
+// Replies/likes count - Airbnb style (subtle chip)
 .topic-list-item .topic-likes-replies-data {
   .topic-replies {
     font-size: 13px;
-    color: light-dark(#64748B, #64748B);
-    padding: 4px 8px;
-    border-radius: 6px;
-    background: light-dark(#F1F5F9, #1E293B);
-    transition: background 150ms ease;
+    color: light-dark(#64748B, #94A3B8);
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: light-dark(#F8FAFC, #0F172A);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition: background 300ms ease, box-shadow 300ms ease;
 
     &:hover {
-      background: light-dark(#E2E8F0, #334155);
+      background: light-dark(#F1F5F9, #1E293B);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
     }
 
     .d-icon {
-      color: light-dark(#94A3B8, #475569);
+      color: light-dark(#94A3B8, #64748B);
       width: 14px;
       height: 14px;
     }
@@ -1183,24 +1182,27 @@ label {
   background: light-dark(#CBD5E1, #475569);
 }
 
-// Last visit separator
+// Last visit separator - Airbnb style (clean divider)
 .topic-list > .topic-list-body > .topic-list-item.last-visit {
-  border-bottom-color: var(--tertiary);
+  position: relative;
+  margin-bottom: 28px !important;
 
   &::after {
-    content: "Previously viewed";
+    content: "New since last visit";
     position: absolute;
-    bottom: -12px;
+    bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 11px;
     font-weight: 500;
-    color: var(--tertiary);
-    background: var(--secondary);
-    padding: 2px 12px;
-    border-radius: 4px;
+    color: light-dark(#64748B, #94A3B8);
+    background: light-dark(#F1F5F9, #1E293B);
+    padding: 4px 16px;
+    border-radius: 9999px;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
     z-index: 1;
   }
 }
