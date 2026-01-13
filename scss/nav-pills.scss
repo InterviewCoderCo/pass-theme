@@ -108,24 +108,22 @@
   padding: 8px;
   border-bottom: 1px solid light-dark(#E2E8F0, #334155);
 
-  input.filter-input {
+  input.filter-input,
+  input.filter-input:focus,
+  input.filter-input:active,
+  input.filter-input:focus-visible {
     width: 100%;
     padding: 8px 12px;
     font-size: 14px;
-    border: 1px solid #E2E8F0;
+    border: 1px solid #E2E8F0 !important;
     border-radius: 8px;
-    background: #FFFFFF;
+    background: #FFFFFF !important;
     color: #0F172A;
-    outline: none;
-    transition: border-color 150ms ease, box-shadow 150ms ease;
+    outline: none !important;
+    box-shadow: none !important;
 
     &::placeholder {
       color: #94A3B8;
-    }
-
-    &:focus {
-      border-color: #E2E8F0;
-      box-shadow: none;
     }
   }
 }
@@ -155,8 +153,16 @@
 
 // Keep border color consistent when expanded (global override)
 .category-breadcrumb .select-kit.is-expanded .select-kit-header,
-.category-breadcrumb .combo-box.is-expanded .combo-box-header {
+.category-breadcrumb .combo-box.is-expanded .combo-box-header,
+.category-breadcrumb .select-kit .select-kit-header:focus,
+.category-breadcrumb .select-kit .select-kit-header:active,
+.category-breadcrumb .select-kit .select-kit-header:focus-visible,
+.category-breadcrumb .combo-box .combo-box-header:focus,
+.category-breadcrumb .combo-box .combo-box-header:active,
+.category-breadcrumb .combo-box .combo-box-header:focus-visible {
   border-color: #E2E8F0 !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
