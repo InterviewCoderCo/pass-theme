@@ -33,19 +33,19 @@
     order: 0 !important;
   }
 
-  // Filter dropdowns - Figma pill style (gray bg, white on hover)
+  // Filter dropdowns - Figma pill style (white bg like topic cards)
   .combo-box .combo-box-header {
-    background: transparent;
+    background: #FFFFFF;
     border-radius: 20px;
-    border: 1px solid #CBD5E1;
+    border: 1px solid #E2E8F0;
     padding: 8px 16px;
     font-size: 14px;
     font-weight: 500;
-    transition: border-color 150ms ease, background 150ms ease;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
 
     &:hover {
-      border-color: #94A3B8;
-      background: #FFFFFF;
+      border-color: #CBD5E1;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
     }
 
     &:focus-visible {
@@ -66,7 +66,7 @@
   }
 }
 
-// Category breadcrumb - pill buttons (transparent bg)
+// Category breadcrumb - pill buttons (white bg like topic cards)
 .category-breadcrumb {
   display: flex;
   gap: 8px;
@@ -75,13 +75,14 @@
     .combo-box .combo-box-header,
     .category-drop-header {
       border-radius: 20px !important;
-      border: 1px solid #CBD5E1 !important;
+      border: 1px solid #E2E8F0 !important;
       padding: 8px 16px !important;
-      background: transparent !important;
+      background: #FFFFFF !important;
       font-weight: 500;
 
       &:hover {
-        background: #FFFFFF !important;
+        border-color: #CBD5E1 !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
       }
     }
   }
