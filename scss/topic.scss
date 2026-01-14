@@ -168,33 +168,39 @@ nav.post-controls .actions button {
 // ─────────────────────────────────────────────────────────────────────────────
 // TOPIC FOOTER BUTTONS - Single row layout
 // ─────────────────────────────────────────────────────────────────────────────
-#topic-footer-buttons {
+
+// Hide the explanation text for pinned and notifications buttons
+.pinned-button .reason .text,
+.topic-notifications-button .reason .text,
+.notifications-button-footer .reason .text {
+  display: none !important;
+}
+
+// Make the reason paragraph inline
+.pinned-button .reason,
+.topic-notifications-button .reason,
+.notifications-button-footer .reason {
+  display: inline !important;
+  margin: 0 !important;
+}
+
+// Make the button containers inline
+.pinned-button,
+.topic-notifications-button,
+.notifications-button-footer {
+  display: inline !important;
+}
+
+// Main footer buttons container - flex row
+div#topic-footer-buttons {
   display: flex !important;
-  flex-wrap: wrap !important;
+  flex-flow: row wrap !important;
   align-items: center !important;
   gap: 8px !important;
+}
 
-  // Main buttons container
-  .topic-footer-main-buttons {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
-
-  // Pinned and notifications buttons - make them inline
-  .pinned-button,
-  .topic-notifications-button {
-    display: inline-block !important;
-
-    // The paragraph wrapper - make it inline and hide the text
-    p.reason {
-      display: inline !important;
-      margin: 0 !important;
-
-      // Hide the explanation text completely
-      > .text {
-        display: none !important;
-      }
-    }
-  }
+div#topic-footer-buttons > .topic-footer-main-buttons {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
 }
