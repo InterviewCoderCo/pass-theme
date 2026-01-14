@@ -204,3 +204,88 @@ div#topic-footer-buttons > .topic-footer-main-buttons {
   align-items: center !important;
   gap: 8px !important;
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TOPIC FOOTER BUTTONS - Figma style (outline buttons)
+// ─────────────────────────────────────────────────────────────────────────────
+#topic-footer-buttons {
+  .topic-footer-button {
+    background: transparent !important;
+    border: 1px solid var(--primary-300) !important;
+    border-radius: 8px !important;
+    color: var(--tertiary) !important;
+    font-weight: 500 !important;
+    padding: 8px 16px !important;
+    transition: all 0.15s ease !important;
+
+    .d-icon {
+      color: var(--tertiary) !important;
+    }
+
+    .d-button-label {
+      color: var(--primary) !important;
+    }
+
+    &:hover {
+      background: var(--tertiary-50, rgba(37, 99, 235, 0.05)) !important;
+      border-color: var(--tertiary) !important;
+    }
+
+    // Reply button - outline style like Figma (not filled)
+    &.btn-primary,
+    &.create {
+      background: transparent !important;
+      border: 1px solid var(--primary-300) !important;
+      color: var(--tertiary) !important;
+
+      .d-icon {
+        color: var(--tertiary) !important;
+      }
+
+      .d-button-label {
+        color: var(--primary) !important;
+      }
+
+      &:hover {
+        background: var(--tertiary-50, rgba(37, 99, 235, 0.05)) !important;
+        border-color: var(--tertiary) !important;
+      }
+    }
+  }
+
+  // Admin wrench button (icon only)
+  .topic-admin-menu-trigger {
+    background: transparent !important;
+    border: 1px solid var(--primary-300) !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+
+    .d-icon {
+      color: var(--tertiary) !important;
+    }
+
+    &:hover {
+      background: var(--tertiary-50, rgba(37, 99, 235, 0.05)) !important;
+      border-color: var(--tertiary) !important;
+    }
+  }
+
+  // Pinned and Tracking dropdown buttons
+  .pinned-options-trigger,
+  .notifications-tracking-trigger {
+    background: transparent !important;
+    border: 1px solid var(--primary-300) !important;
+    border-radius: 8px !important;
+    color: var(--primary) !important;
+    padding: 8px 12px !important;
+
+    .d-icon {
+      color: var(--tertiary) !important;
+    }
+
+    &:hover {
+      background: var(--tertiary-50, rgba(37, 99, 235, 0.05)) !important;
+      border-color: var(--tertiary) !important;
+    }
+  }
+}
