@@ -4,6 +4,63 @@
   --d-post-control-background--hover: var(--d-hover);
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// TOPIC PAGE - Transparent background & left alignment
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Make all topic page containers transparent
+body.archetype-regular,
+body.archetype-private_message {
+  #main-outlet,
+  #main-outlet-wrapper,
+  .container.posts,
+  .post-stream,
+  .topic-post,
+  .topic-body,
+  .topic-area,
+  .topic-map,
+  .more-topics__container {
+    background: transparent !important;
+  }
+
+  // Left align the topic content - remove centering
+  #main-outlet {
+    margin-inline: 0 !important;
+    margin-left: 0 !important;
+    max-width: none !important;
+  }
+
+  .container.posts {
+    margin-inline: 0 !important;
+    margin-left: 0 !important;
+    max-width: none !important;
+  }
+
+  // Topic title area
+  #topic-title {
+    margin-inline: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  // Post stream - left align
+  .post-stream {
+    margin-inline: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  // Topic footer buttons
+  .topic-footer-main-buttons {
+    margin-inline: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  // More topics section
+  .more-topics__container {
+    margin-inline: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
 .post-stream {
   .contents {
     font-size: var(--font-up-1);
