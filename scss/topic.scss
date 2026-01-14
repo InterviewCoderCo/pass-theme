@@ -164,3 +164,37 @@ nav.post-controls .actions button {
 .archetype-private_message {
   --pm-border-radius: var(--d-border-radius);
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TOPIC FOOTER BUTTONS - Single row layout
+// ─────────────────────────────────────────────────────────────────────────────
+#topic-footer-buttons {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+
+  // Main buttons container
+  .topic-footer-main-buttons {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  // Pinned and notifications buttons - make them inline
+  .pinned-button,
+  .topic-notifications-button {
+    display: inline-block !important;
+
+    // The paragraph wrapper - make it inline and hide the text
+    p.reason {
+      display: inline !important;
+      margin: 0 !important;
+
+      // Hide the explanation text completely
+      > .text {
+        display: none !important;
+      }
+    }
+  }
+}
