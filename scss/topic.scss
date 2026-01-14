@@ -32,6 +32,8 @@
   border-radius: 12px !important;
   padding: 24px !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+  border: none !important;
+  border-top: none !important;
 }
 
 // Individual posts inside the stream
@@ -39,6 +41,8 @@
 article.boxed,
 .topic-body {
   background: transparent !important;
+  border: none !important;
+  border-top: none !important;
 }
 
 .post-stream {
