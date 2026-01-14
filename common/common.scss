@@ -1495,6 +1495,7 @@ label {
   border-radius: 16px;
   padding: 20px;
   color: #F8FAFC;
+  overflow: hidden; // Prevent button overflow
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.08),
     0 4px 16px rgba(0, 0, 0, 0.3);
