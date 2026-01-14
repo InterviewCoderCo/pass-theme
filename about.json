@@ -11,7 +11,10 @@
   },
   "modifiers": {
     "svg_icons": [
-      "fire"
+      "fire",
+      "far-bookmark",
+      "far-flag",
+      "far-bell"
     ],
     "serialize_topic_is_hot": true
   },
