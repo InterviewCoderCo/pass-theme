@@ -3,4 +3,8 @@
   <symbol id="custom-topics" viewBox="0 0 20 20">
     <path d="M7.29167 3.125L5.625 16.875M14.375 3.125L12.7083 16.875M3.125 6.45833H16.875M16.875 13.5417H3.125" stroke="currentColor" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="custom-messages" viewBox="0 0 20 20">
+    <path d="M4.3763 6.45801H12.293C13.4436 6.45801 14.3763 7.39075 14.3763 8.54134V13.1247C14.3763 14.2753 13.4436 15.208 12.293 15.208H8.75134L5.0013 17.2913V15.208H4.3763C3.22571 15.208 2.29297 14.2753 2.29297 13.1247V8.54134C2.29297 7.39075 3.22571 6.45801 4.3763 6.45801Z" stroke="currentColor" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.3739 11.875H15.6257C16.7763 11.875 17.709 10.9422 17.709 9.79167V5.20833C17.709 4.05774 16.7763 3.125 15.6257 3.125H7.91732C6.76673 3.125 5.83398 4.05774 5.83398 5.20833V6.45833" stroke="currentColor" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
 </svg>
