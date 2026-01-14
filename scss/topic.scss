@@ -4,6 +4,42 @@
   --d-post-control-background--hover: var(--d-hover);
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// TOPIC PAGE - Transparent background & left alignment
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Target the topic detail page specifically
+.regular.ember-view,
+#topic-title,
+#topic-title.container,
+.container.posts,
+.topic-area,
+#topic,
+.posts-wrapper,
+.post-stream,
+.topic-post,
+article.boxed,
+.topic-body,
+.topic-map,
+.more-topics__container,
+.more-topics__lists,
+.more-topics__list,
+#topic-footer-buttons,
+.topic-footer-main-buttons {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+// Left align - remove centering margins
+#topic-title.container,
+.container.posts,
+.topic-footer-main-buttons,
+.more-topics__container {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  margin-inline: 0 auto !important;
+}
+
 .post-stream {
   .contents {
     font-size: var(--font-up-1);
