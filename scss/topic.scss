@@ -30,14 +30,18 @@ article.boxed,
   background-color: transparent !important;
 }
 
-// Left align - remove centering margins
+// Left align - remove centering margins (same approach as topic home page)
 #topic-title.container,
 .container.posts,
 .topic-footer-main-buttons,
-.more-topics__container {
+.more-topics__container,
+.topic-area,
+.posts-wrapper,
+.row {
+  margin-inline: 0 !important;
   margin-left: 0 !important;
-  margin-right: auto !important;
-  margin-inline: 0 auto !important;
+  max-width: none !important;
+  width: 100% !important;
 }
 
 .post-stream {
