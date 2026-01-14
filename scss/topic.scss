@@ -63,7 +63,7 @@ article.boxed,
     .timeline-scroller {
       @include viewport.from(lg) {
         margin-left: -4.5px;
-        background: var(--d-content-background);
+        background: transparent;
         height: 40px !important; // height is coming from element style have no other choice
       }
 
