@@ -10,7 +10,8 @@
   },
   "modifiers": {
     "svg_icons": [
-      "fire"
+      "fire",
+      "custom-topics"
     ],
     "serialize_topic_is_hot": true
   },
