@@ -302,3 +302,16 @@ div#topic-footer-buttons > .topic-footer-main-buttons {
     }
   }
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// BLOCKQUOTES - Light subtle style
+// ─────────────────────────────────────────────────────────────────────────────
+.cooked blockquote,
+.post-stream blockquote {
+  background: #F8FAFC !important;
+  border-left: 3px solid var(--tertiary) !important;
+  border-radius: 0 8px 8px 0 !important;
+  padding: 12px 16px !important;
+  margin: 16px 0 !important;
+  color: var(--primary) !important;
+}
