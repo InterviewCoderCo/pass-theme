@@ -1495,7 +1495,9 @@ label {
   border-radius: 16px;
   padding: 20px;
   color: #F8FAFC;
-  overflow: hidden; // Prevent button overflow
+  display: flex;
+  flex-direction: column;
+  align-items: center; // Center all children horizontally
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.08),
     0 4px 16px rgba(0, 0, 0, 0.3);
@@ -1551,6 +1553,7 @@ label {
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
+    width: 100%; // Full width within card
   }
 
   &__feature {
@@ -1600,21 +1603,20 @@ label {
   }
 
   &__cta {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    width: calc(100% + 40px); // Extend to card edges (compensate for card padding)
-    margin: 0 -20px -20px -20px; // Pull to card edges
-    padding: 16px 20px;
+    gap: 6px;
+    margin: 0 auto; // Center the button
+    padding: 10px 24px;
     background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
     color: #1F2937;
-    font-size: 14px;
-    font-weight: 700;
-    border-radius: 0 0 16px 16px; // Match card bottom corners
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 24px;
     text-decoration: none;
     transition: all 200ms ease;
-    box-shadow: none;
+    white-space: nowrap;
 
     &:hover {
       background: linear-gradient(135deg, #FCD34D 0%, #FBBF24 100%);
@@ -1623,6 +1625,8 @@ label {
 
     svg {
       flex-shrink: 0;
+      width: 14px;
+      height: 14px;
     }
   }
 }
