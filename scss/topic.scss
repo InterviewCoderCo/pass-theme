@@ -229,6 +229,7 @@ div#topic-footer-buttons > .topic-footer-main-buttons {
     // Active/selected state - both icon and text change color
     &.active,
     &.is-active,
+    &.bookmarked,
     &[aria-pressed="true"] {
       .d-icon {
         color: var(--tertiary) !important;
