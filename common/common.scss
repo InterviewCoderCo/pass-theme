@@ -53,6 +53,43 @@ body {
   background: transparent !important;
 }
 
+// All page containers - transparent backgrounds
+// This ensures the #E9F0F7 page background shows through on all pages
+.contents,
+#list-area,
+.container,
+.full-width,
+.wrap,
+.user-main,
+.user-content,
+.user-primary-navigation,
+.user-secondary-navigation,
+.user-content-wrapper,
+.group-page,
+.groups-page,
+.tag-page,
+.tags-page,
+.category-page,
+.categories-page,
+.search-container,
+.search-results,
+.d-topic,
+.topic-area,
+.post-stream,
+.topic-post,
+.admin-contents,
+.admin-container,
+.badges-page,
+.about-page,
+.faq-page,
+.privacy-page,
+.tos-page,
+.login-page,
+.invites-page,
+.preferences-page {
+  background: transparent !important;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // LEFT ALIGNMENT - Override margin-inline: auto
 // ─────────────────────────────────────────────────────────────────────────────
