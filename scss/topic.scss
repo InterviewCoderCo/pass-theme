@@ -210,7 +210,7 @@ div#topic-footer-buttons > .topic-footer-main-buttons {
 // ─────────────────────────────────────────────────────────────────────────────
 #topic-footer-buttons {
   .topic-footer-button {
-    background: transparent !important;
+    background: #FFFFFF !important;
     border: 1px solid var(--primary-300) !important;
     border-radius: 8px !important;
     color: var(--tertiary) !important;
@@ -234,7 +234,7 @@ div#topic-footer-buttons > .topic-footer-main-buttons {
     // Reply button - outline style like Figma (not filled)
     &.btn-primary,
     &.create {
-      background: transparent !important;
+      background: #FFFFFF !important;
       border: 1px solid var(--primary-300) !important;
       color: var(--tertiary) !important;
 
@@ -255,7 +255,7 @@ div#topic-footer-buttons > .topic-footer-main-buttons {
 
   // Admin wrench button (icon only)
   .topic-admin-menu-trigger {
-    background: transparent !important;
+    background: #FFFFFF !important;
     border: 1px solid var(--primary-300) !important;
     border-radius: 8px !important;
     padding: 8px !important;
@@ -273,7 +273,7 @@ div#topic-footer-buttons > .topic-footer-main-buttons {
   // Pinned and Tracking dropdown buttons
   .pinned-options-trigger,
   .notifications-tracking-trigger {
-    background: transparent !important;
+    background: #FFFFFF !important;
     border: 1px solid var(--primary-300) !important;
     border-radius: 8px !important;
     color: var(--primary) !important;
