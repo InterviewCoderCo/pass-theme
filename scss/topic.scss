@@ -226,6 +226,18 @@ div#topic-footer-buttons > .topic-footer-main-buttons {
       color: var(--primary) !important;
     }
 
+    // Active/selected state - both icon and text change color
+    &.active,
+    &.is-active,
+    &[aria-pressed="true"] {
+      .d-icon {
+        color: var(--tertiary) !important;
+      }
+      .d-button-label {
+        color: var(--tertiary) !important;
+      }
+    }
+
     &:hover {
       background: var(--tertiary-50, rgba(37, 99, 235, 0.05)) !important;
       border-color: var(--tertiary) !important;
