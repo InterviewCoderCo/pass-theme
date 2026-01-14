@@ -98,11 +98,11 @@ body {
   margin-left: 0 !important;
 }
 
-// Override main.scss which sets max-width: 1000px and margin-inline: auto on #main-outlet > *
+// Override main.scss centering - keep max-width but align left
 #main-outlet > * {
-  max-width: none !important;
   margin-inline: 0 !important;
   margin-left: 0 !important;
+  margin-right: auto !important;
 }
 
 .list-controls,
