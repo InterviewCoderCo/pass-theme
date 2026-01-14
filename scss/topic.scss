@@ -8,7 +8,7 @@
 // TOPIC PAGE - Transparent background & left alignment
 // ─────────────────────────────────────────────────────────────────────────────
 
-// Target the topic detail page specifically
+// Target the topic detail page specifically - transparent backgrounds for outer containers
 .regular.ember-view,
 #topic-title,
 #topic-title.container,
@@ -16,10 +16,6 @@
 .topic-area,
 #topic,
 .posts-wrapper,
-.post-stream,
-.topic-post,
-article.boxed,
-.topic-body,
 .topic-map,
 .more-topics__container,
 .more-topics__lists,
@@ -28,6 +24,21 @@ article.boxed,
 .topic-footer-main-buttons {
   background: transparent !important;
   background-color: transparent !important;
+}
+
+// Post stream - white card background (Figma design)
+.post-stream {
+  background: #FFFFFF !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+// Individual posts inside the stream
+.topic-post,
+article.boxed,
+.topic-body {
+  background: transparent !important;
 }
 
 .post-stream {
