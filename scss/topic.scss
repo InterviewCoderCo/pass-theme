@@ -33,16 +33,17 @@
   padding: 24px !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
   border: none !important;
-  border-top: none !important;
 }
 
-// Individual posts inside the stream
+// Individual posts inside the stream - remove all borders
 .topic-post,
 article.boxed,
-.topic-body {
+.topic-body,
+.topic-avatar,
+.post-avatar {
   background: transparent !important;
   border: none !important;
-  border-top: none !important;
+  border-left: none !important;
 }
 
 .post-stream {
