@@ -30,35 +30,14 @@ article.boxed,
   background-color: transparent !important;
 }
 
-// Left align - remove centering margins (same approach as topic home page)
-// Target body.archetype-regular for topic detail pages
+// Left align - remove centering margins
+// Override main.scss which sets max-width: 1000px and margin-inline: auto on #main-outlet > *
 body.archetype-regular,
 body.archetype-private_message {
-  #main-outlet {
-    margin-inline: 0 !important;
-    margin-left: 0 !important;
+  #main-outlet > * {
     max-width: none !important;
-  }
-
-  #main-outlet-wrapper {
     margin-inline: 0 !important;
     margin-left: 0 !important;
-    justify-content: flex-start !important;
-  }
-
-  .container,
-  #topic-title.container,
-  .container.posts,
-  .topic-footer-main-buttons,
-  .more-topics__container,
-  .topic-area,
-  .posts-wrapper,
-  .row,
-  #topic-footer-buttons {
-    margin-inline: 0 !important;
-    margin-left: 0 !important;
-    margin-right: auto !important;
-    max-width: none !important;
   }
 }
 
