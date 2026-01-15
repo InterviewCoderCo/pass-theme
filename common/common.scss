@@ -2014,11 +2014,29 @@ label {
         margin: 0;
         min-width: 0;
         overflow: hidden;
+        border-radius: 8px !important;
+
+        // Reset all stat-specific classes to ensure consistent border-radius
+        &.stats-likes-given,
+        &.stats-likes-received,
+        &.stats-days-visited,
+        &.stats-time-read,
+        &.stats-topics-viewed,
+        &.stats-posts-read,
+        &.stats-topics-created,
+        &.stats-posts-created {
+          border-radius: 8px !important;
+
+          .user-stat {
+            border-radius: 8px !important;
+          }
+        }
 
         a {
           text-decoration: none;
           display: block;
           width: 100%;
+          border-radius: 8px !important;
 
           &:hover .user-stat {
             background: #f0f4f8;
@@ -2029,7 +2047,7 @@ label {
 
     .user-stat {
       background: #FFFFFF;
-      border-radius: 8px;
+      border-radius: 8px !important;
       padding: 12px;
       text-align: center;
       transition: background 0.15s ease;
@@ -2041,6 +2059,13 @@ label {
       justify-content: center;
       align-items: center;
       overflow: hidden;
+
+      // Reset any Discourse core border-radius overrides
+      &,
+      &:first-child,
+      &:last-child {
+        border-radius: 8px !important;
+      }
 
       .value {
         display: block;
