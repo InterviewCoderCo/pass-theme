@@ -1756,7 +1756,6 @@ label {
 
 // Primary navigation (Summary, Activity, Notifications, etc.)
 .user-navigation-primary {
-  border-bottom: 1px solid var(--primary-200);
   margin-bottom: 0;
 
   .nav-pills {
@@ -1771,7 +1770,6 @@ label {
         color: var(--primary-600);
         font-weight: 500;
         font-size: 14px;
-        border-bottom: 2px solid transparent;
         border-radius: 0;
         background: transparent !important;
 
@@ -1792,7 +1790,6 @@ label {
 
         &.active {
           color: var(--tertiary);
-          border-bottom-color: var(--tertiary);
           background: transparent !important;
 
           .d-icon {
@@ -1810,7 +1807,6 @@ label {
   border-radius: 0;
   padding: 0;
   margin-top: 16px;
-  border-bottom: 1px solid var(--primary-200);
 
   .nav-pills {
     gap: 0;
@@ -1824,7 +1820,6 @@ label {
         color: var(--primary-500);
         font-weight: 500;
         font-size: 14px;
-        border-bottom: 2px solid transparent;
         border-radius: 0;
         background: transparent !important;
 
@@ -1845,7 +1840,6 @@ label {
 
         &.active {
           color: var(--tertiary);
-          border-bottom-color: var(--tertiary);
           background: transparent !important;
 
           .d-icon {
