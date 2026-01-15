@@ -2564,6 +2564,12 @@ body.user-messages-page {
         all: unset !important;
         display: block !important;
 
+        // Remove underline indicator
+        &[aria-current="location"]::after,
+        &::after {
+          display: none !important;
+        }
+
         a {
           all: unset !important;
           display: flex !important;
@@ -2577,6 +2583,14 @@ body.user-messages-page {
           cursor: pointer !important;
           transition: all 0.2s ease !important;
           white-space: nowrap !important;
+          border-bottom: none !important;
+          text-decoration: none !important;
+
+          // Remove any underline pseudo-elements
+          &::before,
+          &::after {
+            display: none !important;
+          }
 
           .d-icon {
             width: 14px !important;
@@ -2599,6 +2613,12 @@ body.user-messages-page {
             color: #0F172A !important;
             font-weight: 600 !important;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+            border-bottom: none !important;
+
+            &::before,
+            &::after {
+              display: none !important;
+            }
 
             .d-icon {
               color: var(--tertiary) !important;
