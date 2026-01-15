@@ -1678,3 +1678,299 @@ label {
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// USER PROFILE PAGE - My Posts / Activity styling
+// ─────────────────────────────────────────────────────────────────────────────
+
+// User profile header section
+.user-main {
+  .collapsed-info.about {
+    padding: 0 0 16px 0;
+
+    .details {
+      .primary {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+    }
+
+    .user-profile-avatar {
+      .avatar {
+        width: 64px !important;
+        height: 64px !important;
+        border-radius: 50%;
+      }
+    }
+
+    .primary-textual {
+      flex: 1;
+
+      .user-profile-names {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .username {
+          font-size: 24px;
+          font-weight: 700;
+          color: var(--primary);
+        }
+      }
+    }
+
+    // Admin and Expand buttons
+    .controls {
+      ul {
+        display: flex;
+        gap: 8px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          margin: 0;
+
+          .btn {
+            background: #FFFFFF !important;
+            border: 1px solid var(--primary-300) !important;
+            border-radius: 8px !important;
+            padding: 8px 16px !important;
+            font-weight: 500;
+            color: var(--primary);
+
+            .d-icon {
+              color: var(--tertiary);
+            }
+
+            &:hover {
+              background: var(--tertiary-50, rgba(37, 99, 235, 0.05)) !important;
+              border-color: var(--tertiary) !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Primary navigation (Summary, Activity, Notifications, etc.)
+.user-navigation-primary {
+  border-bottom: 1px solid var(--primary-200);
+  margin-bottom: 0;
+
+  .nav-pills {
+    gap: 0;
+
+    li {
+      a {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 12px 16px;
+        color: var(--primary-600);
+        font-weight: 500;
+        font-size: 14px;
+        border-bottom: 2px solid transparent;
+        border-radius: 0;
+        background: transparent !important;
+
+        .d-icon {
+          color: var(--primary-400);
+          width: 16px;
+          height: 16px;
+        }
+
+        &:hover {
+          color: var(--tertiary);
+          background: transparent !important;
+
+          .d-icon {
+            color: var(--tertiary);
+          }
+        }
+
+        &.active {
+          color: var(--tertiary);
+          border-bottom-color: var(--tertiary);
+          background: transparent !important;
+
+          .d-icon {
+            color: var(--tertiary);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Secondary navigation (All, Topics, Replies, etc.)
+.user-navigation-secondary {
+  background: #FFFFFF;
+  border-radius: 12px 12px 0 0;
+  padding: 0 16px;
+  margin-top: 16px;
+  border-bottom: 1px solid var(--primary-100);
+
+  .nav-pills {
+    gap: 0;
+
+    li {
+      a {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 12px 16px;
+        color: var(--primary-500);
+        font-weight: 500;
+        font-size: 14px;
+        border-bottom: 2px solid transparent;
+        border-radius: 0;
+        background: transparent !important;
+
+        .d-icon {
+          color: var(--primary-400);
+          width: 14px;
+          height: 14px;
+        }
+
+        &:hover {
+          color: var(--tertiary);
+          background: transparent !important;
+
+          .d-icon {
+            color: var(--tertiary);
+          }
+        }
+
+        &.active {
+          color: var(--tertiary);
+          border-bottom-color: var(--tertiary);
+          background: transparent !important;
+
+          .d-icon {
+            color: var(--tertiary);
+          }
+        }
+      }
+    }
+  }
+}
+
+// User content area (post list)
+.user-content {
+  background: #FFFFFF;
+  border-radius: 0 0 12px 12px;
+  padding: 0;
+}
+
+// Post list / user stream items
+.post-list.user-stream {
+  padding: 0;
+
+  .user-stream-item {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--primary-100);
+    background: #FFFFFF;
+
+    &:last-child {
+      border-bottom: none;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .post-list-item__header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+
+      .avatar-wrapper {
+        .avatar {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+        }
+      }
+
+      .post-list-item__details {
+        flex: 1;
+
+        .stream-topic-title {
+          .title a {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--tertiary);
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+
+        .post-list-item__metadata {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 4px;
+          font-size: 13px;
+          color: var(--primary-500);
+        }
+      }
+    }
+
+    .user-stream-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 8px 0;
+      padding-left: 60px;
+
+      .d-icon {
+        color: var(--love);
+      }
+
+      .avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+      }
+    }
+
+    .excerpt {
+      padding-left: 60px;
+
+      .cooked {
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--primary-700);
+      }
+    }
+  }
+}
+
+// New user wrapper content area
+.new-user-content-wrapper {
+  background: transparent;
+}
+
+// Empty state styling
+.empty-state__container {
+  background: #FFFFFF;
+  border-radius: 0 0 12px 12px;
+  padding: 48px 24px;
+  text-align: center;
+
+  .empty-state__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+
+  .empty-state__body {
+    font-size: 14px;
+    color: var(--primary-600);
+    line-height: 1.6;
+  }
+}
+
