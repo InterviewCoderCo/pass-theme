@@ -2013,10 +2013,12 @@ label {
       li {
         margin: 0;
         min-width: 0;
+        overflow: hidden;
 
         a {
           text-decoration: none;
           display: block;
+          width: 100%;
 
           &:hover .user-stat {
             background: #f0f4f8;
@@ -2032,10 +2034,13 @@ label {
       text-align: center;
       transition: background 0.15s ease;
       height: 70px;
+      width: 100%;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      overflow: hidden;
 
       .value {
         display: block;
@@ -2055,10 +2060,14 @@ label {
         color: #666666;
         font-weight: 500;
         line-height: 1;
+        max-width: 100%;
+        overflow: hidden;
 
         .d-icon {
-          width: 12px;
-          height: 12px;
+          width: 12px !important;
+          height: 12px !important;
+          min-width: 12px;
+          flex-shrink: 0;
           color: var(--love);
         }
       }
