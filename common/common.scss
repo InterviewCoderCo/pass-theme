@@ -1976,24 +1976,21 @@ label {
 .user-content {
   .top-section {
     padding: 24px 0;
-    border-bottom: 1px solid var(--primary-100);
-
-    &:last-child {
-      border-bottom: none;
-    }
+    overflow: hidden; // Clear floats
 
     .stats-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      color: #1a1a1a;
-      margin: 0 0 16px 0;
+      color: #666666;
+      margin: 0 0 12px 0;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     // Empty state text
-    p {
-      color: #666666;
+    > p,
+    .top-sub-section p {
+      color: #999999;
       font-size: 14px;
       margin: 0;
     }
@@ -2004,7 +2001,7 @@ label {
     ul {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 12px;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -2029,18 +2026,18 @@ label {
 
     .user-stat {
       background: #FFFFFF;
-      border-radius: 12px;
-      padding: 16px;
+      border-radius: 8px;
+      padding: 12px;
       text-align: center;
       transition: background 0.15s ease;
 
       .value {
         display: block;
-        font-size: 28px;
+        font-size: 24px;
         font-weight: 700;
         color: #1a1a1a;
         line-height: 1.2;
-        margin-bottom: 4px;
+        margin-bottom: 2px;
       }
 
       .label {
@@ -2048,48 +2045,35 @@ label {
         align-items: center;
         justify-content: center;
         gap: 4px;
-        font-size: 13px;
+        font-size: 12px;
         color: #666666;
         font-weight: 500;
 
         .d-icon {
-          width: 14px;
-          height: 14px;
+          width: 12px;
+          height: 12px;
           color: var(--love);
         }
       }
     }
   }
 
-  // Two-column sections (replies/topics, links/replied-to, liked)
+  // Two-column sections - keep Discourse's float layout but style it
   .replies-and-topics-section,
   .links-and-replied-to-section,
   .most-liked-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
     .top-sub-section {
-      float: none !important;
-      width: 100% !important;
+      width: 48% !important;
+      margin-bottom: 16px;
 
-      .stats-title {
-        font-size: 14px;
-        font-weight: 600;
-        color: #1a1a1a;
-        margin: 0 0 12px 0;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+      &.pull-left {
+        float: left !important;
+        clear: left;
       }
 
-      p {
-        color: #666666;
-        font-size: 14px;
+      &.pull-right {
+        float: right !important;
+        clear: right;
       }
     }
   }
@@ -2099,30 +2083,29 @@ label {
     .badge-group-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 8px;
     }
 
     .badge-card {
       background: #FFFFFF;
-      border-radius: 12px;
-      padding: 16px;
+      border-radius: 8px;
+      padding: 12px;
       border: none;
       box-shadow: none;
 
       .badge-contents {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
       }
 
       .badge-icon {
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        background: #FEF3C7;
 
         &.badge-type-bronze {
           background: #FEF3C7;
@@ -2140,15 +2123,15 @@ label {
         }
 
         .d-icon {
-          width: 20px;
-          height: 20px;
+          width: 16px;
+          height: 16px;
         }
       }
 
       .badge-info {
         h3 {
-          margin: 0 0 4px 0;
-          font-size: 14px;
+          margin: 0 0 2px 0;
+          font-size: 13px;
           font-weight: 600;
 
           a {
@@ -2162,7 +2145,7 @@ label {
         }
 
         .badge-summary {
-          font-size: 12px;
+          font-size: 11px;
           color: #666666;
           margin: 0;
         }
