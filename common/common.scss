@@ -1892,10 +1892,11 @@ label {
           .title a {
             font-size: 16px;
             font-weight: 600;
-            color: var(--tertiary);
+            color: #1a1a1a;
             text-decoration: none;
 
             &:hover {
+              color: var(--tertiary);
               text-decoration: underline;
             }
           }
@@ -1907,7 +1908,7 @@ label {
           gap: 8px;
           margin-top: 4px;
           font-size: 13px;
-          color: var(--primary-500);
+          color: #666666;
         }
       }
     }
@@ -1936,7 +1937,7 @@ label {
       .cooked {
         font-size: 14px;
         line-height: 1.5;
-        color: var(--primary-700);
+        color: #444444;
       }
     }
   }
