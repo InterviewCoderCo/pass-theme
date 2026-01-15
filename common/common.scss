@@ -2097,22 +2097,256 @@ label {
     }
   }
 
-  // Two-column sections - keep Discourse's float layout but style it
+  // Two-column sections - modern card layout
   .replies-and-topics-section,
   .links-and-replied-to-section,
   .most-liked-section {
-    .top-sub-section {
-      width: 48% !important;
-      margin-bottom: 16px;
+    display: flex !important;
+    gap: 16px !important;
 
-      &.pull-left {
-        float: left !important;
-        clear: left;
+    &::after {
+      display: none !important; // Remove clearfix
+    }
+
+    .top-sub-section {
+      flex: 1 !important;
+      float: none !important;
+      width: auto !important;
+      margin-bottom: 0 !important;
+      background: #FFFFFF !important;
+      border-radius: 12px !important;
+      padding: 20px !important;
+
+      .stats-title {
+        margin-bottom: 16px !important;
       }
 
-      &.pull-right {
-        float: right !important;
-        clear: right;
+      // Empty state
+      > p {
+        color: #94A3B8 !important;
+        font-size: 14px !important;
+        margin: 0 !important;
+      }
+
+      // Topic list styling
+      ul {
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        li {
+          padding: 12px 0 !important;
+          border-bottom: 1px solid #F1F5F9 !important;
+          margin: 0 !important;
+
+          &:last-child {
+            border-bottom: none !important;
+            padding-bottom: 0 !important;
+          }
+
+          &:first-child {
+            padding-top: 0 !important;
+          }
+
+          .topic-info {
+            display: block !important;
+            margin-bottom: 4px !important;
+
+            .relative-date {
+              font-size: 12px !important;
+              color: #94A3B8 !important;
+              font-weight: 500 !important;
+            }
+          }
+
+          br {
+            display: none !important;
+          }
+
+          > a {
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            color: var(--tertiary) !important;
+            text-decoration: none !important;
+            line-height: 1.4 !important;
+
+            &:hover {
+              text-decoration: underline !important;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column !important;
+    }
+  }
+
+  // User info cards in Most Liked sections
+  .most-liked-section,
+  .links-and-replied-to-section {
+    .summary-user-list {
+      > div > p {
+        color: #94A3B8 !important;
+        font-size: 14px !important;
+        margin: 0 !important;
+      }
+
+      ul {
+        li {
+          padding: 0 !important;
+          border-bottom: none !important;
+
+          .user-info {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            padding: 12px 0 !important;
+            border-bottom: 1px solid #F1F5F9 !important;
+
+            &:last-child {
+              border-bottom: none !important;
+            }
+
+            .user-image {
+              flex-shrink: 0 !important;
+
+              .avatar {
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 50% !important;
+              }
+            }
+
+            .user-detail {
+              flex: 1 !important;
+              min-width: 0 !important;
+
+              .name-line {
+                display: flex !important;
+                align-items: center !important;
+                gap: 8px !important;
+
+                .username {
+                  font-size: 14px !important;
+                  font-weight: 600 !important;
+                  color: #1a1a1a !important;
+                }
+
+                .name {
+                  font-size: 13px !important;
+                  color: #64748B !important;
+                }
+              }
+
+              .details {
+                display: flex !important;
+                align-items: center !important;
+                gap: 4px !important;
+                margin-top: 4px !important;
+
+                .d-icon {
+                  width: 14px !important;
+                  height: 14px !important;
+                  color: var(--love) !important;
+                }
+
+                .likes {
+                  font-size: 13px !important;
+                  color: #64748B !important;
+                  font-weight: 500 !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Top Categories section
+  .top-categories-section {
+    .top-sub-section {
+      background: #FFFFFF !important;
+      border-radius: 12px !important;
+      padding: 20px !important;
+      width: 100% !important;
+      float: none !important;
+
+      table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+
+        thead {
+          th {
+            text-align: left !important;
+            padding: 0 0 12px 0 !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            color: #64748B !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+            border-bottom: 1px solid #F1F5F9 !important;
+
+            &.topic-count,
+            &.reply-count {
+              text-align: center !important;
+              width: 80px !important;
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            td {
+              padding: 12px 0 !important;
+              border-bottom: 1px solid #F1F5F9 !important;
+
+              &.category-link {
+                .badge-category__wrapper {
+                  .badge-category {
+                    display: flex !important;
+                    align-items: center !important;
+                    gap: 6px !important;
+
+                    .emoji {
+                      width: 18px !important;
+                      height: 18px !important;
+                    }
+
+                    .badge-category__name {
+                      font-size: 14px !important;
+                      font-weight: 500 !important;
+                      color: #1a1a1a !important;
+                    }
+                  }
+                }
+              }
+
+              &.topic-count,
+              &.reply-count {
+                text-align: center !important;
+                font-size: 14px !important;
+                color: #64748B !important;
+
+                a {
+                  color: var(--tertiary) !important;
+                  font-weight: 500 !important;
+                  text-decoration: none !important;
+
+                  &:hover {
+                    text-decoration: underline !important;
+                  }
+                }
+              }
+            }
+
+            &:last-child td {
+              border-bottom: none !important;
+            }
+          }
+        }
       }
     }
   }
