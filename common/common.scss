@@ -1969,3 +1969,205 @@ label {
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// USER SUMMARY PAGE - Modern stats styling
+// ─────────────────────────────────────────────────────────────────────────────
+
+.user-content {
+  .top-section {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--primary-100);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .stats-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin: 0 0 16px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    // Empty state text
+    p {
+      color: #666666;
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+
+  // Stats grid section
+  .stats-section {
+    ul {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      li {
+        margin: 0;
+
+        a {
+          text-decoration: none;
+          display: block;
+
+          &:hover .user-stat {
+            background: #f0f4f8;
+          }
+        }
+      }
+    }
+
+    .user-stat {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      transition: background 0.15s ease;
+
+      .value {
+        display: block;
+        font-size: 28px;
+        font-weight: 700;
+        color: #1a1a1a;
+        line-height: 1.2;
+        margin-bottom: 4px;
+      }
+
+      .label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        font-size: 13px;
+        color: #666666;
+        font-weight: 500;
+
+        .d-icon {
+          width: 14px;
+          height: 14px;
+          color: var(--love);
+        }
+      }
+    }
+  }
+
+  // Two-column sections (replies/topics, links/replied-to, liked)
+  .replies-and-topics-section,
+  .links-and-replied-to-section,
+  .most-liked-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .top-sub-section {
+      float: none !important;
+      width: 100% !important;
+
+      .stats-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin: 0 0 12px 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      p {
+        color: #666666;
+        font-size: 14px;
+      }
+    }
+  }
+
+  // Badges section
+  .badges-section {
+    .badge-group-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .badge-card {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 16px;
+      border: none;
+      box-shadow: none;
+
+      .badge-contents {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .badge-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #FEF3C7;
+
+        &.badge-type-bronze {
+          background: #FEF3C7;
+          color: #B45309;
+        }
+
+        &.badge-type-silver {
+          background: #F1F5F9;
+          color: #475569;
+        }
+
+        &.badge-type-gold {
+          background: #FEF9C3;
+          color: #A16207;
+        }
+
+        .d-icon {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .badge-info {
+        h3 {
+          margin: 0 0 4px 0;
+          font-size: 14px;
+          font-weight: 600;
+
+          a {
+            color: #1a1a1a;
+            text-decoration: none;
+
+            &:hover {
+              color: var(--tertiary);
+            }
+          }
+        }
+
+        .badge-summary {
+          font-size: 12px;
+          color: #666666;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
