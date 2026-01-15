@@ -1996,106 +1996,104 @@ label {
     }
   }
 
-  // Stats grid section
+  // Stats grid section - rebuilt from scratch
   .stats-section {
+    // Grid container
     ul {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
+      all: unset;
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 12px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
 
       @media (max-width: 768px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      li {
-        margin: 0;
-        min-width: 0;
-        overflow: hidden;
-        border-radius: 8px !important;
-
-        // Reset all stat-specific classes to ensure consistent border-radius
-        &.stats-likes-given,
-        &.stats-likes-received,
-        &.stats-days-visited,
-        &.stats-time-read,
-        &.stats-topics-viewed,
-        &.stats-posts-read,
-        &.stats-topics-created,
-        &.stats-posts-created {
-          border-radius: 8px !important;
-
-          .user-stat {
-            border-radius: 8px !important;
-          }
-        }
-
-        a {
-          text-decoration: none;
-          display: block;
-          width: 100%;
-          border-radius: 8px !important;
-
-          &:hover .user-stat {
-            background: #f0f4f8;
-          }
-        }
+        grid-template-columns: repeat(2, 1fr) !important;
       }
     }
 
+    // Grid items - the li elements
+    ul > li {
+      all: unset;
+      display: block !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    // Links inside li (some stats are clickable)
+    ul > li > a {
+      all: unset;
+      display: block !important;
+      width: 100% !important;
+      cursor: pointer;
+      text-decoration: none !important;
+
+      &:hover .user-stat {
+        background: #f0f4f8 !important;
+      }
+    }
+
+    // The actual stat card
     .user-stat {
-      background: #FFFFFF;
+      all: unset;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      height: 70px !important;
+      background: #FFFFFF !important;
       border-radius: 8px !important;
-      padding: 12px;
-      text-align: center;
-      transition: background 0.15s ease;
-      height: 70px;
-      width: 100%;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+      box-sizing: border-box !important;
+      padding: 12px !important;
+      transition: background 0.15s ease !important;
+    }
 
-      // Reset any Discourse core border-radius overrides
-      &,
-      &:first-child,
-      &:last-child {
-        border-radius: 8px !important;
-      }
+    // Value (the number)
+    .user-stat .value {
+      all: unset;
+      display: block !important;
+      font-size: 24px !important;
+      font-weight: 700 !important;
+      color: #1a1a1a !important;
+      line-height: 1 !important;
+      margin-bottom: 4px !important;
+      text-align: center !important;
+    }
 
-      .value {
-        display: block;
-        font-size: 24px;
-        font-weight: 700;
-        color: #1a1a1a;
-        line-height: 1;
-        margin-bottom: 4px;
-      }
+    .user-stat .value .number {
+      all: unset;
+      font-size: inherit !important;
+      font-weight: inherit !important;
+      color: inherit !important;
+    }
 
-      .label {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-        font-size: 12px;
-        color: #666666;
-        font-weight: 500;
-        line-height: 1;
-        max-width: 100%;
-        overflow: hidden;
+    // Label (text below number)
+    .user-stat .label {
+      all: unset;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 4px !important;
+      font-size: 12px !important;
+      font-weight: 500 !important;
+      color: #666666 !important;
+      line-height: 1 !important;
+      text-align: center !important;
+    }
 
-        .d-icon {
-          width: 12px !important;
-          height: 12px !important;
-          min-width: 12px;
-          flex-shrink: 0;
-          color: var(--love);
-        }
-      }
+    // Heart icon in label
+    .user-stat .label svg,
+    .user-stat .label .d-icon,
+    .user-stat .label .svg-icon {
+      width: 12px !important;
+      height: 12px !important;
+      min-width: 12px !important;
+      max-width: 12px !important;
+      flex-shrink: 0 !important;
+      color: var(--love) !important;
     }
   }
 
