@@ -86,7 +86,10 @@ body {
 .login-page,
 .invites-page,
 .preferences-page,
-.collapsed-info.about {
+.collapsed-info.about,
+.collapsed-info.about .details,
+.collapsed-info.about .primary,
+.user-profile-avatar {
   background: transparent !important;
 }
 
