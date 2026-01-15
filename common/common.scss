@@ -2473,3 +2473,181 @@ label {
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// MY MESSAGES PAGE - Modern inbox styling
+// ─────────────────────────────────────────────────────────────────────────────
+
+body.user-messages-page {
+  // Messages table container - white card background
+  .topic-list {
+    background: #FFFFFF !important;
+    border-radius: 12px !important;
+    border: none !important;
+    border-left: none !important;
+    overflow: hidden;
+  }
+
+  // Table header
+  .topic-list-header {
+    background: #F8FAFC !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+
+    tr {
+      background: transparent !important;
+      border: none !important;
+    }
+
+    th {
+      padding: 12px 16px !important;
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      color: #64748B !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      border: none !important;
+      background: transparent !important;
+
+      // Bulk select button
+      .bulk-select {
+        padding: 4px !important;
+        color: #94A3B8 !important;
+
+        &:hover {
+          color: var(--tertiary) !important;
+        }
+      }
+
+      button {
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        color: #64748B !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+
+        &:hover {
+          color: var(--tertiary) !important;
+        }
+      }
+    }
+  }
+
+  // Table body
+  .topic-list-body {
+    gap: 0 !important;
+  }
+
+  // Message rows
+  .topic-list-item {
+    background: #FFFFFF !important;
+    border: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid #F1F5F9 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transition: background 0.15s ease !important;
+
+    &:last-child {
+      border-bottom: none !important;
+    }
+
+    &:hover {
+      background: #F8FAFC !important;
+    }
+
+    // Hide extra columns
+    td.topic-status-data,
+    td.topic-category-data,
+    td.topic-likes-replies-data,
+    td.topic-creator-data {
+      display: none !important;
+    }
+
+    // All table cells - reset borders
+    td {
+      border: none !important;
+      border-left: none !important;
+    }
+
+    // Main link / title cell
+    td.main-link {
+      padding: 16px !important;
+      border-left: none !important;
+
+      .link-top-line {
+        display: block !important;
+
+        .title {
+          font-size: 15px !important;
+          font-weight: 500 !important;
+          color: #1a1a1a !important;
+          text-decoration: none !important;
+          line-height: 1.4 !important;
+
+          &:hover {
+            color: var(--tertiary) !important;
+          }
+        }
+      }
+
+      .link-bottom-line {
+        margin-top: 4px !important;
+      }
+    }
+
+    // Visited state - lighter title
+    &.visited {
+      td.main-link .link-top-line .title {
+        font-weight: 400 !important;
+        color: #64748B !important;
+      }
+    }
+
+    // Posters cell (avatars)
+    td.posters {
+      padding: 16px 8px !important;
+
+      a {
+        display: inline-block !important;
+        margin-right: 4px !important;
+
+        .avatar {
+          width: 28px !important;
+          height: 28px !important;
+          border-radius: 50% !important;
+          border: 2px solid #FFFFFF !important;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+        }
+      }
+    }
+
+    // Activity cell (time)
+    td.activity {
+      padding: 16px !important;
+      text-align: right !important;
+
+      .post-activity {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 4px 10px !important;
+        background: #F1F5F9 !important;
+        border-radius: 6px !important;
+        text-decoration: none !important;
+
+        .relative-date {
+          font-size: 12px !important;
+          font-weight: 600 !important;
+          color: #64748B !important;
+        }
+
+        &:hover {
+          background: #E2E8F0 !important;
+        }
+      }
+    }
+  }
+}
+
