@@ -2474,90 +2474,80 @@ label {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// MY MESSAGES PAGE - Modern inbox styling
+// MY MESSAGES PAGE - Modern 2025 Inbox Design
 // ─────────────────────────────────────────────────────────────────────────────
 
 body.user-messages-page {
-  // Messages table container - white card background
+  // Reset the table to act like a regular container
   .topic-list {
+    all: unset !important;
+    display: block !important;
     background: #FFFFFF !important;
-    border-radius: 12px !important;
-    border: none !important;
-    border-left: none !important;
-    overflow: hidden;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.04),
+      0 4px 12px rgba(0, 0, 0, 0.03) !important;
   }
 
-  // Table header
+  // Hide the table header completely - we don't need it
   .topic-list-header {
-    background: #F8FAFC !important;
-    border-bottom: 1px solid #E2E8F0 !important;
-
-    tr {
-      background: transparent !important;
-      border: none !important;
-    }
-
-    th {
-      padding: 12px 16px !important;
-      font-size: 12px !important;
-      font-weight: 600 !important;
-      color: #64748B !important;
-      text-transform: uppercase !important;
-      letter-spacing: 0.5px !important;
-      border: none !important;
-      background: transparent !important;
-
-      // Bulk select button
-      .bulk-select {
-        padding: 4px !important;
-        color: #94A3B8 !important;
-
-        &:hover {
-          color: var(--tertiary) !important;
-        }
-      }
-
-      button {
-        font-size: 12px !important;
-        font-weight: 600 !important;
-        color: #64748B !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.5px !important;
-        background: transparent !important;
-        border: none !important;
-        padding: 0 !important;
-
-        &:hover {
-          color: var(--tertiary) !important;
-        }
-      }
-    }
+    display: none !important;
   }
 
-  // Table body
+  // Table body as flex container
   .topic-list-body {
-    gap: 0 !important;
+    all: unset !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
-  // Message rows
+  // Each message row
   .topic-list-item {
+    all: unset !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    padding: 16px 20px !important;
     background: #FFFFFF !important;
-    border: none !important;
-    border-left: none !important;
     border-bottom: 1px solid #F1F5F9 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    transition: background 0.15s ease !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 
     &:last-child {
       border-bottom: none !important;
     }
 
     &:hover {
-      background: #F8FAFC !important;
+      background: linear-gradient(135deg, #F8FAFC 0%, #EEF2FF 100%) !important;
     }
 
-    // Hide extra columns
+    // Unread state - bold and accent
+    &:not(.visited) {
+      background: linear-gradient(90deg, rgba(37, 99, 235, 0.03) 0%, transparent 100%) !important;
+
+      &::before {
+        content: '' !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 4px !important;
+        height: 60% !important;
+        background: var(--tertiary) !important;
+        border-radius: 0 4px 4px 0 !important;
+      }
+
+      td.main-link .link-top-line .title {
+        font-weight: 600 !important;
+        color: #0F172A !important;
+      }
+    }
+
+    // Position relative for the unread indicator
+    position: relative !important;
+
+    // Hide all the extra table cells
     td.topic-status-data,
     td.topic-category-data,
     td.topic-likes-replies-data,
@@ -2565,31 +2555,80 @@ body.user-messages-page {
       display: none !important;
     }
 
-    // All table cells - reset borders
-    td {
-      border: none !important;
-      border-left: none !important;
-      vertical-align: middle !important;
+    // Avatar cell - first, on the left
+    td.posters {
+      all: unset !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+      order: 1 !important;
+
+      a {
+        display: block !important;
+        position: relative !important;
+
+        .avatar {
+          width: 44px !important;
+          height: 44px !important;
+          border-radius: 12px !important;
+          object-fit: cover !important;
+          transition: transform 0.2s ease !important;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        // Online indicator dot (optional, for future use)
+        &::after {
+          content: '' !important;
+          position: absolute !important;
+          bottom: -2px !important;
+          right: -2px !important;
+          width: 14px !important;
+          height: 14px !important;
+          background: #22C55E !important;
+          border: 3px solid #FFFFFF !important;
+          border-radius: 50% !important;
+          display: none !important; // Hidden by default
+        }
+      }
     }
 
-    // Main link / title cell
+    // Main content - title
     td.main-link {
-      padding: 12px 16px !important;
-      border-left: none !important;
+      all: unset !important;
+      display: flex !important;
+      flex-direction: column !important;
+      flex: 1 !important;
+      min-width: 0 !important;
+      order: 2 !important;
 
       .link-top-line {
-        display: block !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+
+        .topic-statuses {
+          display: none !important;
+        }
 
         .title {
-          font-size: 14px !important;
+          font-size: 15px !important;
           font-weight: 500 !important;
-          color: #1a1a1a !important;
+          color: #334155 !important;
           text-decoration: none !important;
           line-height: 1.4 !important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+          white-space: nowrap !important;
+          transition: color 0.15s ease !important;
 
           &:hover {
             color: var(--tertiary) !important;
           }
+        }
+
+        .topic-post-badges {
+          display: none !important;
         }
       }
 
@@ -2598,56 +2637,70 @@ body.user-messages-page {
       }
     }
 
-    // Visited state - lighter title
+    // Time cell - right side
+    td.activity {
+      all: unset !important;
+      display: flex !important;
+      align-items: center !important;
+      flex-shrink: 0 !important;
+      order: 3 !important;
+
+      .post-activity {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        padding: 6px 12px !important;
+        background: #F1F5F9 !important;
+        border-radius: 20px !important;
+        text-decoration: none !important;
+        transition: all 0.2s ease !important;
+
+        &::before {
+          content: '' !important;
+          width: 6px !important;
+          height: 6px !important;
+          background: #94A3B8 !important;
+          border-radius: 50% !important;
+          flex-shrink: 0 !important;
+        }
+
+        .relative-date {
+          font-size: 12px !important;
+          font-weight: 600 !important;
+          color: #64748B !important;
+          letter-spacing: 0.01em !important;
+        }
+
+        &:hover {
+          background: #E2E8F0 !important;
+          transform: scale(1.02) !important;
+        }
+      }
+    }
+
+    // Visited state
     &.visited {
       td.main-link .link-top-line .title {
         font-weight: 400 !important;
         color: #64748B !important;
       }
-    }
 
-    // Posters cell (avatars)
-    td.posters {
-      padding: 12px 8px !important;
-      width: 40px !important;
-
-      a {
-        display: inline-block !important;
-
-        .avatar {
-          width: 32px !important;
-          height: 32px !important;
-          border-radius: 50% !important;
-        }
+      td.activity .post-activity::before {
+        background: #CBD5E1 !important;
       }
     }
+  }
 
-    // Activity cell (time)
-    td.activity {
-      padding: 12px 16px !important;
-      text-align: right !important;
-      width: 60px !important;
-
-      .post-activity {
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 4px 8px !important;
-        background: #F1F5F9 !important;
-        border-radius: 6px !important;
-        text-decoration: none !important;
-
-        .relative-date {
-          font-size: 11px !important;
-          font-weight: 600 !important;
-          color: #64748B !important;
-        }
-
-        &:hover {
-          background: #E2E8F0 !important;
-        }
-      }
-    }
+  // Empty state
+  .topic-list-body:empty::after {
+    content: 'No messages yet' !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 60px 20px !important;
+    color: #94A3B8 !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
   }
 }
 
