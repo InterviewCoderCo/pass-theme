@@ -1949,10 +1949,10 @@ label {
 
 // Empty state styling
 .empty-state__container {
-  background: #FFFFFF;
-  border-radius: 0 0 12px 12px;
-  padding: 48px 24px;
-  text-align: center;
+  background: transparent;
+  border-radius: 0;
+  padding: 24px 0;
+  text-align: left;
 
   .empty-state__title {
     font-size: 18px;
