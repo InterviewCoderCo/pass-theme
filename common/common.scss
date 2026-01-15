@@ -2478,6 +2478,189 @@ label {
 // ─────────────────────────────────────────────────────────────────────────────
 
 body.user-messages-page {
+  // ─────────────────────────────────────────────────────────────────────────────
+  // Secondary Navigation Bar - Modern tab design
+  // ─────────────────────────────────────────────────────────────────────────────
+  .user-navigation-secondary {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 16px 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    flex-wrap: wrap !important;
+
+    // Inbox dropdown button
+    .category-breadcrumb {
+      all: unset !important;
+      display: flex !important;
+
+      li {
+        all: unset !important;
+      }
+
+      .messages-dropdown-trigger {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 10px 16px !important;
+        background: #FFFFFF !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 12px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: #0F172A !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+
+        .d-button-label {
+          color: inherit !important;
+        }
+
+        .d-icon {
+          width: 12px !important;
+          height: 12px !important;
+          color: #64748B !important;
+          transition: transform 0.2s ease !important;
+        }
+
+        &:hover {
+          background: #F8FAFC !important;
+          border-color: var(--tertiary) !important;
+          box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1) !important;
+
+          .d-icon {
+            color: var(--tertiary) !important;
+          }
+        }
+
+        &[aria-expanded="true"] {
+          border-color: var(--tertiary) !important;
+          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+
+          .d-icon {
+            transform: rotate(180deg) !important;
+          }
+        }
+      }
+    }
+
+    // Tab navigation
+    .horizontal-overflow-nav {
+      flex: 1 !important;
+    }
+
+    .messages-nav {
+      all: unset !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      padding: 4px !important;
+      background: #F1F5F9 !important;
+      border-radius: 12px !important;
+
+      li {
+        all: unset !important;
+        display: block !important;
+
+        a {
+          all: unset !important;
+          display: flex !important;
+          align-items: center !important;
+          gap: 6px !important;
+          padding: 8px 14px !important;
+          border-radius: 8px !important;
+          font-size: 13px !important;
+          font-weight: 500 !important;
+          color: #64748B !important;
+          cursor: pointer !important;
+          transition: all 0.2s ease !important;
+          white-space: nowrap !important;
+
+          .d-icon {
+            width: 14px !important;
+            height: 14px !important;
+            color: inherit !important;
+            opacity: 0.7 !important;
+          }
+
+          span {
+            color: inherit !important;
+          }
+
+          &:hover {
+            color: #334155 !important;
+            background: rgba(255, 255, 255, 0.6) !important;
+          }
+
+          &.active {
+            background: #FFFFFF !important;
+            color: #0F172A !important;
+            font-weight: 600 !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+
+            .d-icon {
+              color: var(--tertiary) !important;
+              opacity: 1 !important;
+            }
+          }
+        }
+      }
+    }
+
+    // New Message button
+    .navigation-controls {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-left: auto !important;
+
+      .new-private-message {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 10px 20px !important;
+        background: linear-gradient(135deg, var(--tertiary) 0%, #1D4ED8 100%) !important;
+        border: none !important;
+        border-radius: 12px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: #FFFFFF !important;
+        cursor: pointer !important;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow:
+          0 1px 2px rgba(37, 99, 235, 0.2),
+          0 4px 12px rgba(37, 99, 235, 0.2) !important;
+
+        .d-icon {
+          width: 16px !important;
+          height: 16px !important;
+          color: #FFFFFF !important;
+        }
+
+        .d-button-label {
+          color: #FFFFFF !important;
+        }
+
+        &:hover {
+          transform: translateY(-1px) !important;
+          box-shadow:
+            0 2px 4px rgba(37, 99, 235, 0.2),
+            0 8px 20px rgba(37, 99, 235, 0.3) !important;
+        }
+
+        &:active {
+          transform: translateY(0) !important;
+        }
+      }
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // Messages List Container
+  // ─────────────────────────────────────────────────────────────────────────────
+
   // Reset the table to act like a regular container
   .topic-list {
     all: unset !important;
