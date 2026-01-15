@@ -2569,18 +2569,19 @@ body.user-messages-page {
     td {
       border: none !important;
       border-left: none !important;
+      vertical-align: middle !important;
     }
 
     // Main link / title cell
     td.main-link {
-      padding: 16px !important;
+      padding: 12px 16px !important;
       border-left: none !important;
 
       .link-top-line {
         display: block !important;
 
         .title {
-          font-size: 15px !important;
+          font-size: 14px !important;
           font-weight: 500 !important;
           color: #1a1a1a !important;
           text-decoration: none !important;
@@ -2593,7 +2594,7 @@ body.user-messages-page {
       }
 
       .link-bottom-line {
-        margin-top: 4px !important;
+        display: none !important;
       }
     }
 
@@ -2607,38 +2608,37 @@ body.user-messages-page {
 
     // Posters cell (avatars)
     td.posters {
-      padding: 16px 8px !important;
+      padding: 12px 8px !important;
+      width: 40px !important;
 
       a {
         display: inline-block !important;
-        margin-right: 4px !important;
 
         .avatar {
-          width: 28px !important;
-          height: 28px !important;
+          width: 32px !important;
+          height: 32px !important;
           border-radius: 50% !important;
-          border: 2px solid #FFFFFF !important;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
         }
       }
     }
 
     // Activity cell (time)
     td.activity {
-      padding: 16px !important;
+      padding: 12px 16px !important;
       text-align: right !important;
+      width: 60px !important;
 
       .post-activity {
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        padding: 4px 10px !important;
+        padding: 4px 8px !important;
         background: #F1F5F9 !important;
         border-radius: 6px !important;
         text-decoration: none !important;
 
         .relative-date {
-          font-size: 12px !important;
+          font-size: 11px !important;
           font-weight: 600 !important;
           color: #64748B !important;
         }
