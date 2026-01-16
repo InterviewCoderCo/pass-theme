@@ -102,6 +102,29 @@ textarea {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
     overflow: hidden;
     margin-top: 4px;
+
+    // Scrollbar styling for dropdowns
+    .select-kit-collection {
+      scrollbar-width: thin;
+      scrollbar-color: #d0d0d0 transparent;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #d0d0d0;
+        border-radius: 3px;
+
+        &:hover {
+          background: #b0b0b0;
+        }
+      }
+    }
   }
 
   // Dropdown rows
