@@ -241,17 +241,17 @@
 }
 
 // -----------------------------------------------------------------------------
-// NAV PILLS - Tab navigation (Latest, Hot, Categories)
+// NAV PILLS - Tab navigation (Latest, Hot, Categories) - Plain style
 // -----------------------------------------------------------------------------
 .nav-pills {
   display: flex;
-  gap: 4px;
-  padding: 4px;
+  gap: 8px;
+  padding: 0;
   margin: 0;
-  background: var(--nav-pill-bg);
-  border-radius: 12px;
-  border: 1px solid var(--nav-pill-border);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
 
   // Each tab item
   > li {
@@ -264,19 +264,27 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 16px;
-      font-size: 0.875rem;
+      padding: 8px 12px;
+      font-size: 14px;
       font-weight: 500;
-      color: var(--nav-pill-text);
+      color: #666666;
       background: transparent !important;
       border: none;
-      border-radius: 8px;
-      transition: all 150ms ease-out;
+      border-radius: 0;
+      transition: color 150ms ease-out;
       text-decoration: none;
 
-      // Remove default underline
+      // Underline for active state
       &::after {
-        display: none;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 12px;
+        right: 12px;
+        height: 2px;
+        background: transparent;
+        border-radius: 1px;
+        transition: background 150ms ease-out;
       }
 
       // Icon styling
@@ -293,36 +301,36 @@
         font-size: 0.7rem;
         font-weight: 600;
         border-radius: 10px;
-        background: light-dark(#ff385c, #ff385c);
+        background: #3396ff;
         color: #ffffff;
       }
 
       // Hover state
       &:hover {
-        color: var(--nav-pill-text-hover);
-        background: light-dark(
-          rgba(0, 0, 0, 0.04),
-          rgba(255, 255, 255, 0.08)
-        ) !important;
+        color: #222222;
+        background: transparent !important;
+        box-shadow: none !important;
       }
     }
 
-    // Active/current tab - inverted colors (Airbnb 2025 style)
+    // Active/current tab - blue with underline
     &.active > a,
     &.active > button,
     > a.active,
     > button.active {
-      color: var(--nav-pill-active-text) !important;
-      background: var(--nav-pill-active-bg) !important;
+      color: #3396ff !important;
+      background: transparent !important;
       font-weight: 600;
+      box-shadow: none !important;
 
-      // Remove underline, using filled style instead
+      // Show underline
       &::after {
-        display: none;
+        background: #3396ff;
       }
 
       &:hover {
-        background: var(--nav-pill-active-bg) !important;
+        background: transparent !important;
+        box-shadow: none !important;
       }
     }
   }
@@ -341,7 +349,7 @@
     background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
     color: #ffffff;
     border: none;
-    border-radius: 12px;
+    border-radius: 24px;
     padding: 10px 20px;
     font-weight: 600;
     font-size: 0.9rem;
@@ -434,8 +442,6 @@
 // Remove any lingering backgrounds from Discourse defaults
 .nav-pills > li > a:hover,
 .nav-pills > li button:hover {
-  background: light-dark(
-    rgba(0, 0, 0, 0.04),
-    rgba(255, 255, 255, 0.08)
-  ) !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
