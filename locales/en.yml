@@ -1,3 +1,12 @@
 en:
   theme_metadata:
     description: "A simple, beautiful theme that improves the out of the box experience for Discourse sites."
+  js:
+    search:
+      title: "Search for topics or conversations"
+      context:
+        topic: "Search this topic"
+        user: "Search this user"
+        category: "Search this category"
+        tag: "Search this tag"
+        private_messages: "Search messages"

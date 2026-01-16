@@ -7,8 +7,8 @@
 
 .promo-banner {
   width: 100%;
-  background: linear-gradient(135deg, #0a0a0b 0%, #1c1c1e 50%, #0a0a0b 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 50%, #1e3a5f 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
   z-index: 100;
@@ -204,28 +204,34 @@
     justify-content: center;
     gap: 8px;
     padding: 10px 20px;
-    background: #ffffff;
-    color: #000000;
+    background: #ffffff !important;
+    border: none;
+    color: #000000 !important;
     font-size: 13px;
     font-weight: 600;
     border-radius: 8px;
     text-decoration: none;
     transition: all 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 
     &:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-      background: #f8fafc;
-      color: #000000;
+      background: #f0f4f8 !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      color: #000000 !important;
     }
 
     &:active {
       transform: translateY(0);
     }
 
+    &:visited {
+      color: #000000 !important;
+    }
+
     svg {
       transition: transform 200ms ease-out;
+      stroke: #000000;
     }
 
     &:hover svg {
