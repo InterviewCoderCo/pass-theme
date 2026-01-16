@@ -1,7 +1,7 @@
 import { apiInitializer } from "discourse/lib/api";
-import PromoSidebarCard from "../components/promo-sidebar-card";
+import PromoBanner from "../components/promo-banner";
 
 export default apiInitializer((api) => {
-  // Render in the topic list area for right-side positioning
-  api.renderInOutlet("before-topic-list-body", PromoSidebarCard);
+  // Render full-width promo banner directly below header
+  api.renderInOutlet("below-site-header", PromoBanner);
 });

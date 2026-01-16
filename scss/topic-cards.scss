@@ -15,11 +15,8 @@
 
   // Card surface
   --topic-card-bg: light-dark(#ffffff, #1e293b);
-  --topic-card-bg-hover: light-dark(#fafeff, #253449);
-  --topic-card-border: light-dark(
-    rgba(51, 150, 255, 0.08),
-    rgba(255, 255, 255, 0.06)
-  );
+  --topic-card-bg-hover: light-dark(#ffffff, #1e293b);
+  --topic-card-border: light-dark(#fafafa, rgba(255, 255, 255, 0.06));
   --topic-card-border-hover: light-dark(
     rgba(51, 150, 255, 0.2),
     rgba(255, 255, 255, 0.12)
@@ -154,21 +151,20 @@
     border-bottom: none;
   }
 
-  // Hover state
+  // Hover state - no background change
   &:hover {
     .discourse-no-touch & {
-      background: var(--topic-card-bg-hover);
+      // No hover effect
     }
   }
 
-  // Active/pressed state
+  // Active/pressed state - no background change
   &:active,
   &:active:hover,
   &:focus,
   &:focus-visible {
     .discourse-no-touch & {
-      background: transparent !important;
-      transition-duration: 50ms;
+      // No click effect
     }
   }
 
