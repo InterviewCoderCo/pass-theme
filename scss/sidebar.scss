@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════════════
-// SIDEBAR - 2025 Airbnb Design Language
-// Clean, dimensional design with soft corners and subtle depth
+// SIDEBAR - Figma Design Rebuild
+// Clean, minimal design matching the Figma mockup
 // ═══════════════════════════════════════════════════════════════════════════
 
 @use "lib/viewport";
@@ -10,20 +10,21 @@
 // ─────────────────────────────────────────────────────────────────────────────
 :root {
   // Sidebar dimensions
-  --sidebar-width: 260px;
-  --sidebar-section-wrapper-padding: 0 12px 16px 16px;
+  --sidebar-width: 220px;
+  --sidebar-section-wrapper-padding: 0 8px 12px 12px;
 
-  // Sidebar colors (light mode defaults, dark mode uses CSS variables)
-  --sidebar-bg: light-dark(#fafafa, #111111);
-  --sidebar-border: light-dark(#ebebeb, #222222);
+  // Sidebar colors - Figma style (white active state)
+  --sidebar-bg: light-dark(#f8f9fa, #111111);
+  --sidebar-border: light-dark(#f0f0f0, #222222);
   --sidebar-hover-bg: light-dark(#f0f0f0, #1a1a1a);
-  --sidebar-active-bg: light-dark(#222222, #ffffff);
-  --sidebar-active-text: light-dark(#ffffff, #222222);
-  --sidebar-text-primary: light-dark(#222222, #ffffff);
-  --sidebar-text-secondary: light-dark(#717171, #a0a0a0);
-  --sidebar-text-muted: light-dark(#b0b0b0, #666666);
+  --sidebar-active-bg: light-dark(#ffffff, rgba(255, 255, 255, 0.1));
+  --sidebar-active-text: light-dark(#333333, #ffffff);
+  --sidebar-text-primary: light-dark(#333333, #ffffff);
+  --sidebar-text-secondary: light-dark(#666666, #a0a0a0);
+  --sidebar-text-muted: light-dark(#999999, #666666);
+  --sidebar-section-header: light-dark(#888888, #777777);
 
-  // Animation timing (Airbnb spring feel)
+  // Animation timing
   --sidebar-transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
   --sidebar-hover-transition: 150ms ease-out;
 }
@@ -34,7 +35,7 @@
 .sidebar-wrapper,
 .sidebar-hamburger-dropdown {
   background: var(--sidebar-bg) !important;
-  border-right: 1px solid var(--sidebar-border) !important;
+  border-right: 1px solid light-dark(#e5e5e5, #222222) !important;
 
   @include viewport.until(lg) {
     .sidebar-footer-wrapper {
@@ -53,7 +54,7 @@
 
   .sidebar-container {
     border-right: none;
-    padding: 8px 0;
+    padding: 12px 0;
   }
 }
 
@@ -61,28 +62,35 @@
 // SIDEBAR SECTIONS - Section groups
 // ─────────────────────────────────────────────────────────────────────────────
 .sidebar-section-wrapper {
-  --d-sidebar-section-border-color: var(--sidebar-border);
-  padding: 8px 12px 16px 12px;
+  --d-sidebar-section-border-color: transparent;
+  padding: 4px 0;
 
   @include viewport.from(xl) {
-    padding-block: 8px;
+    padding-block: 4px;
   }
 
   @include viewport.until(sm) {
     .hamburger-panel .revamped & {
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
   }
 
-  // Section header - subtle, uppercase label
+  // Section header - CATEGORIES style from Figma
   .sidebar-section-header {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--sidebar-text-muted);
-    padding: 8px 12px 6px 12px;
-    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+    color: var(--sidebar-section-header);
+    padding: 12px 8px 6px 8px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .sidebar-section-header-caret {
+      color: var(--sidebar-text-muted);
+    }
   }
 
   // Section content container
@@ -95,29 +103,29 @@
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SIDEBAR LINKS - Navigation items (Airbnb 2025 style)
+// SIDEBAR LINKS - Navigation items (Figma style)
 // ─────────────────────────────────────────────────────────────────────────────
 .sidebar-section-link-wrapper {
   .sidebar-section-link {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 10px 12px;
-    border-radius: 10px;
+    gap: 8px;
+    padding: 7px 8px;
+    border-radius: 6px;
     color: var(--sidebar-text-primary);
     text-decoration: none;
     transition: background var(--sidebar-hover-transition),
-      color var(--sidebar-hover-transition),
-      transform var(--sidebar-hover-transition);
+      color var(--sidebar-hover-transition);
     position: relative;
+    margin: 0;
 
     // Icon styling
     .sidebar-section-link-prefix {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       flex-shrink: 0;
 
       .d-icon {
@@ -141,60 +149,47 @@
 
     // Count badge (suffix)
     .sidebar-section-link-suffix {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--sidebar-text-muted);
-      padding: 2px 8px;
+      padding: 2px 6px;
       background: light-dark(#f0f0f0, #2a2a2a);
-      border-radius: 10px;
-      min-width: 20px;
+      border-radius: 8px;
+      min-width: 18px;
       text-align: center;
     }
 
-    // Hover state - subtle background lift
+    // Hover state - subtle background
     &:hover,
     &:focus {
       background: var(--sidebar-hover-bg);
-      transform: translateX(2px);
 
       .sidebar-section-link-prefix .d-icon {
         color: var(--sidebar-text-primary);
       }
     }
 
-    // Active/selected state - inverted colors (Airbnb style)
+    // Active/selected state - White background (Figma style)
     &.active,
     &[aria-current="page"],
     &.sidebar-section-link--active {
       background: var(--sidebar-active-bg);
       color: var(--sidebar-active-text);
-      font-weight: 600;
+      border: 1px solid light-dark(#e5e5e5, #333333);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 
       .sidebar-section-link-prefix .d-icon {
-        color: var(--sidebar-active-text);
+        color: light-dark(#1a8cff, #60a5fa);
       }
 
       .sidebar-section-link-content-text {
         font-weight: 600;
-      }
-
-      .sidebar-section-link-suffix {
-        background: light-dark(#444444, #e0e0e0);
         color: var(--sidebar-active-text);
       }
 
-      // Subtle left accent bar for active state
-      &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 3px;
-        height: 60%;
-        background: var(--tertiary);
-        border-radius: 0 3px 3px 0;
-        opacity: 0;
+      .sidebar-section-link-suffix {
+        background: light-dark(#e8e8e8, #333333);
+        color: var(--sidebar-active-text);
       }
     }
   }
@@ -202,6 +197,18 @@
   // Dropdown menu items (no border-radius)
   .dropdown-menu__item .sidebar-section-link {
     border-radius: 0;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MORE BUTTON - Align with other sidebar links
+// ─────────────────────────────────────────────────────────────────────────────
+.sidebar-more-section-trigger.sidebar-section-link {
+  justify-content: flex-start !important;
+
+  .sidebar-section-link-content-text {
+    text-align: left !important;
+    flex: 1;
   }
 }
 
@@ -230,38 +237,36 @@
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// NEW TOPIC BUTTON - Primary CTA (Airbnb gradient style)
+// NEW TOPIC BUTTON - Clean style matching Figma
 // ─────────────────────────────────────────────────────────────────────────────
 .sidebar-new-topic-button__wrapper {
-  margin: 12px 12px 20px 12px;
+  margin: 12px 8px 16px 8px;
 
   .sidebar-new-topic-button {
     width: 100%;
     justify-content: center;
-    padding: 12px 20px;
-    border-radius: 12px;
+    padding: 10px 16px;
+    border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
-    background: linear-gradient(135deg, var(--tertiary) 0%, #1d4ed8 100%);
+    background: var(--tertiary);
     color: #ffffff;
     border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08),
-      0 4px 12px rgba(37, 99, 235, 0.15);
-    transition: transform var(--sidebar-hover-transition),
-      box-shadow var(--sidebar-hover-transition);
+    box-shadow: none;
+    transition: background var(--sidebar-hover-transition),
+      opacity var(--sidebar-hover-transition);
 
     .d-icon {
       display: none;
     }
 
     &:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12),
-        0 8px 24px rgba(37, 99, 235, 0.25);
+      background: light-dark(#0066cc, #3b82f6);
+      opacity: 0.95;
     }
 
     &:active {
-      transform: translateY(0);
+      opacity: 0.9;
     }
   }
 }
@@ -270,8 +275,8 @@
 // SIDEBAR FOOTER
 // ─────────────────────────────────────────────────────────────────────────────
 .sidebar-footer-wrapper {
-  border-top: 1px solid var(--sidebar-border);
-  padding: 12px;
+  border-top: 1px solid light-dark(#f0f0f0, #2a2a2a);
+  padding: 8px;
   background: var(--sidebar-bg);
 }
 
@@ -280,7 +285,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 .sidebar-theme-toggle__wrapper {
   order: -1;
-  padding: 8px 12px;
+  padding: 6px 8px;
 
   .d-icon-paintbrush {
     display: none;
@@ -289,13 +294,13 @@
 
 .sidebar-theme-toggle-dropdown.select-kit.combo-box .select-kit-header {
   padding-left: 12px;
-  border-radius: 10px;
-  border: 1px solid var(--sidebar-border);
+  border-radius: 8px;
+  border: 1px solid light-dark(#e5e5e5, #333333);
   background: var(--sidebar-bg);
   transition: border-color var(--sidebar-hover-transition);
 
   &:hover {
-    border-color: var(--sidebar-text-secondary);
+    border-color: light-dark(#cccccc, #444444);
   }
 }
 
