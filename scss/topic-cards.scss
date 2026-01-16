@@ -1,6 +1,6 @@
 // =============================================================================
-// TOPIC LIST CARDS - 2025 Airbnb DLS
-// Dimensional surfaces with refined interactions
+// TOPIC LIST CARDS - 2025 Premium Design
+// Inspired by Airbnb, Linear, Notion - clean, dimensional, delightful
 // =============================================================================
 
 @use "lib/viewport";
@@ -13,26 +13,38 @@
   --topic-list-item-background-color: var(--d-content-background);
   --topic-list-item-background-color--visited: var(--d-content-background);
 
-  // Topic card specific colors - brighter white to pop on blue bg
+  // Card surface
   --topic-card-bg: light-dark(#ffffff, #1e293b);
+  --topic-card-bg-hover: light-dark(#fafeff, #253449);
   --topic-card-border: light-dark(
-    rgba(51, 150, 255, 0.12),
-    rgba(255, 255, 255, 0.08)
+    rgba(51, 150, 255, 0.08),
+    rgba(255, 255, 255, 0.06)
   );
   --topic-card-border-hover: light-dark(
-    rgba(51, 150, 255, 0.25),
-    rgba(255, 255, 255, 0.15)
+    rgba(51, 150, 255, 0.2),
+    rgba(255, 255, 255, 0.12)
   );
   --topic-card-shadow: light-dark(
-    0 2px 8px rgba(51, 150, 255, 0.08),
-    0 2px 8px rgba(0, 0, 0, 0.3)
+    0 1px 2px rgba(0, 0, 0, 0.02),
+    0 1px 2px rgba(0, 0, 0, 0.2)
   );
   --topic-card-shadow-hover: light-dark(
-    0 8px 24px rgba(51, 150, 255, 0.15),
-    0 8px 24px rgba(0, 0, 0, 0.4)
+    0 12px 40px -8px rgba(51, 150, 255, 0.2),
+    0 12px 40px -8px rgba(0, 0, 0, 0.5)
   );
-  --topic-title-color: light-dark(#1e293b, #ffffff);
+
+  // Typography
+  --topic-title-color: light-dark(#0f172a, #f8fafc);
+  --topic-title-hover: light-dark(#3b82f6, #60a5fa);
   --topic-meta-color: light-dark(#64748b, #94a3b8);
+  --topic-meta-hover: light-dark(#475569, #cbd5e1);
+
+  // Accent
+  --topic-accent: light-dark(#3b82f6, #60a5fa);
+  --topic-accent-soft: light-dark(
+    rgba(59, 130, 246, 0.1),
+    rgba(96, 165, 250, 0.15)
+  );
 }
 
 // -----------------------------------------------------------------------------
@@ -99,10 +111,10 @@
   border: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 
   @include viewport.until(lg) {
-    gap: 10px;
+    gap: 12px;
   }
 
   @include viewport.until(sm) {
@@ -112,29 +124,64 @@
 }
 
 // -----------------------------------------------------------------------------
-// Individual Topic Card
+// Individual Topic Card - Premium 2025 Design
 // -----------------------------------------------------------------------------
 .topic-list-body .topic-list-item {
   position: relative;
   text-overflow: ellipsis;
-  padding: 16px;
+  padding: 20px 24px;
   background: var(--topic-card-bg);
   border: 1px solid var(--topic-card-border);
   box-shadow: var(--topic-card-shadow);
   display: grid;
-  grid-template-columns: min-content min-content min-content auto min-content;
+  grid-template-columns: 48px 1fr auto;
+  grid-template-rows: auto auto;
   grid-template-areas:
-    "creator title title title status"
-    ". category activity activity .";
-  gap: 12px;
-  border-radius: 16px;
+    "avatar title title"
+    "avatar meta time";
+  gap: 6px 16px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 200ms ease-out, border-color 200ms ease-out;
 
+  // Hover state - spring lift effect
+  &:hover {
+    .discourse-no-touch & {
+      background: var(--topic-card-bg-hover);
+      border-color: var(--topic-card-border-hover);
+      box-shadow: var(--topic-card-shadow-hover);
+      transform: translateY(-4px) scale(1.005);
+    }
+  }
+
+  // Active/pressed state - stay white, just subtle scale
+  &:active,
+  &:active:hover,
+  &:focus,
+  &:focus-visible {
+    .discourse-no-touch & {
+      background: var(--topic-card-bg) !important;
+      border-color: var(--topic-card-border) !important;
+      transform: translateY(-1px) scale(0.995);
+      transition-duration: 50ms;
+    }
+  }
+
+  // Visited state - keep card white
+  &.visited {
+    background: var(--topic-card-bg);
+
+    .title {
+      color: var(--topic-meta-color);
+    }
+  }
+
+  // Has replies variant
   &.has-replies {
     grid-template-areas:
-      "creator title title title status"
-      ". category likes-replies activity .";
+      "avatar title title"
+      "avatar meta time";
   }
 
   &:not(.has-replies) {
@@ -143,84 +190,92 @@
     }
   }
 
-  // Hover state - lift effect
-  &:hover {
-    .discourse-no-touch & {
-      border-color: var(--topic-card-border-hover);
-      box-shadow: var(--topic-card-shadow-hover);
-      transform: translateY(-2px);
-      background: var(--topic-card-bg);
-    }
-  }
-
-  // Selected state
+  // Selected state - accent ring
   &.selected {
-    box-shadow: 0 0 0 2px light-dark(#3b82f6, #60a5fa);
+    border-color: var(--topic-accent);
+    box-shadow: 0 0 0 3px var(--topic-accent-soft), var(--topic-card-shadow);
   }
 
-  // Mobile styles
+  // Mobile styles - cleaner list view
   @include viewport.until(sm) {
     max-width: 100vw;
     box-sizing: border-box;
+    grid-template-columns: 40px 1fr auto;
     grid-template-areas:
-      "creator title title title status"
-      ". category activity activity . ";
+      "avatar title title"
+      "avatar meta time";
+    gap: 6px 12px;
     border: none;
     border-bottom: 1px solid var(--topic-card-border);
     box-shadow: none;
     border-radius: 0;
-    padding: 16px 12px;
-    background: transparent;
+    padding: 16px;
+    background: light-dark(rgba(255, 255, 255, 0.6), transparent);
 
     &.has-replies {
       grid-template-areas:
-        "creator title title title status"
-        ". category likes-replies activity . ";
+        "avatar title title"
+        "avatar meta time";
     }
 
     &:hover {
       .discourse-no-touch & {
         transform: none;
         box-shadow: none;
+        background: light-dark(
+          rgba(255, 255, 255, 0.8),
+          rgba(255, 255, 255, 0.05)
+        );
+      }
+    }
+
+    &:active {
+      .discourse-no-touch & {
+        background: light-dark(
+          rgba(59, 130, 246, 0.05),
+          rgba(96, 165, 250, 0.1)
+        );
       }
     }
   }
 
   // Bulk select mode
   .bulk-select-enabled & {
-    grid-template-columns: min-content min-content min-content min-content auto min-content;
+    grid-template-columns: 32px 48px 1fr auto;
     grid-template-areas:
-      "bulk-select creator title title title status"
-      "bulk-select category category activity activity .";
+      "bulk avatar title title"
+      "bulk avatar meta meta";
 
     &.has-replies {
       grid-template-areas:
-        "bulk-select creator title title title status"
-        "bulk-select category category activity likes-replies .";
+        "bulk avatar title title"
+        "bulk avatar meta stats";
 
       @include viewport.until(sm) {
+        grid-template-columns: 28px 40px 1fr auto;
         grid-template-areas:
-          "bulk-select creator title title title status"
-          "bulk-select . category likes-replies activity . ";
+          "bulk avatar title title"
+          "bulk avatar meta stats";
       }
     }
 
     @include viewport.until(sm) {
-      grid-template-columns: min-content min-content min-content min-content auto min-content;
+      grid-template-columns: 28px 40px 1fr auto;
       grid-template-areas:
-        "bulk-select creator title title title status"
-        "bulk-select . category activity activity . ";
+        "bulk avatar title title"
+        "bulk avatar meta meta";
     }
   }
 
-  &.selected {
-    box-shadow: 0 0 0 2px light-dark(#3b82f6, #60a5fa);
-
-    .user-messages-page & {
-      box-shadow: inset 0 0 0 2px light-dark(#3b82f6, #60a5fa);
-    }
+  // Bulk select checkbox
+  .bulk-select-topics {
+    grid-area: bulk;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
+  // Excerpt expanded view
   &.excerpt-expanded {
     @include viewport.until(sm) {
       .topic-excerpt,
@@ -230,51 +285,77 @@
     }
 
     @include viewport.from(sm) {
+      grid-template-columns: 48px 1fr;
       grid-template-areas:
-        "creator title title title status"
-        ". category activity activity . "
-        ". excerpt excerpt excerpt excerpt";
+        "avatar title"
+        "avatar meta"
+        ". excerpt";
 
       &.has-replies {
         grid-template-areas:
-          "creator title title title status"
-          ". category likes-replies activity ."
-          ". excerpt excerpt excerpt excerpt";
-      }
-
-      .bulk-select-enabled & {
-        grid-template-areas:
-          "bulk-select creator title title title status"
-          "bulk-select category category activity likes-replies likes-replies "
-          " bulk-select excerpt excerpt excerpt excerpt excerpt";
+          "avatar title"
+          "avatar meta"
+          ". excerpt";
       }
     }
   }
 
   // -----------------------------------------------------------------------------
-  // Topic Title
+  // Topic Title - Bold, clear, interactive
   // -----------------------------------------------------------------------------
   .link-top-line {
     grid-area: title;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-weight: 600;
-    line-height: calc(var(--space-3) * 2);
+    font-size: 1rem;
+    line-height: 1.4;
+    min-height: 24px;
 
     @include viewport.until(sm) {
-      line-height: normal;
+      font-size: 0.95rem;
+      line-height: 1.35;
     }
 
     .title {
       padding: 0;
       color: var(--topic-title-color);
+      text-decoration: none;
       transition: color 150ms ease-out;
 
+      // Two-line clamp for long titles
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+
       &:hover {
-        color: light-dark(#3b82f6, #60a5fa);
+        color: var(--topic-title-hover);
       }
+    }
+
+    // Topic status icons (pinned, locked, etc)
+    .topic-statuses {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+
+      .d-icon {
+        width: 14px;
+        height: 14px;
+        color: var(--topic-meta-color);
+      }
+    }
+
+    // New/unread badges
+    .topic-post-badges {
+      flex-shrink: 0;
     }
   }
 
-  // display contents
+  // display contents (keep grid working with table structure)
   td.main-link,
   td.posters,
   td.posts,
@@ -288,7 +369,7 @@
     padding: 0;
   }
 
-  // display:nones
+  // Hide bottom line, use meta row instead
   td.main-link a.topic-status,
   .link-bottom-line,
   .badge-notification.new-topic::before {
@@ -296,41 +377,50 @@
   }
 
   // -----------------------------------------------------------------------------
-  // Category Badge
+  // Category Badge - Pill style with dynamic colors
   // -----------------------------------------------------------------------------
   .topic-category-data {
-    grid-area: category;
-    display: flex;
+    display: contents; // Let children participate in parent grid
   }
 
   .badge-category__wrapper {
-    border-radius: 8px;
+    grid-area: meta;
+    align-self: center;
+    width: fit-content;
+    border-radius: 20px;
+    padding: 5px 12px;
+    background-color: light-dark(
+      oklch(from var(--category-badge-color) 96% calc(c * 0.25) h),
+      oklch(from var(--category-badge-color) 30% calc(c * 0.4) h)
+    );
+    transition: all 150ms ease-out;
 
     @include viewport.until(sm) {
-      border-radius: 6px;
-      max-width: 125px;
+      border-radius: 16px;
+      padding: 4px 10px;
+      max-width: 140px;
     }
-    padding: 4px 10px;
-    background-color: light-dark(
-      oklch(from var(--category-badge-color) 97% calc(c * 0.3) h),
-      oklch(from var(--category-badge-color) 35% calc(c * 0.5) h)
-    );
 
-    @include viewport.until(md) {
-      padding: 3px 8px;
-      font-size: var(--font-down-2);
+    &:hover {
+      background-color: light-dark(
+        oklch(from var(--category-badge-color) 93% calc(c * 0.35) h),
+        oklch(from var(--category-badge-color) 35% calc(c * 0.5) h)
+      );
     }
 
     .badge-category {
+      display: flex;
       align-items: center;
+      gap: 4px;
     }
 
     .badge-category__name {
-      font-size: var(--font-down-1);
-      font-weight: 500;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
       color: light-dark(
-        oklch(from var(--category-badge-color) 25% calc(c * 1) h),
-        oklch(from var(--category-badge-color) 100% calc(c * 0.9) h)
+        oklch(from var(--category-badge-color) 30% calc(c * 0.9) h),
+        oklch(from var(--category-badge-color) 95% calc(c * 0.8) h)
       );
       min-width: 0;
       overflow: hidden;
@@ -339,143 +429,160 @@
     }
 
     .d-icon {
-      width: var(--font-down-1);
-      height: var(--font-down-1);
+      width: 12px;
+      height: 12px;
+      opacity: 0.8;
+    }
+
+    // Category emoji
+    .emoji {
+      width: 16px;
+      height: 16px;
+      margin-right: 2px;
     }
   }
 
   // -----------------------------------------------------------------------------
-  // Creator Avatar
+  // Creator Avatar - Larger, more prominent
   // -----------------------------------------------------------------------------
   .topic-creator-data {
-    grid-area: creator;
+    grid-area: avatar;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 2px;
+
+    .--topic-creator {
+      position: relative;
+    }
 
     .avatar {
-      height: 36px;
-      width: 36px;
-      border-radius: 10px;
+      height: 44px;
+      width: 44px;
+      border-radius: 14px;
       border: 2px solid transparent;
-      transition: border-color 150ms ease-out;
+      transition: border-color 150ms ease-out, transform 150ms ease-out;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
       @include viewport.until(sm) {
-        height: 32px;
-        width: 32px;
-        border-radius: 8px;
+        height: 40px;
+        width: 40px;
+        border-radius: 12px;
       }
     }
 
     &:hover .avatar {
-      border-color: var(--topic-card-border-hover);
+      border-color: var(--topic-accent-soft);
+      transform: scale(1.05);
     }
   }
 
   // -----------------------------------------------------------------------------
-  // Activity & Meta
+  // Activity Info - Hidden, category is enough for clean look
   // -----------------------------------------------------------------------------
   .dot-separator {
-    width: 4px;
-    height: 4px;
-    background-color: var(--topic-meta-color);
-    border-radius: 50%;
-    margin-inline: 6px;
+    display: none;
   }
 
   .topic-activity-data {
-    @include ellipsis;
-    grid-area: activity;
+    grid-area: time;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 
   .topic-activity {
     display: flex;
-    font-size: var(--font-down-1);
-    height: 100%;
     align-items: center;
     gap: 4px;
+    font-size: 0.8rem;
     color: var(--topic-meta-color);
+    white-space: nowrap;
+  }
+
+  // Likes/Replies stats - hide for minimal cards
+  .topic-likes-replies-data {
+    display: none;
   }
 
   .topic-activity__type {
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: none;
   }
 
   .topic-activity__username {
-    @include ellipsis;
-    margin-left: 4px;
-    font-weight: 500;
-    color: var(--topic-meta-color);
+    display: none;
   }
 
   .topic-activity__time {
     color: var(--topic-meta-color);
+    font-weight: 500;
+    opacity: 0.7;
   }
 
-  // timestamp
+  // timestamp from activity column
   td.activity .post-activity {
-    grid-area: activity;
-    font-size: var(--font-down-1);
-    color: var(--primary-500);
-    margin-left: auto;
+    grid-area: time;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 0.8rem;
+    color: var(--topic-meta-color);
     padding: 0;
+    white-space: nowrap;
+
+    .relative-date {
+      font-weight: 500;
+      opacity: 0.7;
+    }
   }
 
-  // status
+  // -----------------------------------------------------------------------------
+  // Status Cards (pinned, hot, etc)
+  // -----------------------------------------------------------------------------
   .topic-status-data {
     display: none;
   }
 
   &.--has-status-card .topic-status-data {
     display: block;
-    grid-area: status;
+    position: absolute;
+    top: -8px;
+    right: 16px;
   }
 
   .topic-status-card {
     height: min-content;
-    margin-left: auto;
     display: flex;
     flex-direction: row;
-    gap: 0.25em;
+    gap: 4px;
     align-items: center;
-    padding: 0.2em 0.5rem;
-    font-size: var(--font-down-2);
-
-    @include viewport.from(lg) {
-      font-size: var(--font-down-3);
-    }
-    font-weight: 600;
-    border-radius: var(--d-border-radius);
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 12px;
+    background: var(--topic-card-bg);
     border: 1px solid var(--status-color);
     color: var(--status-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
     @include viewport.until(sm) {
-      border-radius: var(--d-border-radius-small);
-      padding: 0.35em;
+      padding: 3px 8px;
+      font-size: 0.65rem;
     }
 
     &.--pinned {
-      --status-color: var(--primary-500);
+      --status-color: var(--topic-accent);
     }
 
     &.--hot {
-      --status-color: #e45735;
-    }
-
-    @include viewport.from(lg) {
-      position: absolute;
-      right: 1rem;
-      top: 0;
-      transform: translateY(-45%);
-      background-color: var(--d-content-background);
+      --status-color: #f97316;
     }
 
     svg {
       color: var(--status-color);
-
-      @include viewport.from(lg) {
-        font-size: var(--font-down-1);
-      }
+      width: 12px;
+      height: 12px;
     }
 
     &__name {
