@@ -55,22 +55,27 @@
 
   // New Topic button - styled to match design
   #create-topic {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
     padding: 10px 20px;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
-    background: var(--tertiary);
+    background: #3396ff !important;
     color: #ffffff !important;
     border: none;
     box-shadow: none;
     transition: background 150ms ease, opacity 150ms ease;
 
     .d-icon {
-      display: none;
+      width: 16px !important;
+      height: 16px !important;
+      color: #ffffff !important;
     }
 
     &:hover {
-      background: light-dark(#0066cc, #3b82f6);
+      background: #2a7de0 !important;
       opacity: 0.95;
     }
 
