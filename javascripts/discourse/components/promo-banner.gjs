@@ -6,12 +6,8 @@ export default class PromoBanner extends Component {
 
   get shouldRender() {
     const route = this.router.currentRouteName;
-    // Show on discovery pages (latest, top, etc.), tag pages, and tags listing
-    return route && (
-      route.startsWith("discovery") ||
-      route.startsWith("tag") ||
-      route.startsWith("tags")
-    );
+    // Show on all pages except admin
+    return route && !route.startsWith("admin");
   }
 
   <template>
