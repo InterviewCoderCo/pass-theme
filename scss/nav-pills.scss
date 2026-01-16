@@ -1,157 +1,195 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// NAVIGATION TABS - Flat, clean, Unreal-inspired
-// ─────────────────────────────────────────────────────────────────────────────
+// =============================================================================
+// NAVIGATION TABS - 2025 Airbnb DLS
+// Clean, dimensional surfaces with refined interactions
+// =============================================================================
 
-// List controls container (sticky header with nav + filters)
+// -----------------------------------------------------------------------------
+// CSS Custom Properties
+// -----------------------------------------------------------------------------
+:root {
+  // Navigation colors - designed for blue-tinted page background
+  --nav-bg: transparent;
+  --nav-pill-bg: light-dark(#ffffff, #1e293b);
+  --nav-pill-border: light-dark(
+    rgba(51, 150, 255, 0.12),
+    rgba(255, 255, 255, 0.08)
+  );
+  --nav-pill-text: light-dark(#64748b, #94a3b8);
+  --nav-pill-text-hover: light-dark(#1e293b, #ffffff);
+  --nav-pill-active-bg: light-dark(#1e293b, #ffffff);
+  --nav-pill-active-text: light-dark(#ffffff, #1e293b);
+  --nav-dropdown-shadow: light-dark(
+    0 8px 24px rgba(51, 150, 255, 0.15),
+    0 8px 24px rgba(0, 0, 0, 0.4)
+  );
+}
+
+// -----------------------------------------------------------------------------
+// List Controls Container (sticky nav bar)
+// -----------------------------------------------------------------------------
 .list-controls {
   position: sticky;
   top: var(--header-offset);
-  background: transparent !important;
+  background: light-dark(rgba(240, 247, 255, 0.8), rgba(17, 24, 39, 0.8));
   z-index: z("base") + 1;
-  padding: 12px 0;
-  border-bottom: none;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--nav-pill-border);
   margin-bottom: 0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   .navigation-container {
     display: flex !important;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 16px;
     align-items: center;
     width: 100% !important;
     justify-content: space-between !important;
   }
 
-  // Nav pills (Latest, Hot, Categories) - move to right, no extra space
+  // Nav pills - right side
   .nav-pills {
     order: 10 !important;
     margin-left: auto !important;
     margin-right: 0 !important;
   }
 
-  // Filter buttons (categories, tags) - keep on left
+  // Filter breadcrumb - left side
   .category-breadcrumb {
     order: 0 !important;
   }
-
-  // Filter dropdowns - Figma pill style (white bg like topic cards)
-  .combo-box .combo-box-header {
-    background: #FFFFFF;
-    border-radius: 20px;
-    border: 1px solid #E2E8F0;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: border-color 150ms ease, box-shadow 150ms ease;
-
-    &:hover {
-      border-color: #CBD5E1;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-    }
-
-    &:focus-visible {
-      .discourse-no-touch & {
-        border-color: #E2E8F0;
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-      }
-    }
-
-    .d-icon {
-      color: #64748B;
-      margin-left: 4px;
-    }
-
-    .selected-name {
-      color: #0F172A;
-    }
-  }
 }
 
-// Category breadcrumb - pill buttons (white bg like topic cards)
+// -----------------------------------------------------------------------------
+// Category/Tag Dropdowns - Pill style with dimensional surface
+// -----------------------------------------------------------------------------
 .category-breadcrumb {
   display: flex;
-  gap: 8px;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 
   li {
     .combo-box .combo-box-header,
-    .category-drop-header {
-      border-radius: 20px !important;
-      border: 1px solid #E2E8F0 !important;
-      padding: 8px 16px !important;
-      background: #FFFFFF !important;
+    .category-drop-header,
+    .tag-drop-header,
+    .select-kit-header {
+      background: var(--nav-pill-bg) !important;
+      border: 1px solid var(--nav-pill-border) !important;
+      border-radius: 24px !important;
+      padding: 10px 18px !important;
       font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--nav-pill-text);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      transition: all 150ms ease-out;
 
       &:hover {
-        border-color: #E2E8F0 !important;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+        border-color: var(--nav-pill-border) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        color: var(--nav-pill-text-hover);
+      }
+
+      .selected-name,
+      .name {
+        color: inherit;
+      }
+
+      .d-icon,
+      .caret-icon {
+        color: var(--nav-pill-text);
+        margin-left: 6px;
+        transition: transform 150ms ease-out;
       }
     }
 
-    // Keep border color same when expanded
-    .combo-box.is-expanded .combo-box-header,
-    .select-kit.is-expanded .select-kit-header {
-      border-color: #E2E8F0 !important;
+    // Expanded state
+    .select-kit.is-expanded .select-kit-header,
+    .combo-box.is-expanded .combo-box-header {
+      border-color: var(--nav-pill-border) !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+
+      .caret-icon {
+        transform: rotate(90deg);
+      }
     }
   }
 }
 
 // Dropdown body
 .select-kit.is-expanded .select-kit-body {
-  border-radius: 8px;
-  background: var(--d-content-background);
-  border: 1px solid light-dark(#E2E8F0, #334155);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  background: var(--nav-pill-bg);
+  border: 1px solid var(--nav-pill-border);
+  box-shadow: var(--nav-dropdown-shadow);
   overflow: hidden;
+  margin-top: 8px;
 }
 
 // Dropdown search/filter input
 .select-kit .select-kit-filter {
-  padding: 6px;
-  border-bottom: 1px solid light-dark(#E2E8F0, #334155);
+  padding: 8px;
+  border-bottom: 1px solid var(--nav-pill-border);
 
   input.filter-input,
   input.filter-input:focus,
   input.filter-input:active,
   input.filter-input:focus-visible {
     width: 100%;
-    padding: 6px 10px;
-    font-size: 13px;
-    border: 1px solid #E2E8F0 !important;
-    border-radius: 6px;
-    background: #FFFFFF !important;
-    color: #0F172A;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    border: 1px solid var(--nav-pill-border) !important;
+    border-radius: 10px;
+    background: var(--nav-bg) !important;
+    color: var(--nav-pill-text-hover);
     outline: none !important;
     box-shadow: none !important;
 
     &::placeholder {
-      color: #94A3B8;
+      color: var(--nav-pill-text);
+    }
+
+    &:focus {
+      border-color: var(--nav-pill-text-hover) !important;
     }
   }
 }
 
 // Dropdown collection items
 .select-kit .select-kit-collection {
-  max-height: 300px;
+  max-height: 320px;
   overflow-y: auto;
+  padding: 6px;
 
   .select-kit-row {
-    padding: 10px 12px;
-    font-size: 14px;
-    color: light-dark(#0F172A, #F8FAFC);
-    transition: background 150ms ease;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    color: var(--nav-pill-text);
+    border-radius: 8px;
+    margin: 2px 0;
+    transition: all 150ms ease-out;
 
     &:hover,
     &.is-highlighted {
-      background: light-dark(#F1F5F9, #334155);
+      background: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08));
+      color: var(--nav-pill-text-hover);
     }
 
     &.is-selected {
-      background: light-dark(#EFF6FF, #1E3A5F);
-      color: var(--tertiary);
+      background: var(--nav-pill-active-bg);
+      color: var(--nav-pill-active-text);
+    }
+
+    // Category badge in dropdown
+    .badge-category__wrapper {
+      padding: 4px 8px;
+      border-radius: 6px;
     }
   }
 }
 
-// Keep border color consistent when expanded (global override)
+// Focus states - remove outlines, use subtle shadow
 .category-breadcrumb .select-kit.is-expanded .select-kit-header,
 .category-breadcrumb .combo-box.is-expanded .combo-box-header,
 .category-breadcrumb .select-kit .select-kit-header:focus,
@@ -160,20 +198,23 @@
 .category-breadcrumb .combo-box .combo-box-header:focus,
 .category-breadcrumb .combo-box .combo-box-header:active,
 .category-breadcrumb .combo-box .combo-box-header:focus-visible {
-  border-color: #E2E8F0 !important;
+  border-color: var(--nav-pill-border) !important;
   outline: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// NAV PILLS - The actual tabs (Latest, New, Unread, Top, Categories)
-// ─────────────────────────────────────────────────────────────────────────────
-
+// -----------------------------------------------------------------------------
+// NAV PILLS - Tab navigation (Latest, Hot, Categories)
+// -----------------------------------------------------------------------------
 .nav-pills {
   display: flex;
-  gap: 0;
-  padding: 0;
+  gap: 4px;
+  padding: 4px;
   margin: 0;
+  background: var(--nav-pill-bg);
+  border-radius: 12px;
+  border: 1px solid var(--nav-pill-border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 
   // Each tab item
   > li {
@@ -187,13 +228,13 @@
       align-items: center;
       gap: 6px;
       padding: 8px 16px;
-      font-size: 14px;
-      font-weight: 450;
-      color: light-dark(#64748B, #94A3B8);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--nav-pill-text);
       background: transparent !important;
       border: none;
-      border-radius: 0;
-      transition: color 150ms ease;
+      border-radius: 8px;
+      transition: all 150ms ease-out;
       text-decoration: none;
 
       // Remove default underline
@@ -208,76 +249,122 @@
         color: inherit;
       }
 
-      // Count badge (e.g., "New (3)")
+      // Count badge
       .badge-notification {
-        margin-left: 4px;
-        padding: 2px 6px;
-        font-size: 11px;
+        margin-left: 6px;
+        padding: 2px 7px;
+        font-size: 0.7rem;
         font-weight: 600;
-        border-radius: 9999px;
-        background: light-dark(#0F172A, #F8FAFC);
-        color: light-dark(#FFFFFF, #0F172A);
+        border-radius: 10px;
+        background: light-dark(#ff385c, #ff385c);
+        color: #ffffff;
       }
 
-      // Hover state - just color change, no background
+      // Hover state
       &:hover {
-        color: light-dark(#0F172A, #F8FAFC);
-        background: transparent !important;
+        color: var(--nav-pill-text-hover);
+        background: light-dark(
+          rgba(0, 0, 0, 0.04),
+          rgba(255, 255, 255, 0.08)
+        ) !important;
       }
     }
 
-    // Active/current tab - blue color with blue underline (Figma style)
+    // Active/current tab - inverted colors (Airbnb 2025 style)
     &.active > a,
     &.active > button,
     > a.active,
     > button.active {
-      color: var(--tertiary) !important;
-      background: transparent !important;
+      color: var(--nav-pill-active-text) !important;
+      background: var(--nav-pill-active-bg) !important;
       font-weight: 600;
 
-      // Blue underline indicator
+      // Remove underline, using filled style instead
       &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        bottom: 0;
-        left: 16px;
-        right: 16px;
-        height: 2px;
-        background: var(--tertiary);
-        border-radius: 2px 2px 0 0;
+        display: none;
+      }
+
+      &:hover {
+        background: var(--nav-pill-active-bg) !important;
       }
     }
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// NAVIGATION VARIANTS
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
+// Navigation Controls (New Topic button, bulk select)
+// -----------------------------------------------------------------------------
+.navigation-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-// Category navigation (on category pages)
-.category-navigation {
-  .nav-pills {
-    > li > a,
-    > li > button {
-      padding: 6px 12px;
-      font-size: 13px;
+  // New Topic button - gradient CTA
+  #create-topic {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    .d-icon {
+      color: #ffffff;
+    }
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // Bulk select button
+  .bulk-select {
+    background: var(--nav-pill-bg);
+    border: 1px solid var(--nav-pill-border);
+    border-radius: 10px;
+    padding: 8px 12px;
+    color: var(--nav-pill-text);
+    transition: all 150ms ease-out;
+
+    &:hover {
+      background: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08));
+      color: var(--nav-pill-text-hover);
     }
   }
 }
 
-// Sub-navigation (e.g., within user profiles)
-.user-navigation {
-  .nav-pills {
-    border-bottom: 1px solid light-dark(#E2E8F0, #1E293B);
-    padding-bottom: 8px;
-    margin-bottom: 16px;
-  }
-}
-
-// Mobile adjustments
+// -----------------------------------------------------------------------------
+// Mobile Adjustments
+// -----------------------------------------------------------------------------
 @media (max-width: 768px) {
+  .list-controls {
+    padding: 12px 0;
+
+    .navigation-container {
+      gap: 10px;
+    }
+  }
+
+  .category-breadcrumb {
+    gap: 8px;
+
+    li .select-kit-header {
+      padding: 8px 14px !important;
+      font-size: 0.85rem;
+    }
+  }
+
   .nav-pills {
+    padding: 3px;
     flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -289,9 +376,20 @@
 
     > li > a,
     > li > button {
-      padding: 8px 14px;
-      font-size: 13px;
+      padding: 7px 12px;
+      font-size: 0.8rem;
       white-space: nowrap;
+    }
+  }
+
+  .navigation-controls {
+    #create-topic {
+      padding: 8px 14px;
+      font-size: 0.85rem;
+
+      .d-button-label {
+        display: none;
+      }
     }
   }
 }
@@ -299,5 +397,8 @@
 // Remove any lingering backgrounds from Discourse defaults
 .nav-pills > li > a:hover,
 .nav-pills > li button:hover {
-  background: transparent !important;
+  background: light-dark(
+    rgba(0, 0, 0, 0.04),
+    rgba(255, 255, 255, 0.08)
+  ) !important;
 }

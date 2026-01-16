@@ -1,11 +1,160 @@
+// =============================================================================
+// BUTTONS - 2025 Airbnb DLS
+// Refined interactions with dimensional surfaces
+// =============================================================================
+
 :root {
-  --d-button-border-radius: 6.25rem;
+  --d-button-border-radius: 12px;
+
+  // Button colors
+  --btn-default-bg: light-dark(#f7f7f7, #2a2a2a);
+  --btn-default-border: light-dark(
+    rgba(0, 0, 0, 0.08),
+    rgba(255, 255, 255, 0.08)
+  );
+  --btn-default-text: light-dark(#222222, #ffffff);
+  --btn-default-hover-bg: light-dark(#eeeeee, #333333);
+
+  --btn-primary-bg: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  --btn-primary-text: #ffffff;
+  --btn-primary-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+
+  --btn-danger-bg: #ef4444;
+  --btn-danger-text: #ffffff;
 }
 
-.discourse-no-touch .topic-body .actions .fade-out {
-  transition: none;
+// -----------------------------------------------------------------------------
+// Default Button
+// -----------------------------------------------------------------------------
+.btn-default,
+.discourse-no-touch .btn-default,
+.discourse-no-touch .select-kit .select-kit-header.btn-default {
+  background: var(--btn-default-bg);
+  border: 1px solid var(--btn-default-border);
+  border-radius: var(--d-button-border-radius);
+  color: var(--btn-default-text);
+  font-weight: 500;
+  padding: 10px 18px;
+  transition: all 150ms ease-out;
+
+  .d-icon {
+    color: var(--btn-default-text);
+    opacity: 0.7;
+  }
+
+  &:focus-visible,
+  &:hover {
+    background: var(--btn-default-hover-bg);
+    color: var(--btn-default-text);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-color: var(--btn-default-border);
+
+    .d-icon {
+      color: var(--btn-default-text);
+      opacity: 1;
+    }
+  }
+
+  &:active:not(:hover, :focus) {
+    background: var(--btn-default-hover-bg);
+    transform: scale(0.98);
+  }
 }
 
+// -----------------------------------------------------------------------------
+// Primary Button (CTAs)
+// -----------------------------------------------------------------------------
+.btn-primary,
+.discourse-no-touch .btn-default.ai-new-question-button {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: none;
+  border-radius: var(--d-button-border-radius);
+  font-weight: 600;
+  padding: 10px 20px;
+  box-shadow: var(--btn-primary-shadow);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .d-icon {
+    color: var(--btn-primary-text);
+  }
+
+  &:not([disabled]):focus-visible,
+  &:not([disabled]):hover {
+    .discourse-no-touch & {
+      background: var(--btn-primary-bg);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+      color: var(--btn-primary-text);
+      transform: translateY(-1px);
+
+      .d-icon {
+        color: var(--btn-primary-text);
+      }
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: var(--btn-primary-shadow);
+  }
+
+  &:visited {
+    color: var(--btn-primary-text);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Danger Button
+// -----------------------------------------------------------------------------
+.btn-danger {
+  background: var(--btn-danger-bg);
+  color: var(--btn-danger-text);
+  border: none;
+  border-radius: var(--d-button-border-radius);
+
+  .discourse-no-touch & {
+    &:not([disabled]):focus-visible,
+    &:not([disabled]):hover {
+      background: #dc2626;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Icon-only Buttons
+// -----------------------------------------------------------------------------
+.btn-icon,
+.btn.no-text {
+  border-radius: 10px;
+  padding: 8px;
+
+  .d-icon {
+    margin: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Transparent/Ghost Buttons
+// -----------------------------------------------------------------------------
+.btn-transparent,
+.btn-flat {
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  color: light-dark(#484848, #b0b0b0);
+
+  &:hover {
+    background: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08));
+    color: light-dark(#222222, #ffffff);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Sidebar New Topic Button
+// -----------------------------------------------------------------------------
 .sidebar-new-topic-button__wrapper {
   &:has(.fk-d-tooltip__trigger) {
     #create-topic.btn {
@@ -15,79 +164,34 @@
   }
 }
 
-.discourse-no-touch .btn-default.sidebar-new-topic-button,
-.discourse-no-touch .btn-default,
-.discourse-no-touch .select-kit .select-kit-header.btn-default {
-  background: var(--primary-100);
+.discourse-no-touch .btn-default.sidebar-new-topic-button {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: none;
+  box-shadow: var(--btn-primary-shadow);
 
   .d-icon {
-    color: var(--accent-color);
+    color: var(--btn-primary-text);
   }
 
   &:focus-visible,
   &:hover {
-    background: var(--primary-100);
-    color: var(--primary);
-    box-shadow: 0 0 0 4px var(--button-box-shadow);
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4), 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
 
     .d-icon {
-      color: var(--accent-color);
-    }
-  }
-
-  &:active:not(:hover, :focus) {
-    color: var(--primary);
-    background: var(--tertiary-300);
-    background-image: none;
-
-    .d-icon {
-      color: var(--tertiary-high);
+      color: var(--btn-primary-text);
     }
   }
 }
 
-.btn-primary,
-.discourse-no-touch .btn-default.ai-new-question-button {
-  background-color: var(--accent-color);
-  color: var(--accent-text-color);
-
-  .d-icon {
-    color: var(--accent-text-color);
-  }
-
-  &:not([disabled]):focus-visible,
-  &:not([disabled]):hover {
-    .discourse-no-touch & {
-      background-color: var(--accent-color);
-      box-shadow: 0 0 0 4px var(--button-box-shadow);
-      color: var(--accent-text-color);
-
-      .d-icon {
-        color: var(--accent-text-color);
-      }
-    }
-  }
-
-  &:active {
-    background: light-dark(
-      oklch(from var(--accent-color) 40% c h),
-      oklch(from var(--accent-color) 50% c h)
-    );
-  }
-
-  &:visited {
-    color: var(--accent-text-color);
-  }
-}
-
-.btn-danger {
-  .discourse-no-touch & {
-    &:not([disabled]):focus-visible,
-    &:not([disabled]):hover {
-      background-color: var(--danger);
-      box-shadow: 0 0 0 4px var(--d-button-danger-bg-color--hover);
-    }
-  }
+// -----------------------------------------------------------------------------
+// Topic Action Buttons (fade out fix)
+// -----------------------------------------------------------------------------
+.discourse-no-touch .topic-body .actions .fade-out {
+  transition: none;
 }
 
 // DiscoToc plugin

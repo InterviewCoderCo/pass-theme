@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════════════
-// GLOBAL STYLES
+// GLOBAL STYLES - 2025 Airbnb DLS
 // Core global styles: typography, backgrounds, layout alignment
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -8,8 +8,15 @@
 // ─────────────────────────────────────────────────────────────────────────────
 :root {
   --d-nav-pill-border-radius: 0;
-  --d-border-radius: 6px;
-  --d-border-radius-large: 8px;
+  --d-border-radius: 10px;
+  --d-border-radius-large: 16px;
+
+  // Page background - subtle blue tint
+  --page-bg: light-dark(
+    linear-gradient(180deg, #ebf4ff 0%, #f0f7ff 50%, #f5f9ff 100%),
+    linear-gradient(180deg, #0a1628 0%, #111827 50%, #0f172a 100%)
+  );
+  --page-bg-solid: light-dark(#f0f7ff, #111827);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -45,14 +52,17 @@ h6,
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// PAGE BACKGROUND - Use content background (no separate outer bg)
+// PAGE BACKGROUND - Subtle blue gradient
 // ─────────────────────────────────────────────────────────────────────────────
 html {
-  background: var(--d-content-background) !important;
+  background: var(--page-bg) !important;
+  background-color: var(--page-bg-solid) !important;
+  min-height: 100vh;
 }
 
 body {
-  background: var(--d-content-background) !important;
+  background: transparent !important;
+  min-height: 100vh;
 }
 
 #main-outlet,

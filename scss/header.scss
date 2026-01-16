@@ -1,37 +1,119 @@
+// =============================================================================
+// HEADER - 2025 Airbnb DLS
+// Premium navigation bar with dimensional surface and refined interactions
+// =============================================================================
+
 @use "lib/viewport";
 
+// -----------------------------------------------------------------------------
+// CSS Custom Properties
+// -----------------------------------------------------------------------------
+:root {
+  // Header colors
+  --header-bg: light-dark(#ffffff, #1a1a1a);
+  --header-border: light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.06));
+  --header-shadow: light-dark(
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 1px 3px rgba(0, 0, 0, 0.3)
+  );
+
+  // Icon colors
+  --header-icon: light-dark(#484848, #b0b0b0);
+  --header-icon-hover: light-dark(#222222, #ffffff);
+  --header-icon-bg-hover: light-dark(
+    rgba(0, 0, 0, 0.04),
+    rgba(255, 255, 255, 0.08)
+  );
+
+  // Search colors
+  --search-bg: light-dark(#f7f7f7, #2a2a2a);
+  --search-border: light-dark(#e0e0e0, #3a3a3a);
+  --search-border-focus: light-dark(#222222, #ffffff);
+  --search-text: light-dark(#222222, #ffffff);
+  --search-placeholder: light-dark(#717171, #8a8a8a);
+
+  // Badge/notification colors
+  --badge-bg: #ff385c;
+  --badge-text: #ffffff;
+}
+
+// -----------------------------------------------------------------------------
+// Main Header Container
+// -----------------------------------------------------------------------------
 .d-header {
-  box-shadow: none;
-  background: var(--background-color);
+  background: var(--header-bg);
+  box-shadow: var(--header-shadow);
+  border-bottom: 1px solid var(--header-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .wrap {
+    padding: 0 16px;
+  }
+
+  .contents {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 }
 
-.search-menu .search-input,
-.search-menu-container .search-input {
-  border-color: var(--header_primary-low-mid);
+// -----------------------------------------------------------------------------
+// Logo
+// -----------------------------------------------------------------------------
+.d-header .title {
+  a {
+    display: flex;
+    align-items: center;
+    transition: opacity 150ms ease-out;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  #site-logo {
+    height: 32px;
+    width: auto;
+  }
 }
 
-.user-menu .quick-access-panel,
-.user-notifications-list {
-  li {
-    &.pending,
-    &.unread {
-      background: var(--d-hover);
+// -----------------------------------------------------------------------------
+// Header Icons (Search, User, Chat, etc.)
+// -----------------------------------------------------------------------------
+.d-header-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 
-      .discourse-no-touch & {
-        &:hover,
-        &:focus {
-          background: var(--d-selected);
-        }
-      }
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none !important;
+    background: transparent;
+    transition: all 150ms ease-out;
+    position: relative;
+
+    .d-icon {
+      color: var(--header-icon);
+      font-size: 1.1rem;
+      transition: color 150ms ease-out;
     }
   }
 }
 
 .discourse-no-touch .d-header-icons .icon:hover,
-.discourse-no-touch .d-header-icons .icon:focus,
-.header-sidebar-toggle button:focus:hover,
-.discourse-no-touch .header-sidebar-toggle button:hover {
-  background-color: transparent;
+.discourse-no-touch .d-header-icons .icon:focus {
+  background-color: var(--header-icon-bg-hover);
+
+  .d-icon {
+    color: var(--header-icon-hover);
+  }
 }
 
 .discourse-no-touch .d-header-icons .icon:hover > .d-icon,
@@ -40,48 +122,503 @@
   .d-header-icons
   .header-color-scheme-toggle
   .-expanded
-  > .d-icon,
-.discourse-no-touch .header-sidebar-toggle button:hover .d-icon {
-  color: var(--header_primary-medium);
+  > .d-icon {
+  color: var(--header-icon-hover);
 }
 
+// Active state for dropdowns
+.drop-down-mode .d-header-icons .active .icon,
+.drop-down-mode .d-header-icons .header-color-scheme-toggle .-expanded {
+  border-color: transparent;
+  background-color: var(--header-icon-bg-hover);
+}
+
+// -----------------------------------------------------------------------------
+// Sidebar Toggle
+// -----------------------------------------------------------------------------
+.header-sidebar-toggle {
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    transition: all 150ms ease-out;
+
+    .d-icon {
+      color: var(--header-icon);
+      transition: color 150ms ease-out;
+    }
+  }
+}
+
+.discourse-no-touch .header-sidebar-toggle button:hover,
+.header-sidebar-toggle button:focus:hover {
+  background-color: var(--header-icon-bg-hover);
+
+  .d-icon {
+    color: var(--header-icon-hover);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Search Input & Search Menu
+// -----------------------------------------------------------------------------
+.search-menu,
+.search-menu-container {
+  // The input field
+  .search-input {
+    background: var(--search-bg);
+    border: 1px solid var(--search-border) !important;
+    border-radius: 24px !important;
+    padding: 12px 18px !important;
+    font-size: 0.95rem;
+    color: var(--search-text);
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none !important;
+    outline: none !important;
+
+    &::placeholder {
+      color: var(--search-placeholder);
+    }
+
+    &:focus,
+    &:focus-within {
+      border-color: var(--search-border-focus) !important;
+      box-shadow: 0 0 0 3px
+        light-dark(rgba(34, 34, 34, 0.08), rgba(255, 255, 255, 0.08)) !important;
+      background: light-dark(#ffffff, #333333);
+    }
+
+    // Search icon inside input
+    .d-icon-search {
+      color: var(--search-placeholder);
+      margin-right: 8px;
+    }
+
+    // Clear button
+    .clear-search {
+      color: var(--search-placeholder);
+      opacity: 0.7;
+      transition: opacity 150ms ease-out;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Search menu panel/dropdown
+.search-menu {
+  .menu-panel,
+  .search-menu-panel {
+    background: var(--header-bg);
+    border: 1px solid var(--header-border);
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    margin-top: 8px;
+  }
+
+  .panel-body {
+    padding: 12px;
+  }
+
+  // Results container
+  .results {
+    background: transparent;
+    border-radius: 12px;
+    overflow: hidden;
+
+    .list {
+      padding: 0;
+    }
+  }
+
+  // Individual result items
+  .search-result-topic,
+  .search-result-post,
+  .search-result-category,
+  .search-result-user,
+  .search-link {
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin: 2px 0;
+    transition: background 150ms ease-out;
+
+    &:hover,
+    &:focus {
+      background: var(--header-icon-bg-hover);
+    }
+
+    .topic-title,
+    .title {
+      color: var(--search-text);
+      font-weight: 500;
+    }
+
+    .blurb {
+      color: var(--search-placeholder);
+      font-size: 0.85rem;
+    }
+  }
+
+  // Search result highlighted match
+  .search-highlight {
+    background: light-dark(rgba(255, 56, 92, 0.15), rgba(255, 56, 92, 0.25));
+    color: inherit;
+    padding: 1px 2px;
+    border-radius: 3px;
+  }
+
+  // Quick tip / assistants section
+  .search-menu-assistant-item,
+  .search-menu-initial-options {
+    .search-link {
+      color: var(--search-text);
+
+      .d-icon {
+        color: var(--search-placeholder);
+        margin-right: 10px;
+      }
+    }
+  }
+
+  // Search filters/tabs
+  .search-context,
+  .search-menu-filter-toggle {
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: var(--search-placeholder);
+    font-size: 0.85rem;
+
+    &:hover {
+      background: var(--header-icon-bg-hover);
+      color: var(--search-text);
+    }
+
+    &.active,
+    &.selected {
+      background: light-dark(#222222, #ffffff);
+      color: light-dark(#ffffff, #222222);
+    }
+  }
+
+  // "More results" link
+  .browser-search-tip,
+  .more-link {
+    padding: 10px 12px;
+    color: light-dark(#3b82f6, #60a5fa);
+    font-weight: 500;
+    border-radius: 8px;
+
+    &:hover {
+      background: light-dark(
+        rgba(59, 130, 246, 0.08),
+        rgba(96, 165, 250, 0.15)
+      );
+    }
+  }
+
+  // No results state
+  .no-results {
+    padding: 24px;
+    text-align: center;
+    color: var(--search-placeholder);
+
+    .d-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      opacity: 0.5;
+    }
+  }
+
+  // Loading state
+  .searching .spinner {
+    border-color: var(--search-border);
+    border-top-color: light-dark(#222222, #ffffff);
+  }
+}
+
+// Floating search in header (inline search bar)
+.floating-search-input-wrapper {
+  .floating-search-input,
+  .search-banner,
+  .search-banner-inner,
+  .search-menu,
+  .search-menu-container,
+  .search-input-wrapper {
+    background: transparent !important;
+  }
+
+  .search-input,
+  .search-input--header {
+    background: var(--search-bg) !important;
+    border: 1px solid var(--search-border) !important;
+    border-radius: 24px !important;
+    height: 44px;
+    padding: 0 16px !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 280px;
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:focus-within {
+      border-color: var(--search-border-focus) !important;
+      box-shadow: 0 0 0 3px
+        light-dark(rgba(34, 34, 34, 0.08), rgba(255, 255, 255, 0.08)) !important;
+      background: light-dark(#ffffff, #333333) !important;
+      min-width: 360px;
+    }
+
+    // The actual text input
+    input,
+    input.search-term__input,
+    #header-search-input {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      padding: 0 !important;
+      margin: 0;
+      height: 100%;
+      flex: 1;
+      font-size: 0.95rem;
+      color: var(--search-text);
+
+      &::placeholder {
+        color: var(--search-placeholder);
+      }
+    }
+
+    // Search icon button
+    .search-icon,
+    .btn.search-icon {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      margin: 0;
+
+      .d-icon {
+        color: var(--search-placeholder);
+      }
+    }
+
+    // Advanced search button (sliders icon)
+    .searching {
+      display: flex;
+      align-items: center;
+
+      .show-advanced-search {
+        background: transparent !important;
+        border: none !important;
+        padding: 4px !important;
+        border-radius: 6px;
+
+        .d-icon {
+          color: var(--search-placeholder);
+        }
+
+        &:hover {
+          background: var(--header-icon-bg-hover) !important;
+
+          .d-icon {
+            color: var(--search-text);
+          }
+        }
+      }
+    }
+  }
+
+  // Search icon link (magnifying glass)
+  .search-menu > .search-icon {
+    display: none; // Hide if redundant
+  }
+}
+
+.header-search--enabled .search-menu-container {
+  .search-input {
+    background: var(--search-bg) !important;
+    border: 1px solid var(--search-border) !important;
+    border-radius: 24px !important;
+    height: 44px;
+    padding: 0 16px !important;
+  }
+}
+
+// Full page search
+.search-container {
+  .search-header,
+  .search-bar,
+  .search-filters,
+  .search-filters .search-advanced-filters {
+    background: var(--header-bg);
+    border-radius: 12px;
+    border: 1px solid var(--header-border);
+    padding: 16px;
+  }
+
+  .search-bar {
+    input[type="text"] {
+      background: var(--search-bg);
+      border: 1px solid var(--search-border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 1rem;
+
+      &:focus {
+        border-color: var(--search-border-focus);
+        box-shadow: 0 0 0 3px
+          light-dark(rgba(34, 34, 34, 0.08), rgba(255, 255, 255, 0.08));
+      }
+    }
+
+    .btn-primary {
+      border-radius: 12px;
+      padding: 12px 24px;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// User Menu & Notifications
+// -----------------------------------------------------------------------------
+.user-menu .quick-access-panel,
+.user-notifications-list {
+  li {
+    border-radius: 8px;
+    margin: 2px 4px;
+    transition: background 150ms ease-out;
+
+    &.pending,
+    &.unread {
+      background: light-dark(rgba(255, 56, 92, 0.08), rgba(255, 56, 92, 0.15));
+
+      .discourse-no-touch & {
+        &:hover,
+        &:focus {
+          background: light-dark(
+            rgba(255, 56, 92, 0.12),
+            rgba(255, 56, 92, 0.2)
+          );
+        }
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Color Scheme Toggle
+// -----------------------------------------------------------------------------
 .discourse-no-touch .interface-color-selector-content {
-  border: none;
-  border-radius: var(--d-border-radius);
+  border: 1px solid var(--header-border);
+  border-radius: 12px;
+  background: var(--header-bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 
   .btn {
     border: none;
+    border-radius: 8px;
+    margin: 4px;
+    transition: all 150ms ease-out;
 
     &:hover {
+      background: var(--header-icon-bg-hover);
       box-shadow: none;
     }
   }
 }
 
-.drop-down-mode .d-header-icons .active .icon,
-.drop-down-mode .d-header-icons .header-color-scheme-toggle .-expanded {
-  border-color: transparent;
-  background-color: transparent;
-}
-
+// -----------------------------------------------------------------------------
+// Badge Notifications
+// -----------------------------------------------------------------------------
 .badge-notification {
-  color: var(--accent-text-color);
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-weight: 600;
+  font-size: 0.7rem;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.d-header-icons .badge-notification {
+  border: 2px solid var(--header-bg);
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.header-dropdown-toggle.chat-header-icon .icon .chat-channel-unread-indicator {
+  border-color: var(--header-bg);
+}
+
+// -----------------------------------------------------------------------------
+// Auth Pages Header
+// -----------------------------------------------------------------------------
 body.login-page,
 body.signup-page,
 body.invite-page,
 body.password-reset-page,
 body.activate-account-page {
   .d-header {
-    background: var(--background-color);
+    background: transparent;
+    box-shadow: none;
+    border-bottom: none;
   }
 }
 
-.header-dropdown-toggle.chat-header-icon .icon .chat-channel-unread-indicator {
-  border-color: var(--background-color);
+// -----------------------------------------------------------------------------
+// User Avatar in Header
+// -----------------------------------------------------------------------------
+.d-header-icons .icon img.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: border-color 150ms ease-out;
 }
 
-.d-header-icons .badge-notification {
-  border-color: var(--background-color);
+.discourse-no-touch .d-header-icons .icon:hover img.avatar {
+  border-color: var(--header-border);
+}
+
+// -----------------------------------------------------------------------------
+// Header Dropdowns
+// -----------------------------------------------------------------------------
+.menu-panel {
+  border-radius: 12px;
+  border: 1px solid var(--header-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  .panel-body {
+    padding: 8px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Mobile Header Adjustments
+// -----------------------------------------------------------------------------
+@include viewport.until(lg) {
+  .d-header {
+    .wrap {
+      padding: 0 12px;
+    }
+  }
+
+  .d-header-icons .icon {
+    width: 36px;
+    height: 36px;
+  }
 }
