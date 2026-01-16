@@ -92,27 +92,27 @@ The theme follows Airbnb's 2025 design direction:
 
 ### Color Palette
 
-| Variable                  | Light     | Dark      | Usage              |
-| ------------------------- | --------- | --------- | ------------------ |
-| `--sidebar-bg`            | #FAFAFA   | #111111   | Sidebar background |
-| `--sidebar-border`        | #EBEBEB   | #222222   | Subtle borders     |
-| `--sidebar-hover-bg`      | #F0F0F0   | #1A1A1A   | Hover states       |
-| `--sidebar-active-bg`     | #222222   | #FFFFFF   | Active/selected    |
-| `--sidebar-active-text`   | #FFFFFF   | #222222   | Active text        |
-| `--sidebar-text-primary`  | #222222   | #FFFFFF   | Primary text       |
-| `--sidebar-text-secondary`| #717171   | #A0A0A0   | Secondary text     |
-| `--sidebar-text-muted`    | #B0B0B0   | #666666   | Muted/labels       |
+| Variable                   | Light   | Dark    | Usage              |
+| -------------------------- | ------- | ------- | ------------------ |
+| `--sidebar-bg`             | #FAFAFA | #111111 | Sidebar background |
+| `--sidebar-border`         | #EBEBEB | #222222 | Subtle borders     |
+| `--sidebar-hover-bg`       | #F0F0F0 | #1A1A1A | Hover states       |
+| `--sidebar-active-bg`      | #222222 | #FFFFFF | Active/selected    |
+| `--sidebar-active-text`    | #FFFFFF | #222222 | Active text        |
+| `--sidebar-text-primary`   | #222222 | #FFFFFF | Primary text       |
+| `--sidebar-text-secondary` | #717171 | #A0A0A0 | Secondary text     |
+| `--sidebar-text-muted`     | #B0B0B0 | #666666 | Muted/labels       |
 
 ### Brand Colors (from DLS)
 
-| Color         | Hex       | Usage                      |
-| ------------- | --------- | -------------------------- |
-| Primary Blue  | #2563EB   | CTAs, links, focus states  |
-| Gradient Start| #3B82F6   | Button gradients           |
-| Gradient End  | #1D4ED8   | Button gradients           |
-| Gold/Yellow   | #FBBF24   | Promo highlights           |
-| Success       | #22C55E   | Confirmations              |
-| Error         | #EF4444   | Validation errors          |
+| Color          | Hex     | Usage                     |
+| -------------- | ------- | ------------------------- |
+| Primary Blue   | #2563EB | CTAs, links, focus states |
+| Gradient Start | #3B82F6 | Button gradients          |
+| Gradient End   | #1D4ED8 | Button gradients          |
+| Gold/Yellow    | #FBBF24 | Promo highlights          |
+| Success        | #22C55E | Confirmations             |
+| Error          | #EF4444 | Validation errors         |
 
 ### Typography
 
@@ -128,31 +128,26 @@ The theme follows Airbnb's 2025 design direction:
 
 ### Border Radius
 
-| Element        | Radius |
-| -------------- | ------ |
-| Buttons        | 12px   |
-| Cards          | 12px   |
-| Inputs         | 8px    |
-| Sidebar links  | 10px   |
-| Badges/pills   | 10px   |
-| Modals         | 16px   |
+| Element       | Radius |
+| ------------- | ------ |
+| Buttons       | 12px   |
+| Cards         | 12px   |
+| Inputs        | 8px    |
+| Sidebar links | 10px   |
+| Badges/pills  | 10px   |
+| Modals        | 16px   |
 
 ### Shadows
 
 ```scss
 // Subtle card shadow
-box-shadow: 
-  0 2px 4px rgba(0, 0, 0, 0.08),
-  0 4px 12px rgba(0, 0, 0, 0.04);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
 
 // Elevated/hover shadow
-box-shadow: 
-  0 4px 8px rgba(0, 0, 0, 0.12),
-  0 8px 24px rgba(0, 0, 0, 0.08);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
 
 // Blue glow for CTAs
-box-shadow: 
-  0 4px 12px rgba(37, 99, 235, 0.25);
+box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 ```
 
 ### Animation Timing
@@ -177,9 +172,9 @@ cubic-bezier(0.34, 1.56, 0.64, 1)
 Use the `light-dark()` CSS function:
 
 ```scss
-background: light-dark(#FAFAFA, #111111);
-color: light-dark(#222222, #FFFFFF);
-border-color: light-dark(#EBEBEB, #222222);
+background: light-dark(#fafafa, #111111);
+color: light-dark(#222222, #ffffff);
+border-color: light-dark(#ebebeb, #222222);
 ```
 
 ### Hover Lift Effect
@@ -195,16 +190,16 @@ border-color: light-dark(#EBEBEB, #222222);
 
 ```scss
 &.active {
-  background: light-dark(#222222, #FFFFFF);
-  color: light-dark(#FFFFFF, #222222);
+  background: light-dark(#222222, #ffffff);
+  color: light-dark(#ffffff, #222222);
 }
 ```
 
 ### Gradient Button
 
 ```scss
-background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
-color: #FFFFFF;
+background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+color: #ffffff;
 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(37, 99, 235, 0.2);
 
 &:hover {
@@ -291,6 +286,7 @@ discourse_theme upload .
 ```
 
 **Credentials** in `~/.discourse_theme`:
+
 - Forum URL: https://pass.discourse.group
 - Theme ID: 2
 
@@ -321,23 +317,23 @@ export default apiInitializer((api) => {
 
 ### Common Outlets
 
-| Outlet                    | Location              |
-| ------------------------- | --------------------- |
-| `above-main-container`    | Above main content    |
-| `before-sidebar-sections` | Top of sidebar        |
-| `after-sidebar-sections`  | Bottom of sidebar     |
+| Outlet                    | Location           |
+| ------------------------- | ------------------ |
+| `above-main-container`    | Above main content |
+| `before-sidebar-sections` | Top of sidebar     |
+| `after-sidebar-sections`  | Bottom of sidebar  |
 
 ---
 
 ## Page-Specific Selectors
 
-| Body Class                   | Page                  |
-| ---------------------------- | --------------------- |
-| `body.archetype-regular`     | Topic detail          |
-| `body.navigation-categories` | Categories listing    |
-| `body.navigation-topics`     | Topic list            |
-| `body.user-page`             | User profiles         |
-| `body.user-messages-page`    | Messages inbox        |
+| Body Class                   | Page               |
+| ---------------------------- | ------------------ |
+| `body.archetype-regular`     | Topic detail       |
+| `body.navigation-categories` | Categories listing |
+| `body.navigation-topics`     | Topic list         |
+| `body.user-page`             | User profiles      |
+| `body.user-messages-page`    | Messages inbox     |
 
 ---
 
