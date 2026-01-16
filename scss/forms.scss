@@ -1,0 +1,166 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// FORMS & INPUTS
+// Clean, modern form elements styling
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TEXT INPUTS
+// ─────────────────────────────────────────────────────────────────────────────
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+input[type="search"],
+input[type="tel"] {
+  border-radius: 8px !important;
+  border: 1px solid #334155 !important;
+  background: #0f172a !important;
+  padding: 10px 14px !important;
+  font-size: 14px;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+
+  &::placeholder {
+    color: #475569;
+  }
+
+  &:hover {
+    border-color: #475569 !important;
+  }
+
+  &:focus {
+    border-color: var(--tertiary) !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+    outline: none !important;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TEXTAREAS
+// ─────────────────────────────────────────────────────────────────────────────
+textarea {
+  border-radius: 8px !important;
+  border: 1px solid #334155 !important;
+  background: #0f172a !important;
+  padding: 12px 14px !important;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+
+  &::placeholder {
+    color: #475569;
+  }
+
+  &:hover {
+    border-color: #475569 !important;
+  }
+
+  &:focus {
+    border-color: var(--tertiary) !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+    outline: none !important;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SELECT DROPDOWNS
+// ─────────────────────────────────────────────────────────────────────────────
+.select-kit {
+  .select-kit-header {
+    border-radius: 8px !important;
+    border: 1px solid #334155 !important;
+    background: #0f172a !important;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+
+    &:hover {
+      border-color: #475569 !important;
+    }
+  }
+
+  &.is-expanded .select-kit-header {
+    border-color: var(--tertiary) !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+  }
+
+  // Dropdown body
+  .select-kit-body {
+    border-radius: 8px !important;
+    border: 1px solid #334155 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+
+  // Dropdown rows
+  .select-kit-row {
+    padding: 8px 12px;
+    transition: background 150ms ease;
+
+    &:hover,
+    &.is-highlighted {
+      background: #1e293b !important;
+    }
+
+    &.is-selected {
+      background: #0c4a6e !important;
+      color: #ffffff !important;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CHECKBOXES
+// ─────────────────────────────────────────────────────────────────────────────
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid #475569;
+  cursor: pointer;
+
+  &:checked {
+    background: var(--tertiary);
+    border-color: var(--tertiary);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LABELS & DESCRIPTIONS
+// ─────────────────────────────────────────────────────────────────────────────
+label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #f8fafc;
+}
+
+// Form hints/descriptions
+.description,
+.form-template-field__description {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// COMPOSER TEXTAREA
+// ─────────────────────────────────────────────────────────────────────────────
+.d-editor-textarea-wrapper {
+  border-radius: 8px !important;
+  border: 1px solid #334155 !important;
+  overflow: hidden;
+
+  &:focus-within {
+    border-color: var(--tertiary) !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+  }
+
+  textarea {
+    border: none !important;
+    box-shadow: none !important;
+  }
+}

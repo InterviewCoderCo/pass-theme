@@ -1,17 +1,44 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// SIDEBAR - 2025 Airbnb Design Language
+// Clean, dimensional design with soft corners and subtle depth
+// ═══════════════════════════════════════════════════════════════════════════
+
 @use "lib/viewport";
 
+// ─────────────────────────────────────────────────────────────────────────────
+// CSS VARIABLES
+// ─────────────────────────────────────────────────────────────────────────────
 :root {
-  --sidebar-section-wrapper-padding: 0 var(--space-2) var(--space-4)
-    var(--space-4);
+  // Sidebar dimensions
+  --sidebar-width: 260px;
+  --sidebar-section-wrapper-padding: 0 12px 16px 16px;
+
+  // Sidebar colors (light mode defaults, dark mode uses CSS variables)
+  --sidebar-bg: light-dark(#fafafa, #111111);
+  --sidebar-border: light-dark(#ebebeb, #222222);
+  --sidebar-hover-bg: light-dark(#f0f0f0, #1a1a1a);
+  --sidebar-active-bg: light-dark(#222222, #ffffff);
+  --sidebar-active-text: light-dark(#ffffff, #222222);
+  --sidebar-text-primary: light-dark(#222222, #ffffff);
+  --sidebar-text-secondary: light-dark(#717171, #a0a0a0);
+  --sidebar-text-muted: light-dark(#b0b0b0, #666666);
+
+  // Animation timing (Airbnb spring feel)
+  --sidebar-transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --sidebar-hover-transition: 150ms ease-out;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// SIDEBAR WRAPPER - Main container
+// ─────────────────────────────────────────────────────────────────────────────
 .sidebar-wrapper,
 .sidebar-hamburger-dropdown {
-  @include viewport.until(lg) {
-    background: var(--secondary);
+  background: var(--sidebar-bg) !important;
+  border-right: 1px solid var(--sidebar-border) !important;
 
+  @include viewport.until(lg) {
     .sidebar-footer-wrapper {
-      background: var(--secondary);
+      background: var(--sidebar-bg);
 
       .sidebar-footer-container::before {
         display: none;
@@ -26,66 +53,255 @@
 
   .sidebar-container {
     border-right: none;
+    padding: 8px 0;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SIDEBAR SECTIONS - Section groups
+// ─────────────────────────────────────────────────────────────────────────────
+.sidebar-section-wrapper {
+  --d-sidebar-section-border-color: var(--sidebar-border);
+  padding: 8px 12px 16px 12px;
+
+  @include viewport.from(xl) {
+    padding-block: 8px;
   }
 
+  @include viewport.until(sm) {
+    .hamburger-panel .revamped & {
+      margin-bottom: 16px;
+    }
+  }
+
+  // Section header - subtle, uppercase label
+  .sidebar-section-header {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sidebar-text-muted);
+    padding: 8px 12px 6px 12px;
+    margin-bottom: 4px;
+  }
+
+  // Section content container
+  .sidebar-section-content {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SIDEBAR LINKS - Navigation items (Airbnb 2025 style)
+// ─────────────────────────────────────────────────────────────────────────────
+.sidebar-section-link-wrapper {
   .sidebar-section-link {
-    transition: none;
-    border-radius: var(--d-border-radius);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--sidebar-text-primary);
+    text-decoration: none;
+    transition: background var(--sidebar-hover-transition),
+      color var(--sidebar-hover-transition),
+      transform var(--sidebar-hover-transition);
+    position: relative;
+
+    // Icon styling
+    .sidebar-section-link-prefix {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+
+      .d-icon {
+        width: 18px;
+        height: 18px;
+        color: var(--sidebar-text-secondary);
+        transition: color var(--sidebar-hover-transition);
+      }
+    }
+
+    // Link text
+    .sidebar-section-link-content-text {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.4;
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    // Count badge (suffix)
+    .sidebar-section-link-suffix {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--sidebar-text-muted);
+      padding: 2px 8px;
+      background: light-dark(#f0f0f0, #2a2a2a);
+      border-radius: 10px;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    // Hover state - subtle background lift
+    &:hover,
+    &:focus {
+      background: var(--sidebar-hover-bg);
+      transform: translateX(2px);
+
+      .sidebar-section-link-prefix .d-icon {
+        color: var(--sidebar-text-primary);
+      }
+    }
+
+    // Active/selected state - inverted colors (Airbnb style)
+    &.active,
+    &[aria-current="page"],
+    &.sidebar-section-link--active {
+      background: var(--sidebar-active-bg);
+      color: var(--sidebar-active-text);
+      font-weight: 600;
+
+      .sidebar-section-link-prefix .d-icon {
+        color: var(--sidebar-active-text);
+      }
+
+      .sidebar-section-link-content-text {
+        font-weight: 600;
+      }
+
+      .sidebar-section-link-suffix {
+        background: light-dark(#444444, #e0e0e0);
+        color: var(--sidebar-active-text);
+      }
+
+      // Subtle left accent bar for active state
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 60%;
+        background: var(--tertiary);
+        border-radius: 0 3px 3px 0;
+        opacity: 0;
+      }
+    }
   }
 
+  // Dropdown menu items (no border-radius)
   .dropdown-menu__item .sidebar-section-link {
     border-radius: 0;
   }
 }
 
-.sidebar-section-wrapper {
-  --d-sidebar-section-border-color: var(--d-sidebar-border-color);
-
-  @include viewport.from(xl) {
-    padding-block: 0.45em;
-  }
-
-  @include viewport.until(sm) {
-    .hamburger-panel .revamped & {
-      margin-bottom: var(--space-4);
-    }
-  }
-
-  .sidebar-section-header {
-    font-size: var(--font-down-2);
-  }
-
-  .sidebar-section-content {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-
-    @include viewport.from(xl) {
-      gap: var(--space-1);
-    }
-  }
-}
-
+// ─────────────────────────────────────────────────────────────────────────────
+// SCROLLBAR STYLING
+// ─────────────────────────────────────────────────────────────────────────────
 .sidebar-wrapper .sidebar-sections {
-  --scrollbarThumbBg: var(--d-selected);
-}
+  --scrollbarThumbBg: light-dark(#d0d0d0, #404040);
 
-.sidebar-section-link-wrapper .sidebar-section-link:focus,
-.sidebar-section-link-wrapper .sidebar-section-link:hover {
-  .d-icon {
-    color: var(--primary);
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--scrollbarThumbBg);
+    border-radius: 3px;
+
+    &:hover {
+      background: light-dark(#b0b0b0, #505050);
+    }
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// NEW TOPIC BUTTON - Primary CTA (Airbnb gradient style)
+// ─────────────────────────────────────────────────────────────────────────────
 .sidebar-new-topic-button__wrapper {
-  margin: 0 var(--space-2) var(--space-4) var(--space-4);
+  margin: 12px 12px 20px 12px;
 
-  .sidebar-new-topic-button .d-icon {
+  .sidebar-new-topic-button {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--tertiary) 0%, #1d4ed8 100%);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08),
+      0 4px 12px rgba(37, 99, 235, 0.15);
+    transition: transform var(--sidebar-hover-transition),
+      box-shadow var(--sidebar-hover-transition);
+
+    .d-icon {
+      display: none;
+    }
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12),
+        0 8px 24px rgba(37, 99, 235, 0.25);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SIDEBAR FOOTER
+// ─────────────────────────────────────────────────────────────────────────────
+.sidebar-footer-wrapper {
+  border-top: 1px solid var(--sidebar-border);
+  padding: 12px;
+  background: var(--sidebar-bg);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// THEME TOGGLE
+// ─────────────────────────────────────────────────────────────────────────────
+.sidebar-theme-toggle__wrapper {
+  order: -1;
+  padding: 8px 12px;
+
+  .d-icon-paintbrush {
     display: none;
   }
 }
 
-// put the draft menu above the slide-out hamburger on small desktop screens
+.sidebar-theme-toggle-dropdown.select-kit.combo-box .select-kit-header {
+  padding-left: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--sidebar-border);
+  background: var(--sidebar-bg);
+  transition: border-color var(--sidebar-hover-transition);
+
+  &:hover {
+    border-color: var(--sidebar-text-secondary);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MOBILE/RESPONSIVE ADJUSTMENTS
+// ─────────────────────────────────────────────────────────────────────────────
 @include viewport.until(md) {
   html:not(.mobile-view) {
     .topic-drafts-menu-content {
@@ -94,14 +310,9 @@
   }
 }
 
-.sidebar-theme-toggle__wrapper {
-  order: -1;
-
-  .d-icon-paintbrush {
-    display: none;
+// Mobile hamburger panel
+.hamburger-panel {
+  .sidebar-wrapper {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   }
-}
-
-.sidebar-theme-toggle-dropdown.select-kit.combo-box .select-kit-header {
-  padding-left: 1em;
 }

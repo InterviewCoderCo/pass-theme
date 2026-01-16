@@ -6,20 +6,21 @@
 
 ## Project Overview
 
-**Project**: InterviewCoder Community Forum Theme
-**Platform**: Discourse (hosted)
-**Repository**: https://github.com/InterviewCoderCo/pass-theme
-**Design Reference**: Figma designs provided by user
+**Project**: InterviewCoder Community Forum Theme  
+**Platform**: Discourse (hosted)  
+**Repository**: https://github.com/InterviewCoderCo/pass-theme  
+**Design Reference**: Airbnb Design Language System (2025)  
+**Design Doc**: See `AirbnbDesignLanguage.md` for complete DLS reference
 
 ---
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| **CSS** | SCSS (Discourse theme format) |
+| Layer          | Technology                    |
+| -------------- | ----------------------------- |
+| **CSS**        | SCSS (Discourse theme format) |
 | **JavaScript** | Ember.js / Glimmer components |
-| **Framework** | Discourse Theme API |
+| **Framework**  | Discourse Theme API           |
 
 ---
 
@@ -28,194 +29,287 @@
 ```
 pass-theme/
 ├── about.json              # Theme metadata, color schemes, assets
+├── AirbnbDesignLanguage.md # Complete Airbnb DLS reference
 ├── assets/
 │   └── ic_logo.svg         # Golden wing logo for promo card
 ├── common/
-│   ├── common.scss         # Main stylesheet (all styles)
+│   ├── common.scss         # Main entry point (imports only)
 │   ├── color_definitions.scss  # Color variable overrides
 │   └── head_tag.html       # Google Fonts (Inter) import
+├── scss/                   # Modular SCSS files
+│   ├── badges.scss         # Category badges, tags, notifications
+│   ├── buttons.scss        # Button styling
+│   ├── categories-view.scss # Category page styles
+│   ├── chat.scss           # Chat feature styles
+│   ├── color-choice.scss   # Color picker styles
+│   ├── composer.scss       # Post composer styles
+│   ├── forms.scss          # Input fields, textareas, selects
+│   ├── global.scss         # Typography, backgrounds, layout
+│   ├── header.scss         # Header navigation
+│   ├── login.scss          # Login/signup modals
+│   ├── main.scss           # Main layout styles
+│   ├── modals.scss         # Modal dialogs
+│   ├── nav-pills.scss      # Navigation tabs
+│   ├── promo-sidebar.scss  # Promotional sidebar card
+│   ├── sidebar.scss        # Sidebar navigation
+│   ├── sidebar-new-topic-button.scss # New topic CTA
+│   ├── topic.scss          # Topic detail page
+│   ├── topic-cards.scss    # Topic list styling
+│   ├── user-messages.scss  # Messages inbox
+│   ├── user-profile.scss   # User profile pages
+│   ├── variables.scss      # CSS custom properties
+│   ├── welcome-banner.scss # Homepage banner
+│   └── lib/
+│       └── viewport.scss   # Viewport mixins
 ├── javascripts/
 │   └── discourse/
 │       ├── api-initializers/
-│       │   ├── promo-sidebar-card.js    # Promo card initializer
-│       │   ├── full-width-logo-behavior.js
-│       │   ├── reposition-bulk-select.js
+│       │   ├── promo-sidebar-card.js
 │       │   └── [other initializers...]
 │       └── components/
-│           └── promo-sidebar-card.gjs   # Promo card Glimmer component
-├── desktop/                # Desktop-only styles (if needed)
-├── mobile/                 # Mobile-only styles (if needed)
+│           └── promo-sidebar-card.gjs
+├── desktop/                # Desktop-only styles
+├── mobile/                 # Mobile-only styles
 ├── locales/               # Translation files
 └── settings.yml           # Theme settings
 ```
 
 ---
 
-## Design System
+## Design System: Airbnb DLS 2025
 
-### Airbnb DLS Principles
+### Core Philosophy
 
-The theme follows Airbnb Design Language System principles:
+> "Flat design is over" — Brian Chesky, 2024
 
-1. **No borders on cards** - Use multi-layer shadows for elevation
-2. **Multi-layer shadows** - Combine 2-3 shadow layers for depth
-3. **Smooth transitions** - 300ms ease for cards, 150ms for simple hovers
-4. **Subtle hover states** - Enhanced shadows, slight lift
-5. **Clean backgrounds** - White/dark surfaces, no gradients on cards
+The theme follows Airbnb's 2025 design direction:
 
-### Color Palette (Tailwind Slate)
+1. **Dimensional surfaces** - Subtle shadows and blur for depth hierarchy
+2. **Soft corners** - 10-12px border-radius for warmth
+3. **Spring animations** - Natural physics-based motion
+4. **Clean typography** - Inter font, 14-16px body, tight letter-spacing
+5. **Inverted active states** - Dark background for selected items
 
-| Shade | Hex | Usage |
-|-------|-----|-------|
-| 50 | #F8FAFC | Light backgrounds |
-| 100 | #F1F5F9 | Hover states |
-| 200 | #E2E8F0 | Borders (light) |
-| 400 | #94A3B8 | Muted text |
-| 500 | #64748B | Secondary text |
-| 600 | #475569 | Body text |
-| 700 | #334155 | Borders (dark) |
-| 800 | #1E293B | Dark backgrounds |
-| 900 | #0F172A | Primary text, dark mode bg |
+### Color Palette
 
-### Brand Colors
+| Variable                  | Light     | Dark      | Usage              |
+| ------------------------- | --------- | --------- | ------------------ |
+| `--sidebar-bg`            | #FAFAFA   | #111111   | Sidebar background |
+| `--sidebar-border`        | #EBEBEB   | #222222   | Subtle borders     |
+| `--sidebar-hover-bg`      | #F0F0F0   | #1A1A1A   | Hover states       |
+| `--sidebar-active-bg`     | #222222   | #FFFFFF   | Active/selected    |
+| `--sidebar-active-text`   | #FFFFFF   | #222222   | Active text        |
+| `--sidebar-text-primary`  | #222222   | #FFFFFF   | Primary text       |
+| `--sidebar-text-secondary`| #717171   | #A0A0A0   | Secondary text     |
+| `--sidebar-text-muted`    | #B0B0B0   | #666666   | Muted/labels       |
 
-| Color | Hex | Usage |
-|-------|-----|-------|
-| Primary Blue | #2563EB | Buttons, links, accents |
-| Gold/Yellow | #FBBF24 | CTA buttons, highlights |
-| Page Background | #E9F0F7 | Light gray-blue |
+### Brand Colors (from DLS)
+
+| Color         | Hex       | Usage                      |
+| ------------- | --------- | -------------------------- |
+| Primary Blue  | #2563EB   | CTAs, links, focus states  |
+| Gradient Start| #3B82F6   | Button gradients           |
+| Gradient End  | #1D4ED8   | Button gradients           |
+| Gold/Yellow   | #FBBF24   | Promo highlights           |
+| Success       | #22C55E   | Confirmations              |
+| Error         | #EF4444   | Validation errors          |
 
 ### Typography
 
 - **Font**: Inter (Google Fonts)
-- **Weights**: 400, 500, 600, 700
+- **Weights**: 400 (body), 500 (medium), 600 (semibold), 700 (bold)
+- **Body size**: 14px
+- **Line height**: 1.5
+- **Letter spacing**: -0.01em (body), -0.02em (headings)
 
----
+### Spacing Scale
 
-## Completed Features
+`4px, 8px, 12px, 16px, 20px, 24px, 32px, 48px`
 
-### 1. Page Background
-- Light gray-blue background (#E9F0F7)
-- Applied to html and body
+### Border Radius
 
-### 2. Topic List / Discovery Pages
-- Topic cards with white background, rounded corners, shadows
-- Nav pills styling (Latest, Hot, Categories tabs)
-- List controls (Categories, Tags dropdowns)
-- Filter buttons with consistent styling
+| Element        | Radius |
+| -------------- | ------ |
+| Buttons        | 12px   |
+| Cards          | 12px   |
+| Inputs         | 8px    |
+| Sidebar links  | 10px   |
+| Badges/pills   | 10px   |
+| Modals         | 16px   |
 
-### 3. Promo Sidebar Card
-- Fixed position on right side (only on screens > 1400px)
-- Dark card with golden accents
-- Features: Undetectable Assistant, Real-time answers
-- Golden CTA button "Get Lifetime package"
-- Uses ic_logo.svg asset
-- Renders via Glimmer component in `above-main-container` outlet
-- Only shows on discovery/tag pages
+### Shadows
 
-### 4. Header & Sidebar
-- Clean header styling
-- Sidebar navigation styling
+```scss
+// Subtle card shadow
+box-shadow: 
+  0 2px 4px rgba(0, 0, 0, 0.08),
+  0 4px 12px rgba(0, 0, 0, 0.04);
 
----
+// Elevated/hover shadow
+box-shadow: 
+  0 4px 8px rgba(0, 0, 0, 0.12),
+  0 8px 24px rgba(0, 0, 0, 0.08);
 
-## Work In Progress
-
-### Topic Detail Page
-- Need to style to match Figma design
-- Requirements:
-  - Left-aligned content
-  - White card background for post area
-  - User avatar with level badge (LVL 6) - needs plugin
-  - Stats row (comments, likes, views)
-  - Action buttons (Share, Bookmark, Flag, Reply)
-  - "New & Unread Topics" table section
-
----
-
-## Key Files
-
-### common/common.scss
-Main stylesheet containing all theme styles. Organized into sections:
-- Typography
-- Page background
-- Topic list cards
-- Nav pills
-- List controls
-- Promo sidebar card
-- (Topic page styles - to be added)
-
-### javascripts/discourse/components/promo-sidebar-card.gjs
-Glimmer component for the promotional card. Uses:
-- `@service router` to check current route
-- Only renders on discovery/tag routes
-- Template with card HTML structure
-
-### javascripts/discourse/api-initializers/promo-sidebar-card.js
-Initializer that renders the promo card component:
-```javascript
-api.renderInOutlet("above-main-container", PromoSidebarCard);
+// Blue glow for CTAs
+box-shadow: 
+  0 4px 12px rgba(37, 99, 235, 0.25);
 ```
 
-### about.json
-Theme metadata including:
-- Color schemes (Light and Dark)
-- Asset registration (promo_logo)
-- SVG icons (fire)
-- Theme settings
+### Animation Timing
+
+```scss
+// Standard transition
+--transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+// Hover transition (faster)
+--hover-transition: 150ms ease-out;
+
+// Spring animation (for transforms)
+cubic-bezier(0.34, 1.56, 0.64, 1)
+```
 
 ---
 
 ## CSS Patterns
 
 ### Light/Dark Mode
-Use the `light-dark()` CSS function:
-```scss
-background: light-dark(#FFFFFF, #1E293B);
-color: light-dark(#0F172A, #F8FAFC);
-```
 
-### Card Shadow (Airbnb DLS)
+Use the `light-dark()` CSS function:
+
 ```scss
-box-shadow:
-  0 1px 2px rgba(0, 0, 0, 0.04),
-  0 4px 16px rgba(0, 0, 0, 0.06),
-  0 8px 24px rgba(0, 0, 0, 0.03);
+background: light-dark(#FAFAFA, #111111);
+color: light-dark(#222222, #FFFFFF);
+border-color: light-dark(#EBEBEB, #222222);
 ```
 
 ### Hover Lift Effect
+
 ```scss
 &:hover {
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.04),
-    0 8px 24px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+```
+
+### Active State (Inverted)
+
+```scss
+&.active {
+  background: light-dark(#222222, #FFFFFF);
+  color: light-dark(#FFFFFF, #222222);
+}
+```
+
+### Gradient Button
+
+```scss
+background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+color: #FFFFFF;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(37, 99, 235, 0.2);
+
+&:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(37, 99, 235, 0.3);
 }
 ```
 
 ---
 
+## Completed Features (2025 Redesign)
+
+### ✅ Sidebar (scss/sidebar.scss)
+
+- Clean background with subtle border
+- Section headers: 11px uppercase, muted color
+- Navigation links: 14px, 10px border-radius
+- Hover: background shift + translateX(2px)
+- Active: inverted colors (dark bg, white text)
+- Count badges: pill-shaped with subtle background
+- Scrollbar: thin, styled thumb
+
+### ✅ New Topic Button (scss/sidebar-new-topic-button.scss)
+
+- Gradient CTA: #3B82F6 → #1D4ED8
+- 12px border-radius
+- Multi-layer shadow with blue glow
+- Hover: translateY(-2px) lift effect
+- Focus: 3px blue outline ring
+
+### 🔄 In Progress
+
+- Header redesign
+- Topic list/cards redesign
+- Buttons & forms redesign
+- Modals & dialogs redesign
+
+---
+
+## Key Files
+
+### common/common.scss
+
+Main entry point - **imports only**, no inline styles:
+
+```scss
+@import "variables";
+@import "global";
+@import "sidebar";
+// ... all other imports
+```
+
+### scss/sidebar.scss
+
+Sidebar navigation with 2025 Airbnb styling.
+
+### scss/global.scss
+
+Core typography, backgrounds, and layout alignment.
+
+### scss/buttons.scss
+
+Button variants (primary, secondary, flat, danger).
+
+### scss/forms.scss
+
+Input fields, textareas, select dropdowns, checkboxes.
+
+---
+
 ## Development Workflow
 
-### Local Development
-Theme is installed in Discourse via Git repository. After pushing changes:
-1. Go to Discourse Admin → Themes → InterviewCoder
-2. Click "Check for updates"
-3. Refresh the page
+### Discourse Theme CLI (Recommended)
 
-### Pushing Changes
 ```bash
-cd ~/Desktop/pass-theme
+# Install
+gem install discourse_theme
+
+# Watch for changes (auto-upload on save)
+discourse_theme watch .
+
+# Upload once
+discourse_theme upload .
+```
+
+**Credentials** in `~/.discourse_theme`:
+- Forum URL: https://pass.discourse.group
+- Theme ID: 2
+
+### Git Workflow
+
+```bash
 git add .
-git commit -m "Description of changes"
+git commit -m "feat: redesign sidebar with Airbnb DLS 2025"
 git push
 ```
+
+Then: Discourse Admin → Themes → "Check for updates"
 
 ---
 
 ## Discourse Theme API
 
 ### Render in Outlet
+
 ```javascript
 import { apiInitializer } from "discourse/lib/api";
 import MyComponent from "../components/my-component";
@@ -226,50 +320,33 @@ export default apiInitializer((api) => {
 ```
 
 ### Common Outlets
-- `above-main-container` - Above main content
-- `before-sidebar-sections` - Top of sidebar
-- `after-sidebar-sections` - Bottom of sidebar
 
-### Glimmer Component Template
-```javascript
-import Component from "@glimmer/component";
-import { service } from "@ember/service";
-
-export default class MyComponent extends Component {
-  @service router;
-
-  get shouldRender() {
-    return this.router.currentRouteName?.startsWith("discovery");
-  }
-
-  <template>
-    {{#if this.shouldRender}}
-      <div class="my-component">...</div>
-    {{/if}}
-  </template>
-}
-```
+| Outlet                    | Location              |
+| ------------------------- | --------------------- |
+| `above-main-container`    | Above main content    |
+| `before-sidebar-sections` | Top of sidebar        |
+| `after-sidebar-sections`  | Bottom of sidebar     |
 
 ---
 
-## Page-Specific CSS Selectors
+## Page-Specific Selectors
 
-| Body Class | Page |
-|------------|------|
-| `body.archetype-regular` | Topic detail page |
-| `body.navigation-categories` | Categories listing |
-| `body.navigation-topics` | Topic list (Latest, etc.) |
-| `body.user-page` | User profiles |
-| `body.tags-page` | Tags listing |
+| Body Class                   | Page                  |
+| ---------------------------- | --------------------- |
+| `body.archetype-regular`     | Topic detail          |
+| `body.navigation-categories` | Categories listing    |
+| `body.navigation-topics`     | Topic list            |
+| `body.user-page`             | User profiles         |
+| `body.user-messages-page`    | Messages inbox        |
 
 ---
 
 ## Resources
 
-- [Discourse Theme Developer Guide](https://meta.discourse.org/t/beginners-guide-to-developing-discourse-themes/93648)
+- [Airbnb Design Language](AirbnbDesignLanguage.md) - Complete DLS reference
+- [Discourse Theme Guide](https://meta.discourse.org/t/beginners-guide-to-developing-discourse-themes/93648)
 - [Discourse Plugin Outlets](https://meta.discourse.org/t/using-plugin-outlet-connectors-from-a-theme-or-plugin/32727)
-- [Discourse Theme Structure](https://meta.discourse.org/t/structure-of-themes-and-theme-components/60848)
 
 ---
 
-*Last updated: January 14, 2025*
+_Last updated: January 15, 2026_

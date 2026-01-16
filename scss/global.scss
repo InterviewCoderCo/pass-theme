@@ -1,0 +1,121 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// GLOBAL STYLES
+// Core global styles: typography, backgrounds, layout alignment
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CSS VARIABLES
+// ─────────────────────────────────────────────────────────────────────────────
+:root {
+  --d-nav-pill-border-radius: 0;
+  --d-border-radius: 6px;
+  --d-border-radius-large: 8px;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TYPOGRAPHY - Inter Font
+// ─────────────────────────────────────────────────────────────────────────────
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.01em;
+}
+
+// Headings - tighter letter spacing
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.d-header .title,
+.topic-title {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+// Post content - readable
+.cooked {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PAGE BACKGROUND - Use content background (no separate outer bg)
+// ─────────────────────────────────────────────────────────────────────────────
+html {
+  background: var(--d-content-background) !important;
+}
+
+body {
+  background: var(--d-content-background) !important;
+}
+
+#main-outlet,
+#main-outlet-wrapper {
+  background: transparent !important;
+}
+
+// All page containers - transparent backgrounds
+.contents,
+#list-area,
+.container,
+.full-width,
+.wrap,
+.user-main,
+.user-content,
+.user-primary-navigation,
+.user-secondary-navigation,
+.user-content-wrapper,
+.group-page,
+.groups-page,
+.tag-page,
+.tags-page,
+.category-page,
+.categories-page,
+.search-container,
+.search-results,
+.d-topic,
+.topic-area,
+.topic-post,
+.admin-contents,
+.admin-container,
+.badges-page,
+.about-page,
+.faq-page,
+.privacy-page,
+.tos-page,
+.login-page,
+.invites-page,
+.preferences-page,
+.collapsed-info.about,
+.collapsed-info.about .details,
+.collapsed-info.about .primary,
+.user-profile-avatar {
+  background: transparent !important;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LEFT ALIGNMENT - Override margin-inline: auto
+// ─────────────────────────────────────────────────────────────────────────────
+#main-outlet {
+  margin-inline: 0 !important;
+  margin-left: 0 !important;
+}
+
+// Override main.scss centering - keep max-width but align left
+#main-outlet > * {
+  margin-inline: 0 !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+.list-controls,
+.list-container {
+  margin-inline: 0 !important;
+  margin-left: 0 !important;
+}

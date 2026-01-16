@@ -1,0 +1,98 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// BADGES & TAGS
+// Category badges, discourse tags, user badges
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CATEGORY BADGES - Epic style (subtle, not pill-shaped)
+// ─────────────────────────────────────────────────────────────────────────────
+.badge-category__wrapper {
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-weight: 500;
+  font-size: 12px;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .badge-category__name {
+    font-weight: 500;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// DISCOURSE TAGS - Subtle rounded rectangle
+// ─────────────────────────────────────────────────────────────────────────────
+.discourse-tag {
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #1e293b;
+  color: #94a3b8;
+  border: none;
+  transition: all 150ms ease;
+
+  &:hover {
+    background: #334155;
+    color: #f8fafc;
+  }
+
+  // Tag with count
+  &.discourse-tag-count {
+    padding-right: 8px;
+  }
+}
+
+// Tag list in topics
+.discourse-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// USER BADGES (trust levels, etc.)
+// ─────────────────────────────────────────────────────────────────────────────
+.badge-type-1, // Gold
+.badge-type-2, // Silver
+.badge-type-3  // Bronze
+{
+  border-radius: 9999px;
+  padding: 2px 10px;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NEW/UNREAD BADGES
+// ─────────────────────────────────────────────────────────────────────────────
+.badge-notification {
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 11px;
+  padding: 2px 8px;
+
+  &.new-topic {
+    background: var(--tertiary);
+    color: #ffffff;
+  }
+
+  &.unread-posts {
+    background: #f8fafc;
+    color: #0f172a;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// GROUP BADGES
+// ─────────────────────────────────────────────────────────────────────────────
+.group-badge {
+  border-radius: 9999px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 500;
+}

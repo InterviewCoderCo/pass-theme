@@ -1,109 +1,153 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// NEW TOPIC BUTTON - 2025 Airbnb Design Language
+// Primary CTA with gradient and dimensional styling
+// ═══════════════════════════════════════════════════════════════════════════
+
+// Hide draft menu trigger in navigation controls
 .navigation-controls {
   .topic-drafts-menu-trigger {
     display: none;
   }
 }
 
+// Hide when AI conversations sidebar is present
 .has-ai-conversations-sidebar {
   .sidebar-new-topic-button__wrapper {
     display: none;
   }
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// MAIN BUTTON STYLING
+// ─────────────────────────────────────────────────────────────────────────────
 .sidebar-new-topic-button {
   flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, var(--tertiary) 0%, #1d4ed8 100%);
+  color: #ffffff !important;
+  border: none;
+  cursor: pointer;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1), background 150ms ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(37, 99, 235, 0.2);
 
-  &__wrapper {
-    box-sizing: border-box;
-    display: flex;
-    border-radius: 6.25em;
-    margin-top: 4px; // hover & focus effect visibility
+  .d-icon {
+    display: none; // Hide icon for cleaner look
+  }
 
-    &:focus-visible,
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(37, 99, 235, 0.3);
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(37, 99, 235, 0.15);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4),
+      0 4px 12px rgba(37, 99, 235, 0.2);
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// BUTTON WRAPPER
+// ─────────────────────────────────────────────────────────────────────────────
+.sidebar-new-topic-button__wrapper {
+  box-sizing: border-box;
+  display: flex;
+  margin: 16px 12px 24px 12px;
+
+  .mobile-view & {
+    margin: 0 0 1rem;
+  }
+
+  // Hover/focus wrapper effect
+  &:focus-visible,
+  &:hover {
+    .discourse-no-touch & {
+      // Let child button handle hover
+    }
+  }
+
+  // With draft trigger present
+  &:has(.topic-drafts-menu-trigger) {
+    border-radius: 12px;
+    overflow: hidden;
+
+    .sidebar-new-topic-button {
+      border-radius: 12px 0 0 12px;
+      border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+  }
+
+  .fk-d-button-tooltip {
+    flex: 1 1 auto;
+  }
+
+  // Draft menu trigger (dropdown arrow)
+  .topic-drafts-menu-trigger {
+    flex: 0 1 auto;
+    margin: 0;
+    border-radius: 0 12px 12px 0;
+    background: linear-gradient(135deg, var(--tertiary) 0%, #1d4ed8 100%);
+    color: #ffffff;
+    padding: 14px 12px;
+    border: none;
+    transition: background 150ms ease;
+
+    .d-icon {
+      display: block;
+      color: #ffffff;
+    }
+
     &:hover {
-      .discourse-no-touch & {
-        background-color: var(--accent-color);
-        box-shadow: 0 0 0 4px var(--button-box-shadow);
-        color: var(--accent-text-color);
+      background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    }
+  }
 
-        .d-icon {
-          color: var(--accent-text-color);
-        }
-      }
+  // Disabled state with tooltip
+  .fk-d-button-tooltip:has(button[disabled]) {
+    + .topic-drafts-menu-trigger {
+      display: none;
     }
 
-    .mobile-view & {
-      margin: 0 0 1rem;
-    }
+    .fk-d-tooltip__trigger {
+      background: var(--tertiary);
+      border-radius: 0 12px 12px 0;
+      padding-right: 12px;
 
-    &:has(.topic-drafts-menu-trigger) {
-      .sidebar-new-topic-button {
-        border-radius: var(--d-button-border-radius) 0 0
-          var(--d-button-border-radius);
-        border-right: 1px solid
-          light-dark(
-            oklch(from var(--primary-300) l c h),
-            oklch(from var(--primary-700) l c h)
-          ) !important;
-
-        &:focus-visible,
-        &:hover {
-          .discourse-no-touch & {
-            box-shadow: none;
-            background: light-dark(
-              oklch(from var(--accent-color) 40% c h),
-              oklch(from var(--accent-color) 50% c h)
-            );
-          }
-        }
-      }
-    }
-
-    .fk-d-button-tooltip {
-      flex: 1 1 auto;
-    }
-
-    .topic-drafts-menu-trigger {
-      flex: 0 1 auto;
-      margin: 0;
-      border-radius: 0 var(--d-button-border-radius)
-        var(--d-button-border-radius) 0;
-
-      &:focus-visible,
-      &:hover {
-        .discourse-no-touch & {
-          box-shadow: none;
-          background: light-dark(
-            oklch(from var(--accent-color) 40% c h),
-            oklch(from var(--accent-color) 50% c h)
-          );
-        }
-      }
-    }
-
-    .fk-d-button-tooltip:has(button[disabled]) {
-      + .topic-drafts-menu-trigger {
-        display: none;
-      }
-
-      .fk-d-tooltip__trigger {
-        background: var(--accent-color);
-        border-radius: 0 var(--d-button-border-radius)
-          var(--d-button-border-radius) 0;
-        padding-right: 0.65em;
-
-        .d-icon {
-          color: var(--secondary);
-        }
+      .d-icon {
+        color: #ffffff;
       }
     }
   }
 }
 
+// Hide duplicate in sidebar section
 li.sidebar-section-link-wrapper[data-list-item-name="New Topic"] {
   display: none;
 }
 
+// Hide in full-page chat
 .has-full-page-chat {
   .sidebar-new-topic-button__wrapper {
     display: none;

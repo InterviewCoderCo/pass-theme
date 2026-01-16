@@ -1,0 +1,140 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// MODALS & DIALOGS
+// Clean, modern modal styling
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MODAL BACKDROP
+// ─────────────────────────────────────────────────────────────────────────────
+.modal-backdrop,
+.d-modal__backdrop {
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MODAL CONTAINER
+// ─────────────────────────────────────────────────────────────────────────────
+.d-modal__container {
+  border-radius: 16px !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.16) !important;
+  overflow: hidden;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MODAL HEADER
+// ─────────────────────────────────────────────────────────────────────────────
+.d-modal__header {
+  padding: 20px 24px !important;
+  border-bottom: 1px solid #1e293b !important;
+  background: #0f172a;
+
+  .d-modal__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f8fafc;
+  }
+
+  // Close button
+  .d-modal__dismiss {
+    border-radius: 8px;
+    padding: 8px;
+    transition: background 150ms ease;
+
+    &:hover {
+      background: #1e293b;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MODAL BODY & FOOTER
+// ─────────────────────────────────────────────────────────────────────────────
+.d-modal__body {
+  padding: 24px !important;
+}
+
+.d-modal__footer {
+  padding: 16px 24px !important;
+  border-top: 1px solid #1e293b !important;
+  background: #0f172a;
+  gap: 12px;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LOGIN/SIGNUP MODAL
+// ─────────────────────────────────────────────────────────────────────────────
+.login-modal,
+.create-account {
+  .d-modal__container {
+    max-width: 420px;
+  }
+
+  .login-welcome-header {
+    text-align: center;
+    padding: 24px 24px 0;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CONFIRM DIALOGS
+// ─────────────────────────────────────────────────────────────────────────────
+.dialog-container {
+  .dialog-content {
+    border-radius: 12px !important;
+    border: 1px solid #1e293b !important;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.14) !important;
+    overflow: hidden;
+  }
+
+  .dialog-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  .dialog-body {
+    padding: 20px;
+  }
+
+  .dialog-footer {
+    padding: 16px 20px;
+    border-top: 1px solid #1e293b;
+    background: #0f172a;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LIGHTBOX (IMAGE MODAL)
+// ─────────────────────────────────────────────────────────────────────────────
+.mfp-container {
+  .mfp-content {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .mfp-close {
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    transition: background 150ms ease;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+  }
+}
