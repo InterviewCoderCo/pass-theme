@@ -1,25 +1,11 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
-import TopicActivityColumn from "../components/card/topic-activity-column";
-import TopicCategoryColumn from "../components/card/topic-category-column";
 import TopicCreatorColumn from "../components/card/topic-creator-column";
 import TopicRepliesColumn from "../components/card/topic-replies-column";
 import TopicStatusColumn from "../components/card/topic-status-column";
 
-const TopicActivity = <template>
-  <td class="topic-activity-data">
-    <TopicActivityColumn @topic={{@topic}} />
-  </td>
-</template>;
-
 const TopicStatus = <template>
   <td class="topic-status-data">
     <TopicStatusColumn @topic={{@topic}} />
-  </td>
-</template>;
-
-const TopicCategory = <template>
-  <td class="topic-category-data">
-    <TopicCategoryColumn @topic={{@topic}} />
   </td>
 </template>;
 
@@ -44,33 +30,33 @@ export default {
       api.registerValueTransformer(
         "topic-list-columns",
         ({ value: columns }) => {
+          // Add status column for pinned/hot badges
           columns.add("topic-status", {
             item: TopicStatus,
             after: "topic-author",
           });
-          columns.add("topic-category", {
-            item: TopicCategory,
-            after: "topic-status",
-          });
 
+          // Add stats row (replies, likes, views, share)
           columns.add("topic-likes-replies", {
             item: TopicReplies,
-            after: "topic-author-avatar",
+            after: "title",
           });
+
+          // Add creator column with avatar, username, level
           columns.add("topic-creator", {
             item: TopicCreator,
             after: "topic-author-avatar",
           });
+
+          // Remove columns we don't need in the Figma design
           columns.delete("views");
           columns.delete("replies");
+          columns.delete("posters");
+
           if (!router.currentRouteName.includes("userPrivateMessages")) {
-            columns.add("topic-activity", {
-              item: TopicActivity,
-              after: "title",
-            });
-            columns.delete("posters");
             columns.delete("activity");
           }
+
           return columns;
         }
       );
@@ -94,6 +80,11 @@ export default {
 
       api.registerValueTransformer("topic-list-item-mobile-layout", () => {
         return false;
+      });
+
+      // Always show excerpts (Figma design requirement)
+      api.registerValueTransformer("topic-list-item-expand-pinned", () => {
+        return true;
       });
 
       api.registerBehaviorTransformer(
