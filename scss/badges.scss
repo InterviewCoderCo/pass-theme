@@ -31,14 +31,14 @@
   padding: 3px 8px;
   font-size: 12px;
   font-weight: 500;
-  background: #1e293b;
-  color: #94a3b8;
+  background: #f0f0f0;
+  color: #666666;
   border: none;
   transition: all 150ms ease;
 
   &:hover {
-    background: #334155;
-    color: #f8fafc;
+    background: #e5e5e5;
+    color: #222222;
   }
 
   // Tag with count
@@ -82,8 +82,8 @@
   }
 
   &.unread-posts {
-    background: #f8fafc;
-    color: #0f172a;
+    background: #222222;
+    color: #ffffff;
   }
 }
 

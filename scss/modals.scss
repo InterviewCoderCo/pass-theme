@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════════════
 // MODALS & DIALOGS
-// Clean, modern modal styling
+// Clean, modern modal styling (Light Theme)
 // ═══════════════════════════════════════════════════════════════════════════
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -17,9 +17,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
 .d-modal__container {
   border-radius: 16px !important;
-  border: 1px solid #1e293b !important;
+  border: 1px solid #e5e5e5 !important;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.16) !important;
   overflow: hidden;
+  background: #ffffff;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -27,13 +28,13 @@
 // ─────────────────────────────────────────────────────────────────────────────
 .d-modal__header {
   padding: 20px 24px !important;
-  border-bottom: 1px solid #1e293b !important;
-  background: #0f172a;
+  border-bottom: 1px solid #e5e5e5 !important;
+  background: #ffffff;
 
   .d-modal__title {
     font-size: 18px;
     font-weight: 600;
-    color: #f8fafc;
+    color: #222222;
   }
 
   // Close button
@@ -43,7 +44,7 @@
     transition: background 150ms ease;
 
     &:hover {
-      background: #1e293b;
+      background: #f5f5f5;
     }
   }
 }
@@ -53,12 +54,13 @@
 // ─────────────────────────────────────────────────────────────────────────────
 .d-modal__body {
   padding: 24px !important;
+  color: #222222;
 }
 
 .d-modal__footer {
   padding: 16px 24px !important;
-  border-top: 1px solid #1e293b !important;
-  background: #0f172a;
+  border-top: 1px solid #e5e5e5 !important;
+  background: #fafafa;
   gap: 12px;
 }
 
@@ -82,7 +84,7 @@
     }
 
     p {
-      color: #94a3b8;
+      color: #666666;
       font-size: 14px;
     }
   }
@@ -94,24 +96,27 @@
 .dialog-container {
   .dialog-content {
     border-radius: 12px !important;
-    border: 1px solid #1e293b !important;
+    border: 1px solid #e5e5e5 !important;
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.14) !important;
     overflow: hidden;
+    background: #ffffff;
   }
 
   .dialog-header {
     padding: 16px 20px;
-    border-bottom: 1px solid #1e293b;
+    border-bottom: 1px solid #e5e5e5;
+    color: #222222;
   }
 
   .dialog-body {
     padding: 20px;
+    color: #222222;
   }
 
   .dialog-footer {
     padding: 16px 20px;
-    border-top: 1px solid #1e293b;
-    background: #0f172a;
+    border-top: 1px solid #e5e5e5;
+    background: #fafafa;
   }
 }
 

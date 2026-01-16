@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════════════
 // FORMS & INPUTS
-// Clean, modern form elements styling
+// Clean, modern form elements styling (Light Theme)
 // ═══════════════════════════════════════════════════════════════════════════
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -14,18 +14,19 @@ input[type="url"],
 input[type="search"],
 input[type="tel"] {
   border-radius: 8px !important;
-  border: 1px solid #334155 !important;
-  background: #0f172a !important;
+  border: 1px solid #e5e5e5 !important;
+  background: #ffffff !important;
+  color: #222222 !important;
   padding: 10px 14px !important;
   font-size: 14px;
   transition: border-color 150ms ease, box-shadow 150ms ease;
 
   &::placeholder {
-    color: #475569;
+    color: #999999;
   }
 
   &:hover {
-    border-color: #475569 !important;
+    border-color: #cccccc !important;
   }
 
   &:focus {
@@ -40,8 +41,9 @@ input[type="tel"] {
 // ─────────────────────────────────────────────────────────────────────────────
 textarea {
   border-radius: 8px !important;
-  border: 1px solid #334155 !important;
-  background: #0f172a !important;
+  border: 1px solid #e5e5e5 !important;
+  background: #ffffff !important;
+  color: #222222 !important;
   padding: 12px 14px !important;
   font-size: 14px;
   line-height: 1.6;
@@ -49,11 +51,11 @@ textarea {
   transition: border-color 150ms ease, box-shadow 150ms ease;
 
   &::placeholder {
-    color: #475569;
+    color: #999999;
   }
 
   &:hover {
-    border-color: #475569 !important;
+    border-color: #cccccc !important;
   }
 
   &:focus {
@@ -69,12 +71,21 @@ textarea {
 .select-kit {
   .select-kit-header {
     border-radius: 8px !important;
-    border: 1px solid #334155 !important;
-    background: #0f172a !important;
+    border: 1px solid #e5e5e5 !important;
+    background: #ffffff !important;
+    color: #222222 !important;
     transition: border-color 150ms ease, box-shadow 150ms ease;
 
     &:hover {
-      border-color: #475569 !important;
+      border-color: #cccccc !important;
+    }
+
+    .selected-name .name {
+      color: #222222 !important;
+    }
+
+    .caret-icon {
+      color: #666666 !important;
     }
   }
 
@@ -86,7 +97,8 @@ textarea {
   // Dropdown body
   .select-kit-body {
     border-radius: 8px !important;
-    border: 1px solid #334155 !important;
+    border: 1px solid #e5e5e5 !important;
+    background: #ffffff !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
     overflow: hidden;
     margin-top: 4px;
@@ -95,16 +107,18 @@ textarea {
   // Dropdown rows
   .select-kit-row {
     padding: 8px 12px;
+    color: #222222 !important;
+    background: #ffffff !important;
     transition: background 150ms ease;
 
     &:hover,
     &.is-highlighted {
-      background: #1e293b !important;
+      background: #f5f5f5 !important;
     }
 
     &.is-selected {
-      background: #0c4a6e !important;
-      color: #ffffff !important;
+      background: #e8f4fc !important;
+      color: var(--tertiary) !important;
     }
   }
 }
@@ -116,7 +130,8 @@ input[type="checkbox"] {
   width: 18px;
   height: 18px;
   border-radius: 4px;
-  border: 1px solid #475569;
+  border: 1px solid #cccccc;
+  background: #ffffff;
   cursor: pointer;
 
   &:checked {
@@ -135,14 +150,14 @@ input[type="checkbox"] {
 label {
   font-weight: 500;
   font-size: 14px;
-  color: #f8fafc;
+  color: #222222;
 }
 
 // Form hints/descriptions
 .description,
 .form-template-field__description {
   font-size: 13px;
-  color: #94a3b8;
+  color: #666666;
   margin-top: 4px;
 }
 
@@ -151,7 +166,7 @@ label {
 // ─────────────────────────────────────────────────────────────────────────────
 .d-editor-textarea-wrapper {
   border-radius: 8px !important;
-  border: 1px solid #334155 !important;
+  border: 1px solid #e5e5e5 !important;
   overflow: hidden;
 
   &:focus-within {
