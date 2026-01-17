@@ -4,7 +4,7 @@
 // Keep this file clean - all styles should live in their respective modules.
 // ═══════════════════════════════════════════════════════════════════════════
 
-// Core & Variables
+// Core & Variables (load first - contains design tokens)
 @import "variables";
 @import "global";
 
@@ -14,8 +14,9 @@
 @import "sidebar";
 @import "sidebar-new-topic-button";
 
-// Components
+// Components (reusable across the theme)
 @import "buttons";
+@import "tabs";
 @import "forms";
 @import "badges";
 @import "nav-pills";

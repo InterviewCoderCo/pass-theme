@@ -1,0 +1,160 @@
+// =============================================================================
+// TABS COMPONENT - 2025 Airbnb DLS
+// Consistent tab styling across the entire theme
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Base Tab Mixin - Underline Style
+// Use this for navigation tabs (user profile, review page, etc.)
+// -----------------------------------------------------------------------------
+
+// Tab container styles
+.ds-tabs,
+.user-navigation-primary .nav-pills,
+.user-navigation-secondary .nav-pills,
+.reviewable-title.nav-pills,
+.d-nav-submenu__tabs {
+  display: flex !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid
+    var(
+      --ds-border-light,
+      light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08))
+    ) !important;
+}
+
+// Individual tab item
+.ds-tabs li,
+.user-navigation-primary .nav-pills li,
+.user-navigation-secondary .nav-pills li,
+.reviewable-title.nav-pills li,
+.d-nav-submenu__tabs li {
+  margin: 0 !important;
+}
+
+// Tab link styles
+.ds-tabs li a,
+.user-navigation-primary .nav-pills li a,
+.user-navigation-secondary .nav-pills li a,
+.reviewable-title.nav-pills li a,
+.d-nav-submenu__tabs li a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 12px 16px !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: var(--ds-text-muted, light-dark(#64748b, #94a3b8)) !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  text-decoration: none !important;
+  position: relative !important;
+  transition: color var(--ds-transition-fast, 150ms ease) !important;
+
+  // Bottom indicator line
+  &::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -1px !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 2px !important;
+    background: transparent !important;
+    border-radius: 2px 2px 0 0 !important;
+    transition: background var(--ds-transition-fast, 150ms ease) !important;
+  }
+
+  // Icon styles
+  .d-icon {
+    width: 16px !important;
+    height: 16px !important;
+    color: var(--ds-text-faint, light-dark(#94a3b8, #64748b)) !important;
+    transition: color var(--ds-transition-fast, 150ms ease) !important;
+  }
+
+  // Hover state
+  &:hover {
+    color: var(--ds-text-primary, light-dark(#1e293b, #ffffff)) !important;
+    background: transparent !important;
+
+    .d-icon {
+      color: var(--ds-text-secondary, light-dark(#475569, #cbd5e1)) !important;
+    }
+  }
+
+  // Active state
+  &.active {
+    color: var(--ds-primary-blue, #3396ff) !important;
+    font-weight: 600 !important;
+    background: transparent !important;
+
+    &::after {
+      background: var(--ds-primary-blue, #3396ff) !important;
+    }
+
+    .d-icon {
+      color: var(--ds-primary-blue, #3396ff) !important;
+    }
+  }
+}
+
+// Active state via parent li
+.ds-tabs li.active a,
+.user-navigation-primary .nav-pills li.active a,
+.user-navigation-secondary .nav-pills li.active a,
+.reviewable-title.nav-pills li.active a,
+.d-nav-submenu__tabs li.active a {
+  color: var(--ds-primary-blue, #3396ff) !important;
+  font-weight: 600 !important;
+
+  &::after {
+    background: var(--ds-primary-blue, #3396ff) !important;
+  }
+
+  .d-icon {
+    color: var(--ds-primary-blue, #3396ff) !important;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Pill-Style Tabs (Alternative)
+// Use for filters, compact navigation
+// -----------------------------------------------------------------------------
+
+.ds-tabs--pills {
+  display: flex !important;
+  gap: 8px !important;
+  border-bottom: none !important;
+
+  li a {
+    padding: 8px 16px !important;
+    border-radius: var(--d-border-radius-pill, 24px) !important;
+    background: transparent !important;
+
+    &::after {
+      display: none !important;
+    }
+
+    &:hover {
+      background: var(
+        --ds-bg-hover,
+        light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08))
+      ) !important;
+    }
+
+    &.active {
+      background: var(--ds-primary-blue, #3396ff) !important;
+      color: #ffffff !important;
+
+      .d-icon {
+        color: #ffffff !important;
+      }
+    }
+  }
+}
