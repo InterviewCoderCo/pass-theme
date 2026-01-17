@@ -659,17 +659,38 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 .user-content {
-  .top-section {
-    padding: 24px 0;
-    overflow: hidden; // Clear floats
+  // ═══════════════════════════════════════════════════════════════════════════
+  // CRITICAL: Override Discourse default 50% width two-column float layout
+  // Discourse sets .top-sub-section { width: 50%; } and uses .pull-left/.pull-right
+  // We want full-width single-column card layout
+  // ═══════════════════════════════════════════════════════════════════════════
 
-    .stats-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: #666666;
-      margin: 0 0 12px 0;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+  // Override the default 50% width on all top-sub-sections
+  .top-sub-section {
+    width: 100% !important;
+    float: none !important;
+    clear: both !important;
+  }
+
+  // Remove floats from pull-left/pull-right utility classes
+  .pull-left,
+  .pull-right {
+    float: none !important;
+    width: 100% !important;
+  }
+
+  // Make parent sections use flex column layout
+  .top-section {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    padding: 0;
+    overflow: visible;
+
+    // Remove clearfix pseudo-elements
+    &::before,
+    &::after {
+      display: none !important;
     }
 
     // Empty state text
@@ -681,71 +702,78 @@
     }
   }
 
-  // Stats grid section - rebuilt from scratch
+  // Stats section - Pill tag layout (Figma design) inside card
   .stats-section {
-    // Grid container
+    background: var(--ds-bg-primary, light-dark(#ffffff, #1e293b)) !important;
+    border: 1px solid
+      var(
+        --ds-border-light,
+        light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08))
+      );
+    border-radius: 16px;
+    box-shadow: var(--ds-shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.04));
+    padding: 20px 24px;
+    margin-bottom: 16px;
+
+    // Container as flex wrap
     ul {
       all: unset;
-      display: grid !important;
-      grid-template-columns: repeat(4, 1fr) !important;
-      gap: 12px !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 10px !important;
       width: 100% !important;
       box-sizing: border-box !important;
-
-      @media (max-width: 768px) {
-        grid-template-columns: repeat(2, 1fr) !important;
-      }
     }
 
-    // Grid items - the li elements
+    // Each stat item as a pill
     ul > li {
       all: unset;
-      display: block !important;
+      display: inline-flex !important;
       margin: 0 !important;
       padding: 0 !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
     }
 
     // Links inside li (some stats are clickable)
     ul > li > a {
       all: unset;
-      display: block !important;
-      width: 100% !important;
+      display: inline-flex !important;
       cursor: pointer;
       text-decoration: none !important;
 
       &:hover .user-stat {
-        background: #f0f4f8 !important;
+        background: var(
+          --ds-bg-hover,
+          light-dark(#e2e8f0, rgba(255, 255, 255, 0.1))
+        ) !important;
       }
     }
 
-    // The actual stat card
+    // The actual stat pill
     .user-stat {
       all: unset;
-      display: flex !important;
-      flex-direction: column !important;
+      display: inline-flex !important;
+      flex-direction: row !important;
       align-items: center !important;
-      justify-content: center !important;
-      width: 100% !important;
-      height: 70px !important;
-      background: #ffffff !important;
-      border-radius: 8px !important;
+      gap: 6px !important;
+      padding: 8px 14px !important;
+      background: var(
+        --ds-bg-tertiary,
+        light-dark(#f1f5f9, rgba(255, 255, 255, 0.05))
+      ) !important;
+      border-radius: 20px !important;
       box-sizing: border-box !important;
-      padding: 12px !important;
       transition: background 0.15s ease !important;
     }
 
-    // Value (the number)
+    // Value (the number) - comes first
     .user-stat .value {
       all: unset;
-      display: block !important;
-      font-size: 24px !important;
+      display: inline !important;
+      font-size: 0.875rem !important;
       font-weight: 700 !important;
-      color: #1a1a1a !important;
+      color: var(--ds-text-primary, light-dark(#1e293b, #ffffff)) !important;
       line-height: 1 !important;
-      margin-bottom: 4px !important;
-      text-align: center !important;
+      order: 0 !important;
     }
 
     .user-stat .value .number {
@@ -755,69 +783,115 @@
       color: inherit !important;
     }
 
-    // Label (text below number)
+    // Label (text after number)
     .user-stat .label {
       all: unset;
-      display: flex !important;
+      display: inline-flex !important;
       align-items: center !important;
-      justify-content: center !important;
       gap: 4px !important;
-      font-size: 12px !important;
-      font-weight: 500 !important;
-      color: #666666 !important;
+      font-size: 0.875rem !important;
+      font-weight: 400 !important;
+      color: var(--ds-text-secondary, light-dark(#64748b, #94a3b8)) !important;
       line-height: 1 !important;
-      text-align: center !important;
+      order: 1 !important;
     }
 
-    // Heart icon in label
+    // Heart icon in label - make it red
     .user-stat .label svg,
     .user-stat .label .d-icon,
     .user-stat .label .svg-icon {
-      width: 12px !important;
-      height: 12px !important;
-      min-width: 12px !important;
-      max-width: 12px !important;
+      width: 14px !important;
+      height: 14px !important;
+      min-width: 14px !important;
+      max-width: 14px !important;
       flex-shrink: 0 !important;
-      color: var(--love) !important;
+      color: #ef4444 !important;
     }
   }
 
-  // Two-column sections - modern card layout
+  // Two-column sections - now single column card layout
   .replies-and-topics-section,
   .links-and-replied-to-section,
   .most-liked-section {
     display: flex !important;
+    flex-direction: column !important;
     gap: 16px !important;
 
+    &::before,
     &::after {
       display: none !important; // Remove clearfix
     }
 
     .top-sub-section {
-      flex: 1 !important;
+      flex: none !important;
       float: none !important;
-      width: auto !important;
+      width: 100% !important;
       margin-bottom: 0 !important;
-      background: #ffffff !important;
-      border-radius: 12px !important;
-      padding: 20px !important;
-      min-height: 120px !important;
+      background: var(--ds-bg-primary, light-dark(#ffffff, #1e293b)) !important;
+      border: 1px solid
+        var(
+          --ds-border-light,
+          light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08))
+        );
+      border-radius: 16px !important;
+      box-shadow: var(--ds-shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.04));
+      padding: 0 !important;
+      min-height: auto !important;
+      overflow: hidden;
 
+      // Section title - constrained to card width
       .stats-title {
-        margin-bottom: 16px !important;
-      }
-
-      // Empty state - centered and styled
-      > p,
-      > div > p {
-        color: #cbd5e1 !important;
-        font-size: 14px !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        color: var(--ds-text-primary, light-dark(#1e293b, #ffffff)) !important;
         margin: 0 !important;
-        padding: 20px 0 !important;
-        text-align: center !important;
+        padding: 16px 20px 12px 20px !important;
+        border-bottom: none !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        background: transparent !important;
       }
 
-      // Topic list styling (replies-section, topics-section, links-section)
+      // Empty state - "No links yet." etc.
+      > p {
+        color: var(--ds-text-muted, #94a3b8) !important;
+        font-size: 0.875rem !important;
+        margin: 0 !important;
+        padding: 16px 20px !important;
+        text-align: center !important;
+        font-style: italic !important;
+      }
+
+      // "More Topics" link container
+      > p:has(a.more) {
+        font-style: normal !important;
+        padding: 0 !important;
+      }
+
+      > p > a.more,
+      > a.more {
+        display: block !important;
+        font-size: 0.85rem !important;
+        font-weight: 500 !important;
+        color: var(--ds-primary-blue, #3396ff) !important;
+        text-decoration: none !important;
+        padding: 16px 20px !important;
+        text-align: center !important;
+        border-top: 1px solid
+          var(
+            --ds-border-light,
+            light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.06))
+          ) !important;
+
+        &:hover {
+          background: var(
+            --ds-bg-hover,
+            light-dark(rgba(0, 0, 0, 0.02), rgba(255, 255, 255, 0.04))
+          ) !important;
+        }
+      }
+
+      // Topic list
       > ul {
         all: unset !important;
         display: block !important;
@@ -827,37 +901,34 @@
 
         > li {
           all: unset !important;
-          display: flex !important;
-          align-items: center !important;
-          gap: 12px !important;
-          padding: 10px 0 !important;
-          border-bottom: 1px solid #f1f5f9 !important;
+          display: block !important;
+          padding: 14px 20px !important;
+          border-bottom: 1px solid
+            var(
+              --ds-border-light,
+              light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.06))
+            ) !important;
 
           &:last-child {
             border-bottom: none !important;
-            padding-bottom: 0 !important;
           }
 
-          &:first-child {
-            padding-top: 0 !important;
-          }
-
-          // Time badge
+          // Time info
           .topic-info {
             all: unset !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            min-width: 36px !important;
-            height: 24px !important;
-            background: #f1f5f9 !important;
-            border-radius: 6px !important;
-            flex-shrink: 0 !important;
+            display: block !important;
+            margin-bottom: 4px !important;
 
             .relative-date {
-              font-size: 11px !important;
-              color: #64748b !important;
-              font-weight: 600 !important;
+              font-size: 0.8rem !important;
+              color: var(--ds-text-muted, #94a3b8) !important;
+              font-weight: 400 !important;
+            }
+
+            // Hide like count and separator
+            > svg,
+            .like-count {
+              display: none !important;
             }
           }
 
@@ -867,14 +938,18 @@
 
           // Topic link
           > a {
-            font-size: 14px !important;
+            display: block !important;
+            font-size: 0.9rem !important;
             font-weight: 500 !important;
-            color: #1a1a1a !important;
+            color: var(
+              --ds-text-primary,
+              light-dark(#1e293b, #ffffff)
+            ) !important;
             text-decoration: none !important;
             line-height: 1.4 !important;
 
             &:hover {
-              color: var(--tertiary) !important;
+              color: var(--ds-primary-blue, #3396ff) !important;
             }
           }
         }
@@ -886,16 +961,37 @@
     }
   }
 
-  // User info cards in Most Liked sections
+  // User info cards in Most Liked sections - Figma design
   .most-liked-section,
   .links-and-replied-to-section {
     .summary-user-list {
+      background: var(--ds-bg-primary, light-dark(#ffffff, #1e293b)) !important;
+      border: 1px solid
+        var(
+          --ds-border-light,
+          light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08))
+        );
+      border-radius: 16px !important;
+      box-shadow: var(--ds-shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.04));
+      padding: 0 !important;
+      overflow: hidden;
+
+      // Section title
+      .stats-title {
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        color: var(--ds-text-primary, light-dark(#1e293b, #ffffff)) !important;
+        margin: 0 !important;
+        padding: 16px 20px 12px 20px !important;
+        border-bottom: none !important;
+      }
+
       // Empty state
       > div > p {
-        color: #cbd5e1 !important;
-        font-size: 14px !important;
+        color: var(--ds-text-muted, #94a3b8) !important;
+        font-size: 0.875rem !important;
         margin: 0 !important;
-        padding: 20px 0 !important;
+        padding: 20px !important;
         text-align: center !important;
       }
 
@@ -903,6 +999,9 @@
       > ul {
         all: unset !important;
         display: block !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
 
         > li {
           all: unset !important;
@@ -912,16 +1011,19 @@
             display: flex !important;
             align-items: center !important;
             gap: 12px !important;
-            padding: 10px 0 !important;
-            border-bottom: 1px solid #f1f5f9 !important;
+            padding: 14px 20px !important;
+            border-bottom: 1px solid
+              var(
+                --ds-border-light,
+                light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.06))
+              ) !important;
+            transition: background 150ms ease;
 
-            &:first-child {
-              padding-top: 0 !important;
-            }
-
-            &:last-child {
-              border-bottom: none !important;
-              padding-bottom: 0 !important;
+            &:hover {
+              background: var(
+                --ds-bg-hover,
+                light-dark(rgba(0, 0, 0, 0.02), rgba(255, 255, 255, 0.04))
+              ) !important;
             }
 
             .user-image {
@@ -932,9 +1034,14 @@
               }
 
               .avatar {
-                width: 36px !important;
-                height: 36px !important;
+                width: 40px !important;
+                height: 40px !important;
                 border-radius: 50% !important;
+                border: 2px solid
+                  var(
+                    --ds-border-light,
+                    light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08))
+                  ) !important;
               }
             }
 
@@ -945,20 +1052,35 @@
               .name-line {
                 display: flex !important;
                 align-items: center !important;
-                gap: 6px !important;
+                gap: 8px !important;
 
                 .username-wrapper {
+                  a {
+                    text-decoration: none !important;
+                  }
+
                   .username {
-                    font-size: 14px !important;
+                    font-size: 0.9rem !important;
                     font-weight: 600 !important;
-                    color: #1a1a1a !important;
+                    color: var(
+                      --ds-text-primary,
+                      light-dark(#1e293b, #ffffff)
+                    ) !important;
+
+                    &:hover {
+                      color: var(--ds-primary-blue, #3396ff) !important;
+                    }
                   }
                 }
 
                 .name-wrapper {
+                  a {
+                    text-decoration: none !important;
+                  }
+
                   .name {
-                    font-size: 13px !important;
-                    color: #94a3b8 !important;
+                    font-size: 0.85rem !important;
+                    color: var(--ds-text-muted, #94a3b8) !important;
                   }
                 }
               }
@@ -971,43 +1093,88 @@
                 display: flex !important;
                 align-items: center !important;
                 gap: 4px !important;
-                margin-top: 2px !important;
+                margin-top: 4px !important;
 
                 .d-icon {
-                  width: 12px !important;
-                  height: 12px !important;
-                  color: var(--love) !important;
+                  width: 14px !important;
+                  height: 14px !important;
+                  color: #ef4444 !important;
                 }
 
                 .likes {
-                  font-size: 12px !important;
-                  color: #64748b !important;
+                  font-size: 0.8rem !important;
+                  color: var(--ds-text-secondary, #64748b) !important;
                   font-weight: 500 !important;
 
                   .number {
                     font-weight: 600 !important;
+                    color: var(
+                      --ds-text-primary,
+                      light-dark(#1e293b, #ffffff)
+                    ) !important;
                   }
                 }
               }
             }
+          }
+
+          &:last-child .user-info {
+            border-bottom: none !important;
           }
         }
       }
     }
   }
 
-  // Top Categories section
+  // Top Categories section - full width card
   .top-categories-section {
-    .top-sub-section {
-      background: #ffffff !important;
-      border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+
+    &::before,
+    &::after {
+      display: none !important;
+    }
+
+    // Target both .top-sub-section and .summary-category-list
+    .top-sub-section,
+    .summary-category-list {
+      background: var(--ds-bg-primary, light-dark(#ffffff, #1e293b)) !important;
+      border: 1px solid
+        var(
+          --ds-border-light,
+          light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08))
+        );
+      border-radius: 16px !important;
+      box-shadow: var(--ds-shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.04));
       padding: 20px !important;
       width: 100% !important;
+      max-width: 100% !important;
       float: none !important;
+      box-sizing: border-box !important;
+
+      // Override pull-left on this specific element
+      &.pull-left {
+        float: none !important;
+        width: 100% !important;
+      }
+
+      .stats-title {
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        color: var(--ds-text-primary, light-dark(#1e293b, #ffffff)) !important;
+        margin: 0 0 16px 0 !important;
+        padding: 0 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+      }
 
       table {
         width: 100% !important;
         border-collapse: collapse !important;
+        table-layout: auto !important;
+        max-width: 100% !important;
 
         thead {
           th {
@@ -1018,12 +1185,24 @@
             color: #64748b !important;
             text-transform: uppercase !important;
             letter-spacing: 0.5px !important;
-            border-bottom: 1px solid #f1f5f9 !important;
+            border-bottom: 1px solid
+              var(
+                --ds-border-light,
+                light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08))
+              ) !important;
+
+            // Empty first column header
+            &.category-link {
+              width: auto !important;
+            }
 
             &.topic-count,
             &.reply-count {
               text-align: center !important;
-              width: 80px !important;
+              width: auto !important;
+              padding-left: 16px !important;
+              padding-right: 16px !important;
+              white-space: nowrap !important;
             }
           }
         }
@@ -1032,14 +1211,23 @@
           tr {
             td {
               padding: 12px 0 !important;
-              border-bottom: 1px solid #f1f5f9 !important;
+              border-bottom: 1px solid
+                var(
+                  --ds-border-light,
+                  light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.06))
+                ) !important;
 
               &.category-link {
+                width: auto !important;
+
                 .badge-category__wrapper {
+                  background: transparent !important;
+
                   .badge-category {
                     display: flex !important;
                     align-items: center !important;
                     gap: 6px !important;
+                    background: transparent !important;
 
                     .emoji {
                       width: 18px !important;
@@ -1049,7 +1237,10 @@
                     .badge-category__name {
                       font-size: 14px !important;
                       font-weight: 500 !important;
-                      color: #1a1a1a !important;
+                      color: var(
+                        --ds-text-primary,
+                        light-dark(#1e293b, #ffffff)
+                      ) !important;
                     }
                   }
                 }
@@ -1060,9 +1251,13 @@
                 text-align: center !important;
                 font-size: 14px !important;
                 color: #64748b !important;
+                width: auto !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+                white-space: nowrap !important;
 
                 a {
-                  color: var(--tertiary) !important;
+                  color: var(--ds-primary-blue, #3396ff) !important;
                   font-weight: 500 !important;
                   text-decoration: none !important;
 
@@ -1082,76 +1277,112 @@
     }
   }
 
-  // Badges section
+  // Badges section - Card container with badge grid
   .badges-section {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+
+    // Section title - outside the card
+    > .stats-title {
+      font-size: 1rem !important;
+      font-weight: 600 !important;
+      color: var(--ds-text-primary, light-dark(#1e293b, #ffffff)) !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+    }
+
     .badge-group-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+      gap: 16px !important;
     }
 
     .badge-card {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 12px;
-      border: none;
-      box-shadow: none;
+      background: var(--ds-bg-primary, light-dark(#ffffff, #1e293b)) !important;
+      border: 1px solid
+        var(
+          --ds-border-light,
+          light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08))
+        ) !important;
+      border-radius: 16px !important;
+      box-shadow: var(--ds-shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.04)) !important;
+      padding: 20px !important;
 
       .badge-contents {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        display: flex !important;
+        align-items: center !important;
+        gap: 14px !important;
       }
 
       .badge-icon {
-        width: 32px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 50% !important;
 
         &.badge-type-bronze {
-          background: #fef3c7;
-          color: #b45309;
+          background: #fef3c7 !important;
+          color: #b45309 !important;
         }
 
         &.badge-type-silver {
-          background: #f1f5f9;
-          color: #475569;
+          background: #f1f5f9 !important;
+          color: #475569 !important;
         }
 
         &.badge-type-gold {
-          background: #fef9c3;
-          color: #a16207;
+          background: #fef9c3 !important;
+          color: #a16207 !important;
         }
 
         .d-icon {
-          width: 16px;
-          height: 16px;
+          width: 20px !important;
+          height: 20px !important;
         }
       }
 
       .badge-info {
+        flex: 1 !important;
+        min-width: 0 !important;
+
         h3 {
-          margin: 0 0 2px 0;
-          font-size: 13px;
-          font-weight: 600;
+          margin: 0 0 4px 0 !important;
+          font-size: 0.95rem !important;
+          font-weight: 600 !important;
 
           a {
-            color: #1a1a1a;
-            text-decoration: none;
+            color: var(
+              --ds-text-primary,
+              light-dark(#1e293b, #ffffff)
+            ) !important;
+            text-decoration: none !important;
 
             &:hover {
-              color: var(--tertiary);
+              color: var(--ds-primary-blue, #3396ff) !important;
             }
           }
         }
 
         .badge-summary {
-          font-size: 11px;
-          color: #666666;
-          margin: 0;
+          font-size: 0.85rem !important;
+          color: var(--ds-text-secondary, #64748b) !important;
+          margin: 0 !important;
+          line-height: 1.4 !important;
+
+          a {
+            color: var(--ds-primary-blue, #3396ff) !important;
+            text-decoration: none !important;
+
+            &:hover {
+              text-decoration: underline !important;
+            }
+          }
         }
       }
     }
