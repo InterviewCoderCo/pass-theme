@@ -96,3 +96,414 @@
   font-size: 12px;
   font-weight: 500;
 }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// BADGES INDEX PAGE (all badges list)
+// ═══════════════════════════════════════════════════════════════════════════
+
+.badge-groups {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding: 24px 0 !important;
+
+  // Each badge category group
+  .badge-grouping {
+    margin-bottom: 40px !important;
+
+    // Category title (Getting Started, Community, etc.)
+    .title {
+      margin-bottom: 20px !important;
+      padding-bottom: 12px !important;
+      border-bottom: 1px solid var(--primary-low) !important;
+
+      h2 {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        color: var(--primary) !important;
+        margin: 0 !important;
+      }
+    }
+
+    // Grid of badge cards
+    .badge-group-list {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+      gap: 12px !important;
+    }
+  }
+
+  // Individual badge card
+  .badge-card {
+    display: flex !important;
+    align-items: stretch !important;
+    background: var(--d-content-background) !important;
+    border: 1px solid var(--primary-low) !important;
+    border-radius: 12px !important;
+    transition: all 0.15s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+
+    &:hover {
+      border-color: var(--primary-300) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    .badge-contents {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 14px !important;
+      padding: 16px !important;
+      flex: 1 !important;
+    }
+
+    // Badge icon
+    .badge-icon {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: 10px !important;
+      flex-shrink: 0 !important;
+
+      .d-icon {
+        width: 20px !important;
+        height: 20px !important;
+      }
+
+      // Bronze badge
+      &.badge-type-bronze {
+        background: linear-gradient(
+          135deg,
+          #fef3e2 0%,
+          #fde7c7 100%
+        ) !important;
+        border: 1px solid rgba(205, 127, 50, 0.2) !important;
+
+        .d-icon {
+          color: #cd7f32 !important;
+        }
+      }
+
+      // Silver badge
+      &.badge-type-silver {
+        background: linear-gradient(
+          135deg,
+          #f8f9fa 0%,
+          #e9ecef 100%
+        ) !important;
+        border: 1px solid rgba(192, 192, 192, 0.3) !important;
+
+        .d-icon {
+          color: #a0a0a0 !important;
+        }
+      }
+
+      // Gold badge
+      &.badge-type-gold {
+        background: linear-gradient(
+          135deg,
+          #fff9e6 0%,
+          #fff3cc 100%
+        ) !important;
+        border: 1px solid rgba(255, 215, 0, 0.3) !important;
+
+        .d-icon {
+          color: #d4a800 !important;
+        }
+      }
+    }
+
+    // Badge info
+    .badge-info {
+      flex: 1 !important;
+      min-width: 0 !important;
+
+      .badge-info-item {
+        h3 {
+          margin: 0 0 4px !important;
+
+          .badge-link {
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            color: var(--primary) !important;
+            text-decoration: none !important;
+
+            &:hover {
+              color: var(--tertiary) !important;
+            }
+          }
+        }
+
+        .badge-summary {
+          font-size: 13px !important;
+          line-height: 1.4 !important;
+          color: var(--primary-medium) !important;
+          margin-bottom: 6px !important;
+
+          a {
+            color: var(--tertiary) !important;
+            text-decoration: none !important;
+
+            &:hover {
+              text-decoration: underline !important;
+            }
+          }
+        }
+
+        .badge-granted {
+          font-size: 12px !important;
+          color: var(--primary-medium) !important;
+
+          .number {
+            font-weight: 600 !important;
+            color: var(--primary-high) !important;
+          }
+        }
+      }
+    }
+
+    // Checkmark for earned badges
+    .check-display {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 36px !important;
+      background: var(--success-low, rgba(34, 197, 94, 0.1)) !important;
+      border-left: 1px solid var(--primary-low) !important;
+
+      .d-icon {
+        width: 16px !important;
+        height: 16px !important;
+        color: var(--success, #22c55e) !important;
+      }
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// BADGE DETAIL PAGE (show-badge)
+// ═══════════════════════════════════════════════════════════════════════════
+
+.container.show-badge {
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  padding: 32px 24px !important;
+
+  // Page header (Badges / Badge Name)
+  > h1 {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: var(--ds-text-muted) !important;
+    margin-bottom: 24px !important;
+
+    a {
+      color: var(--ds-primary-blue) !important;
+      text-decoration: none !important;
+      font-weight: 500 !important;
+
+      &:hover {
+        text-decoration: underline !important;
+      }
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // Badge Card (main display)
+  // ─────────────────────────────────────────────────────────────────────────
+  .show-badge-details {
+    margin-bottom: 32px !important;
+
+    .badge-card {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 20px !important;
+      padding: 24px !important;
+      background: var(--ds-bg-primary) !important;
+      border: 1px solid var(--ds-border-light) !important;
+      border-radius: 16px !important;
+      box-shadow: var(--ds-shadow-sm) !important;
+      position: relative !important;
+
+      .badge-contents {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+        flex: 1 !important;
+      }
+
+      // Badge icon
+      .badge-icon {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 64px !important;
+        height: 64px !important;
+        border-radius: 16px !important;
+        flex-shrink: 0 !important;
+
+        .d-icon {
+          width: 28px !important;
+          height: 28px !important;
+        }
+
+        // Bronze badge
+        &.badge-type-bronze {
+          background: linear-gradient(
+            135deg,
+            #fef3e2 0%,
+            #fde7c7 100%
+          ) !important;
+          border: 1px solid rgba(205, 127, 50, 0.2) !important;
+
+          .d-icon {
+            color: #cd7f32 !important;
+          }
+        }
+
+        // Silver badge
+        &.badge-type-silver {
+          background: linear-gradient(
+            135deg,
+            #f8f9fa 0%,
+            #e9ecef 100%
+          ) !important;
+          border: 1px solid rgba(192, 192, 192, 0.3) !important;
+
+          .d-icon {
+            color: #a0a0a0 !important;
+          }
+        }
+
+        // Gold badge
+        &.badge-type-gold {
+          background: linear-gradient(
+            135deg,
+            #fff9e6 0%,
+            #fff3cc 100%
+          ) !important;
+          border: 1px solid rgba(255, 215, 0, 0.3) !important;
+
+          .d-icon {
+            color: #d4a800 !important;
+          }
+        }
+      }
+
+      // Badge info section
+      .badge-info {
+        flex: 1 !important;
+
+        h3 {
+          font-size: 20px !important;
+          font-weight: 700 !important;
+          color: var(--ds-text-primary) !important;
+          margin: 0 0 8px !important;
+        }
+
+        .badge-summary {
+          font-size: 15px !important;
+          line-height: 1.6 !important;
+          color: var(--ds-text-secondary) !important;
+        }
+      }
+
+      // Checkmark (badge granted indicator)
+      .check-display {
+        position: absolute !important;
+        top: 16px !important;
+        right: 16px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 32px !important;
+        height: 32px !important;
+        background: var(--ds-success) !important;
+        border-radius: 50% !important;
+
+        .d-icon {
+          width: 16px !important;
+          height: 16px !important;
+          color: #ffffff !important;
+        }
+      }
+    }
+
+    .badge-grant-info {
+      margin-top: 12px !important;
+      padding: 0 8px !important;
+      font-size: 13px !important;
+      color: var(--ds-text-muted) !important;
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // Users who have earned this badge
+  // ─────────────────────────────────────────────────────────────────────────
+  .user-badges {
+    .badges-granted {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+      gap: 16px !important;
+    }
+
+    .user-info.badge-info {
+      display: flex !important;
+      align-items: center !important;
+      gap: 14px !important;
+      padding: 16px !important;
+      background: var(--ds-bg-primary) !important;
+      border: 1px solid var(--ds-border-light) !important;
+      border-radius: 12px !important;
+      transition: all var(--ds-transition-fast) !important;
+
+      &:hover {
+        border-color: var(--ds-border-medium) !important;
+        box-shadow: var(--ds-shadow-sm) !important;
+      }
+
+      // Avatar
+      .user-image {
+        flex-shrink: 0 !important;
+
+        .avatar {
+          width: 48px !important;
+          height: 48px !important;
+          border-radius: 12px !important;
+        }
+      }
+
+      // User details
+      .user-detail {
+        flex: 1 !important;
+        min-width: 0 !important;
+
+        .name-line {
+          margin-bottom: 4px !important;
+
+          .username {
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            color: var(--ds-text-primary) !important;
+          }
+        }
+
+        .details {
+          .granted-on {
+            font-size: 13px !important;
+            color: var(--ds-text-muted) !important;
+
+            .relative-date {
+              color: var(--ds-text-secondary) !important;
+              font-weight: 500 !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
