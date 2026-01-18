@@ -1,5 +1,431 @@
 @use "lib/viewport";
 
+// ═══════════════════════════════════════════════════════════════════════════
+// COMPOSER - Enhanced Design (Airbnb DLS 2025)
+// Modern, clean composer for creating topics and replies
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MAIN COMPOSER CONTAINER
+// ─────────────────────────────────────────────────────────────────────────────
+#reply-control {
+  background: var(--ds-bg-primary, light-dark(#ffffff, #1a1a1a)) !important;
+  border-top: 1px solid
+    var(
+      --ds-border-light,
+      light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.1))
+    ) !important;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08) !important;
+
+  // Make composer taller by default but still resizable
+  &.open {
+    min-height: 600px;
+  }
+
+  // Reply area wrapper
+  .reply-area {
+    background: transparent !important;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// HEADER ROW (Title + Controls)
+// ─────────────────────────────────────────────────────────────────────────────
+#reply-control .reply-to {
+  padding: 12px 16px !important;
+  border-bottom: 1px solid
+    var(
+      --ds-border-light,
+      light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08))
+    ) !important;
+  background: var(
+    --ds-bg-secondary,
+    light-dark(#f8fafc, rgba(255, 255, 255, 0.03))
+  ) !important;
+
+  .reply-details {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  // Action title (Create a new topic)
+  .composer-action-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+
+    .action-title {
+      font-size: 1rem !important;
+      font-weight: 600 !important;
+      color: var(--ds-text-primary, light-dark(#1e293b, #ffffff)) !important;
+    }
+  }
+
+  // Composer actions dropdown
+  .composer-actions .select-kit-header {
+    background: transparent !important;
+    border: none !important;
+    padding: 4px !important;
+
+    .d-icon {
+      color: var(--ds-primary-blue, #3396ff) !important;
+    }
+
+    &:hover {
+      background: var(
+        --ds-bg-hover,
+        light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.08))
+      ) !important;
+      border-radius: 6px !important;
+    }
+  }
+
+  // Control buttons (minimize, fullscreen, close)
+  .composer-controls {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+
+    .btn {
+      width: 32px !important;
+      height: 32px !important;
+      padding: 0 !important;
+      border-radius: 8px !important;
+      background: transparent !important;
+      border: none !important;
+      color: var(--ds-text-muted, #94a3b8) !important;
+      transition: background 150ms, color 150ms;
+
+      &:hover {
+        background: var(
+          --ds-bg-hover,
+          light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.1))
+        ) !important;
+        color: var(--ds-text-primary, light-dark(#1e293b, #ffffff)) !important;
+      }
+
+      .d-icon {
+        width: 16px !important;
+        height: 16px !important;
+      }
+    }
+
+    // Close button - subtle red on hover
+    .toggle-save-and-close:hover {
+      background: rgba(239, 68, 68, 0.1) !important;
+      color: #ef4444 !important;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TITLE & CATEGORY INPUTS
+// ─────────────────────────────────────────────────────────────────────────────
+#reply-control .composer-fields {
+  padding: 16px !important;
+  background: transparent !important;
+
+  .title-and-category {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    align-items: flex-start !important;
+  }
+
+  // Title input
+  .title-input {
+    flex: 1 1 300px !important;
+
+    input#reply-title {
+      width: 100% !important;
+      padding: 12px 14px !important;
+      font-size: 1rem !important;
+      font-weight: 500 !important;
+      background: var(
+        --ds-bg-secondary,
+        light-dark(#f8fafc, rgba(255, 255, 255, 0.05))
+      ) !important;
+      border: 1px solid
+        var(
+          --ds-border-light,
+          light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.12))
+        ) !important;
+      border-radius: 10px !important;
+      color: var(--ds-text-primary, light-dark(#1e293b, #ffffff)) !important;
+      transition: border-color 150ms, box-shadow 150ms;
+
+      &::placeholder {
+        color: var(--ds-text-muted, #94a3b8) !important;
+      }
+
+      &:focus {
+        outline: none !important;
+        border-color: var(--ds-primary-blue, #3396ff) !important;
+        box-shadow: 0 0 0 3px rgba(51, 150, 255, 0.15) !important;
+      }
+    }
+  }
+
+  // Category chooser
+  .category-input {
+    flex: 0 0 auto !important;
+    min-width: 180px !important;
+
+    .category-chooser .select-kit-header {
+      padding: 10px 14px !important;
+      background: var(
+        --ds-bg-secondary,
+        light-dark(#f8fafc, rgba(255, 255, 255, 0.05))
+      ) !important;
+      border: 1px solid
+        var(
+          --ds-border-light,
+          light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.12))
+        ) !important;
+      border-radius: 10px !important;
+      transition: border-color 150ms;
+
+      &:hover,
+      &:focus {
+        border-color: var(--ds-primary-blue, #3396ff) !important;
+      }
+    }
+  }
+
+  // Tags input
+  .tags-input {
+    flex: 0 0 auto !important;
+    min-width: 150px !important;
+
+    .mini-tag-chooser .select-kit-header {
+      padding: 10px 14px !important;
+      background: var(
+        --ds-bg-secondary,
+        light-dark(#f8fafc, rgba(255, 255, 255, 0.05))
+      ) !important;
+      border: 1px solid
+        var(
+          --ds-border-light,
+          light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.12))
+        ) !important;
+      border-radius: 10px !important;
+      transition: border-color 150ms;
+
+      &:hover,
+      &:focus {
+        border-color: var(--ds-primary-blue, #3396ff) !important;
+      }
+
+      .formatted-selection {
+        color: var(--ds-text-muted, #94a3b8) !important;
+      }
+    }
+  }
+
+  // Validation popups
+  .popup-tip {
+    border-radius: 8px !important;
+    font-size: 0.8rem !important;
+    padding: 6px 10px !important;
+
+    &.bad {
+      background: rgba(239, 68, 68, 0.1) !important;
+      color: #ef4444 !important;
+      border: 1px solid rgba(239, 68, 68, 0.2) !important;
+    }
+
+    &.good {
+      background: rgba(34, 197, 94, 0.1) !important;
+      color: #22c55e !important;
+      border: 1px solid rgba(34, 197, 94, 0.2) !important;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// EDITOR TOOLBAR
+// ─────────────────────────────────────────────────────────────────────────────
+#reply-control .d-editor-button-bar {
+  padding: 8px 12px !important;
+  background: var(
+    --ds-bg-secondary,
+    light-dark(#f8fafc, rgba(255, 255, 255, 0.03))
+  ) !important;
+  border-bottom: 1px solid
+    var(
+      --ds-border-light,
+      light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.06))
+    ) !important;
+  gap: 2px !important;
+
+  // Toolbar buttons
+  .btn,
+  button {
+    width: 34px !important;
+    height: 34px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    background: transparent !important;
+    border: none !important;
+    color: var(--ds-text-secondary, #64748b) !important;
+    transition: background 150ms, color 150ms;
+
+    &:hover {
+      background: var(
+        --ds-bg-hover,
+        light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.1))
+      ) !important;
+      color: var(--ds-text-primary, light-dark(#1e293b, #ffffff)) !important;
+    }
+
+    .d-icon {
+      width: 16px !important;
+      height: 16px !important;
+    }
+  }
+
+  // Rich editor toggle switch
+  .composer-toggle-switch {
+    padding: 4px !important;
+    border-radius: 12px !important;
+    background: var(
+      --ds-bg-hover,
+      light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08))
+    ) !important;
+    margin-right: 8px !important;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// EDITOR TEXT AREA
+// ─────────────────────────────────────────────────────────────────────────────
+#reply-control .d-editor-textarea-wrapper {
+  border: none !important;
+  background: transparent !important;
+
+  &.in-focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+#reply-control .d-editor-input,
+#reply-control .ProseMirror {
+  padding: 16px !important;
+  min-height: 200px !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  color: var(--ds-text-primary, light-dark(#1e293b, #ffffff)) !important;
+  background: transparent !important;
+
+  &::placeholder,
+  [data-placeholder]::before {
+    color: var(--ds-text-muted, #94a3b8) !important;
+  }
+
+  // Focus state for ProseMirror
+  &:focus {
+    outline: none !important;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PREVIEW PANEL
+// ─────────────────────────────────────────────────────────────────────────────
+#reply-control .d-editor-preview-wrapper {
+  background: var(
+    --ds-bg-secondary,
+    light-dark(#f8fafc, rgba(255, 255, 255, 0.02))
+  ) !important;
+  border-left: 1px solid
+    var(
+      --ds-border-light,
+      light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.06))
+    ) !important;
+
+  .d-editor-preview {
+    padding: 16px !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    color: var(--ds-text-primary, light-dark(#1e293b, #ffffff)) !important;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SUBMIT PANEL (Create Topic / Discard)
+// ─────────────────────────────────────────────────────────────────────────────
+#reply-control .submit-panel {
+  padding: 12px 16px !important;
+  background: var(
+    --ds-bg-secondary,
+    light-dark(#f8fafc, rgba(255, 255, 255, 0.03))
+  ) !important;
+  border-top: 1px solid
+    var(
+      --ds-border-light,
+      light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.06))
+    ) !important;
+
+  .save-or-cancel {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  // Create Topic button
+  .btn.create {
+    padding: 10px 20px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    background: var(--ds-primary-blue, #3396ff) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    color: #ffffff !important;
+    transition: background 150ms, box-shadow 150ms;
+
+    .d-icon {
+      color: #ffffff !important;
+    }
+
+    &:hover {
+      background: #2980e4 !important;
+      box-shadow: 0 4px 16px rgba(51, 150, 255, 0.3) !important;
+    }
+  }
+
+  // Discard button
+  .discard-button {
+    padding: 10px 16px !important;
+    font-size: 0.9rem !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 8px !important;
+    color: var(--ds-text-muted, #94a3b8) !important;
+    transition: background 150ms, color 150ms;
+
+    &:hover {
+      background: rgba(239, 68, 68, 0.1) !important;
+      color: #ef4444 !important;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FULLSCREEN MODE
+// ─────────────────────────────────────────────────────────────────────────────
+#reply-control.fullscreen {
+  border-radius: 0 !important;
+
+  .composer-fields {
+    max-width: 900px !important;
+    margin: 0 auto !important;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ORIGINAL STYLES (preserved for compatibility)
+// ─────────────────────────────────────────────────────────────────────────────
 #reply-control
   .select-kit.dropdown-select-box.composer-actions
   .select-kit-header {
