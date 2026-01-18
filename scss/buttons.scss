@@ -4,6 +4,26 @@
 // Uses design tokens from variables.scss
 // =============================================================================
 
+// -----------------------------------------------------------------------------
+// Icon-only Buttons - Fix for hidden span breaking centering
+// -----------------------------------------------------------------------------
+.btn.no-text,
+.btn-icon.no-text {
+  // Hide the extra span that breaks icon centering
+  > span[aria-hidden="true"] {
+    display: none !important;
+  }
+
+  // Ensure the wrapper centers content
+  .select-kit-header-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
 // Button-specific variables (extends variables.scss)
 :root {
   // Default Button
